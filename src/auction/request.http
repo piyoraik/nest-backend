@@ -1,3 +1,15 @@
 
 ### Auction FetchAll
 GET http://localhost:3000/auction
+
+### Auction Create
+POST http://localhost:3000/auction
+Content-Type: application/json
+
+{
+  "auctionName": "オークション名",
+  "colorId": 1,
+  "subTitle": "サブタイトル",
+  "startTime": "2022-01-11 21:21",
+  "selectionImg": "画像"
+}

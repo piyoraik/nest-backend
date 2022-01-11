@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuctionService } from './auction.service';
+import { CreateAuctionDto } from './dto/create-auction.dto';
 
 @Controller('auction')
 export class AuctionController {
@@ -8,5 +9,10 @@ export class AuctionController {
   @Get()
   fetchAll() {
     return this.auctionService.fetchAll();
+  }
+
+  @Post()
+  create(@Body() body: CreateAuctionDto) {
+    return this.auctionService.create(body);
   }
 }

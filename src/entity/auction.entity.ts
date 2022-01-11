@@ -6,7 +6,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
-import { Color } from './color.entity';
+import { AuctionColor } from './auction.color.entity';
 
 @Entity()
 export class Auction {
@@ -16,11 +16,11 @@ export class Auction {
   @Column()
   auctionName: string;
 
-  @ManyToOne(() => Color, (color) => color.auction)
-  colorId: number;
+  @ManyToOne(() => AuctionColor, (color) => color.auction)
+  auctionColorId: number;
 
   @Column()
-  subtitle: string;
+  subTitle: string;
 
   @Column()
   startTime: Date;

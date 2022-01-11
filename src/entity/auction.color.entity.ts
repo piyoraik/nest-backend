@@ -2,13 +2,13 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Auction } from './auction.entity';
 
 @Entity()
-export class Color {
+export class AuctionColor {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @OneToMany(() => Auction, (auction) => auction.colorId)
+  @OneToMany(() => Auction, (auction) => auction.auctionColorId)
   auction: Auction[];
 }
