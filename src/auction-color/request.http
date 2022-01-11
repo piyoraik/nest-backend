@@ -1,0 +1,2 @@
+### Color FetchAll
+GET http://localhost:3000/auction-color

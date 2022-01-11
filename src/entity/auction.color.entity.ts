@@ -9,6 +9,6 @@ export class AuctionColor {
   @Column()
   name: string;
 
-  @OneToMany(() => Auction, (auction) => auction.colorId)
+  @OneToMany(() => Auction, (auction) => auction.auctionColorId)
   auction: Auction[];
 }

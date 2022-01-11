@@ -17,7 +17,7 @@ export class Auction {
   auctionName: string;
 
   @ManyToOne(() => AuctionColor, (color) => color.auction)
-  colorId: number;
+  auctionColorId: number;
 
   @Column()
   subTitle: string;
