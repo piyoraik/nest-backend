@@ -2,10 +2,8 @@
   "type": "sqlite",
   "database": "db.sqlite",
   "entities": ["./dist/entity/*.entity.js"],
-  "migrations": ["./dist/migrations/*.js"],
-  "synchronize": false,
+  "synchronize": true,
   "cli": {
-    "migrationsDir": "src/migrations",
     "entitiesDir": "src/entities"
   }
 }
