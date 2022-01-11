@@ -1,2 +1,10 @@
 ### Color FetchAll
 GET http://localhost:3000/auction-color
+
+### Color Create
+POST http://localhost:3000/auction-color
+Content-Type: application/json
+
+{
+  "name": "#FF0000"
+}
