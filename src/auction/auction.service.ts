@@ -12,6 +12,4 @@ export class AuctionService {
   fetchAll() {
     return this.repo.find();
   }
-
-  
 }
