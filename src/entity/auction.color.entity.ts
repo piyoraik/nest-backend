@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Auction } from './auction.entity';
 
 @Entity()
-export class Color {
+export class AuctionColor {
   @PrimaryGeneratedColumn()
   id: number;
 
