@@ -13,24 +13,33 @@ import { AuctionColor } from './auction.color.entity';
 
 @Entity()
 export class Auction {
+  //オークション
+
   @PrimaryGeneratedColumn()
   id: number;
 
+  //オークション名
   @Column()
   auctionName: string;
 
-  @ManyToOne(() => AuctionColor, (color) => color.auction)
+  //色
+  @ManyToOne(() => AuctionColor, (auctionColor) => auctionColor.auction)
   auctionColorId: number;
 
+  //サブタイトル
   @Column()
   subTitle: string;
 
+  //開始時間
+  //この部分Datetimeにしないと詳細時間表示できないかも
   @Column()
   startTime: Date;
 
+  //セレクション画像
   @Column()
   selectionImg: string;
 
+  //オークションID
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auctionId)
   auctionListing: AuctionListing[];
 

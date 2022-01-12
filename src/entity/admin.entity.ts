@@ -3,17 +3,19 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class Admin {
+  //管理者
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
-  adminId: string;
+  adminId: number;
 
   @Column()
   password: string;

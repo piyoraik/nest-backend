@@ -4,19 +4,23 @@ import {
   Column,
   OneToMany,
   CreateDateColumn,
-  DeleteDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 
 @Entity()
 export class DeliveryMethod {
+  //配達方法
+
   @PrimaryGeneratedColumn()
   id: number;
 
+  //運送方法
   @Column()
   transport: string;
 
+  //費用
   @Column()
   cost: number;
 
