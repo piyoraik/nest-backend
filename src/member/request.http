@@ -23,3 +23,6 @@ Content-Type: application/json
 {
   "name": "テスト　次郎"
 }
+
+### Member softDelete
+DELETE http://localhost:9000/member/1

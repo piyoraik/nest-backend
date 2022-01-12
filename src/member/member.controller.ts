@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { CreateMemberDTO } from './dto/create-member-dto';
 import { UpdateMemberDTO } from './dto/update-user-dto';
 import { MemberService } from './member.service';
@@ -25,5 +33,10 @@ export class MemberController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() body: UpdateMemberDTO) {
     return this.memberService.update(+id, body);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.memberService.softDelete(+id);
   }
 }

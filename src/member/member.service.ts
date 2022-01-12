@@ -35,4 +35,12 @@ export class MemberService {
     Object.assign(member, attrs);
     return this.memberRepo.save(member);
   }
+
+  async softDelete(id: number) {
+    const member = await this.memberRepo.findOne({ id });
+    if (!member) {
+      throw new NotFoundException('User not found');
+    }
+    return this.memberRepo.softDelete(id);
+  }
 }
