@@ -22,7 +22,7 @@ export class MemberService {
   async findOne(id: number) {
     const member = await this.memberRepo.findOne({ id });
     if (!member) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Member not found');
     }
     return member;
   }
@@ -30,7 +30,7 @@ export class MemberService {
   async update(id: number, attrs: Partial<Members>) {
     const member = await this.memberRepo.findOne({ id });
     if (!member) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Member not found');
     }
     Object.assign(member, attrs);
     return this.memberRepo.save(member);
@@ -39,8 +39,8 @@ export class MemberService {
   async softDelete(id: number) {
     const member = await this.memberRepo.findOne({ id });
     if (!member) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Member not found');
     }
-    return this.memberRepo.softDelete(id);
+    return this.memberRepo.softRemove(member);
   }
 }
