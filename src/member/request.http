@@ -1,0 +1,3 @@
+
+### Member FetchAll
+GET http://localhost:9000/member

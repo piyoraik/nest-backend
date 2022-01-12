@@ -8,4 +8,8 @@ export class MemberService {
   constructor(
     @InjectRepository(Members) private readonly memberRepo: Repository<Members>,
   ) {}
+
+  findAll() {
+    return this.memberRepo.find();
+  }
 }
