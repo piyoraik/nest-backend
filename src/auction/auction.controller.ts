@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 

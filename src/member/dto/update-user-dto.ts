@@ -1,6 +1,5 @@
 import {
   IsEmail,
-  IsEmpty,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -8,8 +7,8 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class CreateMemberDTO {
-  @IsNotEmpty()
+export class UpdateMemberDTO {
+  @IsOptional()
   @IsString()
   name: string;
 
@@ -17,11 +16,11 @@ export class CreateMemberDTO {
   @IsString()
   companyName: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsEmail()
   email: string;
 
-  @IsString()
+  @IsOptional()
   @MinLength(8)
   @MaxLength(32)
   password: string;
