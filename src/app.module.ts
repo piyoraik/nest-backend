@@ -3,15 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuctionModule } from './auction/auction.module';
-import { EndusersModule } from './endusers/endusers.module';
 import { AuctionColorModule } from './auction-color/auction-color.module';
+import { MemberModule } from './member/member.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     AuctionModule,
-    EndusersModule,
     AuctionColorModule,
+    MemberModule,
   ],
   controllers: [AppController],
   providers: [AppService],
