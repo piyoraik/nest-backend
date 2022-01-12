@@ -4,8 +4,8 @@ import {
   Column,
   OneToMany,
   CreateDateColumn,
-  DeleteDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Auction } from './auction.entity';
 

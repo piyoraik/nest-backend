@@ -7,23 +7,23 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-import { AfterSuccessfulBid } from './after.successful.bid.entity';
+import { ListingCar } from './listing.car.entity';
 
 @Entity()
-export class Option {
-  //オプション
+export class PaperClass {
+  //紙類
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  text: string;
+  securityDocument: string; //新車保証書
 
-  @OneToMany(
-    () => AfterSuccessfulBid,
-    (afterSuccessfulBid) => afterSuccessfulBid.optionId,
-  )
-  afterSuccessfulBid: AfterSuccessfulBid[];
+  @Column()
+  manual: string; //取扱説明書
+
+  @OneToMany(() => ListingCar, (listingCar) => listingCar.paperClassId)
+  listingCar: ListingCar[];
 
   @CreateDateColumn()
   createdAt: Date;

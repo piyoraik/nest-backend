@@ -4,18 +4,20 @@ import {
   Column,
   OneToMany,
   CreateDateColumn,
-  DeleteDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 
 @Entity()
 export class PaymentMethods {
+  //支払い方法
+
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  text: string;
+  Methods: string;
 
   @OneToMany(
     () => AfterSuccessfulBid,

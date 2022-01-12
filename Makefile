@@ -5,6 +5,12 @@ develop:
 	git push origin feature-$(issue) && \
 	gh pr create -b "close #$(issue)" -a @me -w
 
+fix:
+	@git checkout -b fix-$(issue) && \
+	git commit --allow-empty -m "修正開始" && \
+	git push origin fix-$(issue) && \
+	gh pr create -b "close #$(issue)" -a @me -w
+
 ## TypeORM Operation
 migration:
 	@npm run typeorm migration:run
