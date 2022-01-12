@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { DeliveryMethod } from './delivery.method.entity';
 import { Option } from './option.entity';
@@ -35,4 +43,13 @@ export class AfterSuccessfulBid {
 
   @Column()
   isCancelled: boolean;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
