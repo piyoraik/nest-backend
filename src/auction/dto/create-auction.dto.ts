@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsDate, IsNotEmpty } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty, IsDateString } from 'class-validator';
 
 export class CreateAuctionDto {
   @IsString()
@@ -9,7 +9,7 @@ export class CreateAuctionDto {
   colorId: number;
   @IsString()
   subTitle: string;
-  @IsDate()
+  @IsDateString()
   @IsNotEmpty()
   startTime: Date;
   @IsString()

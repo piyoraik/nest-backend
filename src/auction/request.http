@@ -10,6 +10,20 @@ Content-Type: application/json
   "auctionName": "オークション名",
   "colorId": 1,
   "subTitle": "サブタイトル",
-  "startTime": "2022-01-11 21:21",
+  "startTime": "2022-01-11 12:21:00.000",
   "selectionImg": "画像"
 }
+
+### Auction FindOne
+GET http://localhost:9000/auction/1
+
+### Auction Update
+PATCH http://localhost:9000/auction/1
+Content-Type: application/json
+
+{
+  "auctionName": "オークション名（編集）"
+}
+
+### Auction Delete
+DELETE http://localhost:9000/auction/1

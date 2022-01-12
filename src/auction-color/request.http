@@ -6,5 +6,19 @@ POST http://localhost:9000/auction-color
 Content-Type: application/json
 
 {
-  "name": "#FF0000"
+  "name": "#ff0000"
 }
+
+### Color FindOne
+GET http://localhost:9000/auction-color/2
+
+### Color Update
+PATCH http://localhost:9000/auction-color/2
+Content-Type: application/json
+
+{
+  "name": "#2f2f2f"
+}
+
+### Color softDelete
+DELETE http://localhost:9000/auction-color/3

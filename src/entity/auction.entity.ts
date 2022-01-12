@@ -4,6 +4,9 @@ import {
   Column,
   OneToMany,
   ManyToOne,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionColor } from './auction.color.entity';
@@ -30,4 +33,13 @@ export class Auction {
 
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auctionId)
   auctionListing: AuctionListing[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

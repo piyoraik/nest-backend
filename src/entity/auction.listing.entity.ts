@@ -4,6 +4,9 @@ import {
   Column,
   OneToMany,
   ManyToOne,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 import { Auction } from './auction.entity';
@@ -30,12 +33,18 @@ export class AuctionListing {
   @ManyToOne(() => Members, (members) => members.auctionListing)
   membersId: number;
 
-  // @ManyToOne(() => CarBodyNumber, carBodyNumber => carBodyNumber.auctionListing)
-  // carId:number;
-
   @OneToMany(
     () => AfterSuccessfulBid,
     (afterSuccessfulBid) => afterSuccessfulBid.auctionListingId,
   )
   afterSuccessfulBid: AfterSuccessfulBid[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
