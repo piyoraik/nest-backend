@@ -5,5 +5,7 @@ import { MemberService } from 'src/member/member.service';
 export class AuthService {
   constructor(private memberService: MemberService) {}
 
-  // async validateUser(name: string, password: string) {}
+  async validateUser(name: string, password: string) {
+    // const member = await this.memberService.findOne
+  }
 }
