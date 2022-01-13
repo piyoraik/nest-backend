@@ -1,23 +1,27 @@
-import { Auction } from '../entity/auction.entity';
-import { Repository } from 'typeorm';
+import { Test } from '@nestjs/testing';
 import { AuctionController } from './auction.controller';
 import { AuctionService } from './auction.service';
 
 describe('CatsController', () => {
-  let catsController: AuctionController;
-  let catsService: AuctionService;
+  let auctionController: AuctionController;
+  let auctionService: AuctionService;
 
-  beforeEach(() => {
-    catsService = new AuctionService(new Repository<Auction>());
-    catsController = new AuctionController(catsService);
+  beforeEach(async () => {
+    const moduleRef = await Test.createTestingModule({
+      controllers: [AuctionController],
+      providers: [AuctionService],
+    }).compile();
+
+    auctionService = moduleRef.get<AuctionService>(AuctionService);
+    auctionController = moduleRef.get<AuctionController>(AuctionController);
   });
 
   describe('findAll', () => {
     it('should return an array of cats', async () => {
       let result: any;
-      jest.spyOn(catsService, 'fetchAll').mockImplementation(() => result);
+      jest.spyOn(auctionService, 'fetchAll').mockImplementation(() => result);
 
-      expect(await catsController.fetchAll()).toBe(result);
+      expect(await auctionController.fetchAll()).toBe(result);
     });
   });
 });
