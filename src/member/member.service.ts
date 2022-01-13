@@ -19,10 +19,13 @@ export class MemberService {
     return this.memberRepo.save(member);
   }
 
-  async findOne(memberKey: string, memberValue: string) {
+  async findOne<T extends keyof Members, U extends Members[T]>(
+    memberKey: T,
+    memberValue: U,
+  ) {
     const member = await this.memberRepo.findOne({
       where: {
-        id: memberValue,
+        [memberKey]: memberValue,
       },
     });
     if (!member) {
