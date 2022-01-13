@@ -21,6 +21,6 @@ export class CreateAuctionDto {
   @IsNotEmpty()
   startTime: Date;
 
-  @IsString()
+  @IsString({})
   selectionImg: string;
 }
