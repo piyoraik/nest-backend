@@ -34,7 +34,7 @@ export class Members {
 
   //電話番号
   @Column()
-  phoneNumber: number;
+  phoneNumber: string;
 
   //アイコン画像
   @Column()
@@ -45,11 +45,11 @@ export class Members {
   address: string;
 
   //悪質フラグ
-  @Column()
+  @Column({ default: false })
   malicuousFlag: boolean;
 
   //与信チェック
-  @Column()
+  @Column({ default: false })
   creditCheck: boolean;
 
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.membersId)
