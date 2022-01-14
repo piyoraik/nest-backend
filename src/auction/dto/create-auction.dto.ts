@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, IsNotEmpty, IsDateString } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsNotEmpty,
+  IsDateString,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateAuctionDto {
   @ApiProperty()
@@ -22,6 +28,7 @@ export class CreateAuctionDto {
   startTime: Date;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   selectionImg: string;
 }
