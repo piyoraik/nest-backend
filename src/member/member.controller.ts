@@ -8,7 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CreateMemberDTO } from './dto/create-member-dto';
-import { UpdateMemberDTO } from './dto/update-user-dto';
+import { UpdateMemberDTO } from './dto/update-member-dto';
 import { MemberService } from './member.service';
 
 @Controller('member')
