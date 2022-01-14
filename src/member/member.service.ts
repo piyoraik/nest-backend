@@ -20,11 +20,9 @@ export class MemberService {
   }
 
   async findOne(attrs: Partial<Members>) {
-    console.log(attrs);
     const member = await this.memberRepo.findOne({
       where: attrs,
     });
-    console.log(member);
     if (!member) {
       throw new NotFoundException('Member not found');
     }
