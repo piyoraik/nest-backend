@@ -19,17 +19,12 @@ export class MemberService {
     return this.memberRepo.save(member);
   }
 
-  // async findOne<T extends keyof Members, U extends Members[T]>(
-  //   memberKey: T,
-  //   memberValue: U,
-  // ) {
-  async findOne(memberKey: string, memberValue: string) {
-    console.log(memberKey, memberValue);
+  async findOne(attrs: Partial<Members>) {
+    console.log(attrs);
     const member = await this.memberRepo.findOne({
-      where: {
-        [memberKey]: memberValue,
-      },
+      where: attrs,
     });
+    console.log(member);
     if (!member) {
       throw new NotFoundException('Member not found');
     }

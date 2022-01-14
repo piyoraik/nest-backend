@@ -3,14 +3,6 @@ POST http://localhost:9000/auth/login
 Content-Type: application/json
 
 {
-  "username": "テスト 太郎(改)",
+  "email": "asdf@asdf.com",
   "password": "asdfasdf"
-}
-
-### 
-GET http://localhost:9000/member/test
-Content-Type: application/json
-
-{
-  "name": "asdfasdf"
 }
