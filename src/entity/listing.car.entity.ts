@@ -7,19 +7,19 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-import { EvaluationPoint } from './evaluation.point.entity';
+import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { TestingRecord } from './testing.record.entity';
 import { SalesPoint } from './sales.point.entity';
 import { PaperClass } from './paper.class.entity';
-import { Cigarette } from './cigarette.entity';
-import { MeterExchangeHistory } from './meter.exchange.history.entity';
-import { ScratchEvaluation } from './scratch.evaluation.entity';
+import { Cigarette } from '../enum/cigarette.enum';
+import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
+import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
 import { Addition } from './addition.entity';
 import { Inspection } from './inspection.entity';
 import { SuggestedListing } from './suggested.listing.entity';
 import { CarBodyEvaluation } from './car.body.evaluation.entity';
-import { CarHistory } from './car.history.entity';
+import { CarHistory } from '../enum/car.history.enum';
 
 @Entity()
 export class ListingCar {
@@ -29,11 +29,8 @@ export class ListingCar {
   id: number;
 
   //評価点
-  @ManyToOne(
-    () => EvaluationPoint,
-    (evaluationPoint) => evaluationPoint.listingCar,
-  )
-  evaluationId: number;
+  @Column()
+  evaluationPoint:EvaluationPoint;
 
   //出品店記入
   @ManyToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
@@ -47,23 +44,17 @@ export class ListingCar {
   @ManyToOne(() => PaperClass, (paperClass) => paperClass.listingCar)
   paperClassId: number;
 
-  //タバコ
-  @ManyToOne(() => Cigarette, (cigarette) => cigarette.listingCar)
-  cigaretteId: number;
+  //タバコ ＊変更
+  @Column()
+  cigarette: Cigarette;
 
-  //メーター交換歴
-  @ManyToOne(
-    () => MeterExchangeHistory,
-    (meterExchangeHistory) => meterExchangeHistory.listingCar,
-  )
-  meterExchangeHistoryId: number;
+  //メーター交換歴 ＊変更
+  @Column()
+  meterExchangeHistory:MeterExchangeHistory;
 
-  //傷評価
-  @ManyToOne(
-    () => ScratchEvaluation,
-    (scratchEvaluation) => scratchEvaluation.listingCar,
-  )
-  scratchEvaluationId: number;
+  //傷評価 ＊変更
+  @Column()
+  scratchEvaluation: ScratchEvaluation;
 
   //車体画像
   @ManyToOne(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
@@ -91,13 +82,13 @@ export class ListingCar {
   )
   carBodyEvaluationId: number;
 
-  //車歴
-  @ManyToOne(() => CarHistory, (carHistory) => carHistory.listingCar)
-  carHistoryId: number;
+  //車歴 ＊変更
+  @Column()
+  CarHistory:CarHistory;
 
   //車検
   @Column()
-  carHistory: string;
+  carInspection: string;
 
   //仕入れ額
   @Column()
