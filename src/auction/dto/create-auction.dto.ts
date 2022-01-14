@@ -8,26 +8,36 @@ import {
 } from 'class-validator';
 
 export class CreateAuctionDto {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オークション名',
+  })
   @IsString()
   @IsNotEmpty()
   auctionName: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '廃止予定',
+  })
   @IsNumber()
   @IsNotEmpty()
   colorId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オークションのサブタイトル',
+  })
   @IsString()
   subTitle: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オークションの開始時間',
+  })
   @IsDateString()
   @IsNotEmpty()
   startTime: Date;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オークションで使用する画像',
+  })
   @IsOptional()
   @IsString()
   selectionImg: string;
