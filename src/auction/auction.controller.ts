@@ -9,6 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
@@ -23,6 +24,7 @@ export class AuctionController {
   }
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() body: CreateAuctionDto) {
     return this.auctionService.create(body);
