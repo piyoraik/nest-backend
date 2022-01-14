@@ -7,7 +7,7 @@ POST http://localhost:9000/member
 Content-Type: application/json
 
 {
-  "name": "テスト　太郎",
+  "name": "asdf",
   "companyName": "",
   "email": "asdf@asdf.com",
   "password": "asdfasdf"
