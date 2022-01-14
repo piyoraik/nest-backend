@@ -18,12 +18,12 @@ export class AuctionController {
   constructor(private readonly auctionService: AuctionService) {}
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
   fetchAll() {
     return this.auctionService.fetchAll();
   }
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   create(@Body() body: CreateAuctionDto) {
     return this.auctionService.create(body);
   }
