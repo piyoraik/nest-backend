@@ -27,6 +27,7 @@ export class CreateAuctionDto {
   @IsNotEmpty()
   startTime: Date;
 
+  @ApiProperty()
   @IsOptional()
   @IsString()
   selectionImg: string;

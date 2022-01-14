@@ -27,7 +27,7 @@ export class MemberController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.memberService.findOne(+id);
+    return this.memberService.findOne({ id: +id });
   }
 
   @Patch(':id')

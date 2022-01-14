@@ -6,7 +6,9 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
@@ -16,6 +18,7 @@ export class AuctionController {
   constructor(private readonly auctionService: AuctionService) {}
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
   fetchAll() {
     return this.auctionService.fetchAll();
   }
