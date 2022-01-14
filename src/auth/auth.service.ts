@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { identity } from 'rxjs';
 import { MemberService } from 'src/member/member.service';
 
 @Injectable()
