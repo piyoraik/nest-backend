@@ -1,4 +1,5 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Members } from 'src/entity/member.entity';
 import { Repository } from 'typeorm';
@@ -10,6 +11,7 @@ export class MemberService {
     @InjectRepository(Members) private readonly memberRepo: Repository<Members>,
   ) {}
 
+  @UseGuards(AuthGuard('jwt'))
   findAll() {
     return this.memberRepo.find();
   }

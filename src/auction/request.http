@@ -1,6 +1,7 @@
 
 ### Auction FetchAll
 GET http://localhost:9000/auction
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXIiOiJhZHNmQGFzZGYuY29tIiwiaWF0IjoxNjQyMTYxMzA1LCJleHAiOjE2NDIxNjQ5MDV9.UYF1FM1kQ_6BXfwLm97LPcOXwYMbb4eiKRn1EIvUFQ4
 
 ### Auction Create
 POST http://localhost:9000/auction

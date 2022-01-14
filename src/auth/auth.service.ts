@@ -1,6 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { CreateMemberDTO } from 'src/member/dto/create-member-dto';
 import { MemberService } from 'src/member/member.service';
+import { LoginDto } from './dto/member-login-dto';
 
 @Injectable()
 export class AuthService {
@@ -9,18 +11,21 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string) {
-    const member = await this.memberService.findOne({ email });
-    if (member && member.password === password) {
+  async validateUser(login: LoginDto) {
+    const member = await this.memberService.findOne({ email: login.email });
+    if (member && member.password === login.password) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = member;
       return result;
     }
-    return null;
+    return new UnauthorizedException('Invalid credentials');
   }
 
-  async login(member: any) {
-    const payload = { id: member.id, email: member.email };
-    return this.jwtService.sign(payload);
+  async login(member: LoginDto) {
+    if (await this.validateUser(member)) {
+      const payload = { member: member.email };
+      return this.jwtService.sign(payload);
+    }
+    throw new UnauthorizedException('Invalid credentials');
   }
 }
