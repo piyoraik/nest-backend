@@ -1,20 +1,28 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
+import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { Auction } from 'src/entity/auction.entity';
-import { Members } from 'src/entity/member.entity';
-import { Repository } from 'typeorm';
+import { MemberService } from 'src/member/member.service';
 import { AuctionRepository } from './auction.repository';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 
 @Injectable()
 export class AuctionService {
-  constructor(private auctionRepository: AuctionRepository) {}
+  constructor(
+    private auctionRepository: AuctionRepository,
+    private memberService: MemberService,
+  ) {}
 
   fetchAll() {
     return this.auctionRepository.find();
   }
 
-  create(createAuctionDTO: CreateAuctionDto, member: Members) {
+  async create(
+    createAuctionDTO: CreateAuctionDto,
+    attrsMember: Pick<PayLoad, 'email'>,
+  ) {
+    const member = await this.memberService.findOne({
+      email: attrsMember.email,
+    });
     return this.auctionRepository.createAuction(createAuctionDTO, member);
   }
 
