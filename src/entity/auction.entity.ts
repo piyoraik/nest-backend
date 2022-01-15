@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionColor } from '../enum/auctionColor.enum';
+import { Members } from './member.entity';
 
 @Entity()
 export class Auction {
@@ -31,7 +32,6 @@ export class Auction {
   subTitle: string;
 
   //開始時間
-  //この部分Datetimeにしないと詳細時間表示できないかも
   @Column()
   startTime: Date;
 
@@ -42,6 +42,9 @@ export class Auction {
   //オークションID
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auctionId)
   auctionListing: AuctionListing[];
+
+  @ManyToOne(() => Members, (member) => member.auctions)
+  member: Members;
 
   @CreateDateColumn()
   createdAt: Date;

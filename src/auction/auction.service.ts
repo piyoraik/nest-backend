@@ -1,47 +1,40 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
+import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { Auction } from 'src/entity/auction.entity';
-import { Repository } from 'typeorm';
+import { MemberService } from 'src/member/member.service';
+import { AuctionRepository } from './auction.repository';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 
 @Injectable()
 export class AuctionService {
   constructor(
-    @InjectRepository(Auction)
-    private readonly auctionRepo: Repository<Auction>,
+    private auctionRepository: AuctionRepository,
+    private memberService: MemberService,
   ) {}
 
   fetchAll() {
-    return this.auctionRepo.find();
+    return this.auctionRepository.find();
   }
 
-  create(createAuctionDTO: CreateAuctionDto) {
-    const auction = this.auctionRepo.create(createAuctionDTO);
-    return this.auctionRepo.save(auction);
+  async create(
+    createAuctionDTO: CreateAuctionDto,
+    attrsMember: Pick<PayLoad, 'email'>,
+  ) {
+    const member = await this.memberService.findOne({
+      email: attrsMember.email,
+    });
+    return this.auctionRepository.createAuction(createAuctionDTO, member);
   }
 
   findOne(id: number) {
-    const auction = this.auctionRepo.findOne(id);
-    if (!auction) {
-      throw new NotFoundException('Auction Not Found');
-    }
-    return auction;
+    return this.auctionRepository.findOneAuction({ id });
   }
 
   async update(id: number, attrs: Partial<Auction>) {
-    const auction = await this.auctionRepo.findOne({ id });
-    if (!auction) {
-      throw new NotFoundException('Color Not Found');
-    }
-    Object.assign(auction, attrs);
-    return this.auctionRepo.save(auction);
+    return this.auctionRepository.updateAuction(id, attrs);
   }
 
   async softDelete(id: number) {
-    const auction = await this.auctionRepo.findOne(id);
-    if (!auction) {
-      throw new NotFoundException('Color Not Found');
-    }
-    return this.auctionRepo.softRemove(auction);
+    return this.auctionRepository.softDeleteAuction(id);
   }
 }

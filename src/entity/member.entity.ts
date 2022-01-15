@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
+import { Auction } from './auction.entity';
 import { AuctionListing } from './auction.listing.entity';
 
 @Entity()
@@ -54,6 +55,9 @@ export class Members {
 
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.membersId)
   auctionListing: AuctionListing[];
+
+  @OneToMany(() => Auction, (auction) => auction.member)
+  auctions: Auction[];
 
   @CreateDateColumn()
   createdAt: Date;

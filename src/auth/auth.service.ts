@@ -23,14 +23,14 @@ export class AuthService {
 
   async login(member: LoginDto) {
     if (await this.validateUser(member)) {
-      const payload = { member: member.email };
+      const payload = { email: member.email };
       return this.jwtService.sign(payload);
     }
     throw new UnauthorizedException('Invalid credentials');
   }
 
   async signUp(member: Members) {
-    const payload = { member: member.email };
+    const payload = { email: member.email };
     return this.jwtService.sign(payload);
   }
 }
