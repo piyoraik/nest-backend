@@ -1,0 +1,8 @@
+
+POST http://localhost:9000/auth/login
+Content-Type: application/json
+
+{
+  "email": "adsf@asdf.com",
+  "password": "stringst"
+}

@@ -1,23 +1,24 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
-  IsNotEmpty,
   IsOptional,
   IsString,
   MaxLength,
   MinLength,
 } from 'class-validator';
 
-export class CreateMemberDTO {
+export class UpdateMemberDTO {
   @ApiProperty({
+    required: false,
     default: 'テスト 太郎',
     description: '名前',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   name: string;
 
   @ApiProperty({
+    required: false,
     description: '会社名',
   })
   @IsOptional()
@@ -25,26 +26,30 @@ export class CreateMemberDTO {
   companyName: string;
 
   @ApiProperty({
+    required: false,
     default: 'adsf@asdf.com',
     description: 'メールアドレス',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsEmail()
   email: string;
 
   @ApiProperty({
+    required: false,
     description: 'パスワード',
     minLength: 8,
     maxLength: 32,
   })
-  @IsString()
+  @IsOptional()
   @MinLength(8)
   @MaxLength(32)
   password: string;
 
   @ApiProperty({
+    required: false,
     description: '電話番号',
   })
+  @IsOptional()
   @IsString()
   phoneNumber: string;
 
@@ -53,8 +58,10 @@ export class CreateMemberDTO {
   iconImage: string;
 
   @ApiProperty({
+    required: false,
     description: '住所',
   })
+  @IsOptional()
   @IsString()
   address: string;
 }
