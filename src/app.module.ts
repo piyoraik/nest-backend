@@ -6,6 +6,7 @@ import { AuctionModule } from './auction/auction.module';
 import { AuctionColorModule } from './auction-color/auction-color.module';
 import { MemberModule } from './member/member.module';
 import { AuthModule } from './auth/auth.module';
+import { ListingCarModule } from './listing-car/listing-car.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
     AuctionColorModule,
     MemberModule,
     AuthModule,
+    ListingCarModule,
   ],
   controllers: [AppController],
   providers: [AppService],
