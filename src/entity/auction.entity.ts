@@ -25,7 +25,7 @@ export class Auction {
 
   //色 ＊変更
   @Column()
-  auctionColor:AuctionColor;
+  auctionColor: AuctionColor;
 
   //サブタイトル
   @Column()

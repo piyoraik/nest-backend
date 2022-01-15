@@ -30,7 +30,7 @@ export class ListingCar {
 
   //評価点
   @Column()
-  evaluationPoint:EvaluationPoint;
+  evaluationPoint: EvaluationPoint;
 
   //出品店記入
   @ManyToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
@@ -50,7 +50,7 @@ export class ListingCar {
 
   //メーター交換歴 ＊変更
   @Column()
-  meterExchangeHistory:MeterExchangeHistory;
+  meterExchangeHistory: MeterExchangeHistory;
 
   //傷評価 ＊変更
   @Column()
@@ -84,7 +84,7 @@ export class ListingCar {
 
   //車歴 ＊変更
   @Column()
-  CarHistory:CarHistory;
+  CarHistory: CarHistory;
 
   //車検
   @Column()

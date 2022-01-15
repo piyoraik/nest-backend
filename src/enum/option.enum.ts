@@ -1,4 +1,4 @@
 export enum Option {
-    Repair = '修理',
-    Inspection = '車検'
-  }
+  Repair = '修理',
+  Inspection = '車検',
+}

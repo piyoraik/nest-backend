@@ -12,7 +12,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
-import { Members } from 'src/entity/member.entity';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
@@ -30,11 +29,8 @@ export class AuctionController {
   @Post()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  create(
-    @Body() body: CreateAuctionDto,
-    @GetMember() member: Pick<PayLoad, 'email'>,
-  ) {
-    return this.auctionService.create(body, member);
+  create(@Body() body: CreateAuctionDto, @GetMember() payloadMember: PayLoad) {
+    return this.auctionService.create(body, payloadMember);
   }
 
   @Get(':id')
