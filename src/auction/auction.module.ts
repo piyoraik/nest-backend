@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { AuctionService } from './auction.service';
 import { AuctionController } from './auction.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Auction } from 'src/entity/auction.entity';
+import { AuctionRepository } from './auction.repository';
+import { MemberModule } from 'src/member/member.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Auction])],
+  imports: [TypeOrmModule.forFeature([AuctionRepository]), MemberModule],
   providers: [AuctionService],
   controllers: [AuctionController],
 })
