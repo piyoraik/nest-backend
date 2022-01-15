@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
-import { AuctionColor } from './auction.color.entity';
+import { AuctionColor } from '../enum/auctionColor.enum';
 import { Members } from './member.entity';
 
 @Entity()
@@ -23,9 +23,9 @@ export class Auction {
   @Column()
   auctionName: string;
 
-  //色
-  @ManyToOne(() => AuctionColor, (auctionColor) => auctionColor.auction)
-  auctionColorId: number;
+  //色 ＊変更
+  @Column()
+  auctionColor:AuctionColor;
 
   //サブタイトル
   @Column()

@@ -9,8 +9,9 @@ import {
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { DeliveryMethod } from './delivery.method.entity';
-import { Option } from './option.entity';
-import { PaymentMethods } from './payment.methods.entity';
+
+import { Option } from '../enum/option.enum';
+import { PaymentMethod } from '../enum/paymentMethod.enum';
 
 @Entity()
 export class AfterSuccessfulBid {
@@ -26,9 +27,9 @@ export class AfterSuccessfulBid {
   )
   auctionListingId: number;
 
-  //オプション
-  @ManyToOne(() => Option, (option) => option.afterSuccessfulBid)
-  optionId: number;
+  //オプション ＊変更
+  @Column()
+  option:Option;
 
   //配送
   @ManyToOne(() => DeliveryMethod, (delivery) => delivery.afterSuccessfulBid)
@@ -38,9 +39,9 @@ export class AfterSuccessfulBid {
   @Column()
   isFerry: boolean;
 
-  //支払い方法
-  @ManyToOne(() => PaymentMethods, (payment) => payment.afterSuccessfulBid)
-  paymentMethodId: number;
+  //支払い方法 ＊変更
+  @Column()
+  paymentMethod:PaymentMethod;
 
   //入金
   @Column()
