@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-} from '@nestjs/common';
-import { CreateMemberDTO } from './dto/create-member-dto';
+import { Body, Controller, Delete, Get, Param, Patch } from '@nestjs/common';
 import { UpdateMemberDTO } from './dto/update-member-dto';
 import { MemberService } from './member.service';
 
@@ -18,11 +9,6 @@ export class MemberController {
   @Get()
   fetchAll() {
     return this.memberService.findAll();
-  }
-
-  @Post()
-  create(@Body() body: CreateMemberDTO) {
-    return this.memberService.create(body);
   }
 
   @Get(':id')
