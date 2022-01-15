@@ -27,7 +27,8 @@ export class AuctionController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() body: CreateAuctionDto) {
-    return this.auctionService.create(body);
+    console.log('fdsafs');
+    // return this.auctionService.create(body);
   }
 
   @Get(':id')
