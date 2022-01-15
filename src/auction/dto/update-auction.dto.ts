@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, IsDate, IsOptional } from 'class-validator';
+import { IsString, IsDate, IsOptional, IsEnum } from 'class-validator';
+import { AuctionColor } from 'src/enum/auctionColor.enum';
 
 export class UpdateAuctionDto {
   @ApiProperty({
@@ -10,11 +11,12 @@ export class UpdateAuctionDto {
   auctionName: string;
 
   @ApiProperty({
-    description: '廃止予定',
+    description: 'オークションカラー',
+    enum: AuctionColor,
   })
+  @IsEnum(AuctionColor)
   @IsOptional()
-  @IsNumber()
-  colorId: number;
+  auctionColor: AuctionColor;
 
   @ApiProperty({
     description: 'オークションのサブタイトル',
