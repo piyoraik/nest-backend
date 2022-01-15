@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CreateMemberDTO } from 'src/member/dto/create-member-dto';
+import { Members } from 'src/entity/member.entity';
 import { MemberService } from 'src/member/member.service';
 import { LoginDto } from './dto/member-login-dto';
 
@@ -27,5 +27,10 @@ export class AuthService {
       return this.jwtService.sign(payload);
     }
     throw new UnauthorizedException('Invalid credentials');
+  }
+
+  async signUp(member: Members) {
+    const payload = { member: member.email };
+    return this.jwtService.sign(payload);
   }
 }
