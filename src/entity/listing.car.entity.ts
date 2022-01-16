@@ -6,8 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  OneToOne,
-  JoinColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
@@ -16,9 +14,7 @@ import { Cigarette } from '../enum/cigarette.enum';
 import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
-import { Addition } from './addition.entity';
 import { SuggestedListing } from './suggested.listing.entity';
-import { CarBodyEvaluation } from './car.body.evaluation.entity';
 import { CarHistory } from '../enum/car.history.enum';
 
 @Entity()
@@ -55,10 +51,6 @@ export class ListingCar {
   //車体画像
   @ManyToOne(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
   carBodyImageId: number;
-
-  //付加
-  @ManyToOne(() => Addition, (addition) => addition.listingCar)
-  additionId: number;
 
   //希望出品２
   @ManyToOne(
@@ -98,9 +90,6 @@ export class ListingCar {
   //希望出品１
   @Column()
   suggestedListing: number;
-
-  // @OneToMany(() => CarBodyNumber, carBodyNumber => carBodyNumber.listingCarId)
-  // carBodyNumber: CarBodyNumber[]; 車体ID
 
   @CreateDateColumn()
   createdAt: Date;

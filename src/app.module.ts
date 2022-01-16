@@ -9,6 +9,7 @@ import { ListingCarModule } from './listing-car/listing-car.module';
 import { TestingRecordModule } from './testing-record/testing-record.module';
 import { InspectionModule } from './inspection/inspection.module';
 import { CarBodyEvaluationModule } from './car-body-evaluation/car-body-evaluation.module';
+import { AdditionModule } from './addition/addition.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CarBodyEvaluationModule } from './car-body-evaluation/car-body-evaluati
     TestingRecordModule,
     InspectionModule,
     CarBodyEvaluationModule,
+    AdditionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
