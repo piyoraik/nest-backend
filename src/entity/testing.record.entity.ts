@@ -6,6 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
@@ -30,10 +32,11 @@ export class TestingRecord {
   text: string; //出品者記入テキスト
 
   @Column()
-  recycling: string; //リサイクル料金
+  recycling: number; //リサイクル料金
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.testingRecordId)
-  listingCar: ListingCar[];
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;

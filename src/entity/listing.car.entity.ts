@@ -32,10 +32,6 @@ export class ListingCar {
   @Column()
   evaluationPoint: EvaluationPoint;
 
-  //出品店記入
-  @ManyToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
-  testingRecordId: number;
-
   //セールスポイント
   @ManyToOne(() => SalesPoint, (salesPoint) => salesPoint.listingCar)
   salesPointId: number;
