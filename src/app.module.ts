@@ -7,6 +7,7 @@ import { MemberModule } from './member/member.module';
 import { AuthModule } from './auth/auth.module';
 import { ListingCarModule } from './listing-car/listing-car.module';
 import { TestingRecordModule } from './testing-record/testing-record.module';
+import { InspectionModule } from './inspection/inspection.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TestingRecordModule } from './testing-record/testing-record.module';
     AuthModule,
     ListingCarModule,
     TestingRecordModule,
+    InspectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

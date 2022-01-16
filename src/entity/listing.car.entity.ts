@@ -15,7 +15,6 @@ import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
 import { Addition } from './addition.entity';
-import { Inspection } from './inspection.entity';
 import { SuggestedListing } from './suggested.listing.entity';
 import { CarBodyEvaluation } from './car.body.evaluation.entity';
 import { CarHistory } from '../enum/car.history.enum';
@@ -58,10 +57,6 @@ export class ListingCar {
   //付加
   @ManyToOne(() => Addition, (addition) => addition.listingCar)
   additionId: number;
-
-  //検査
-  @ManyToOne(() => Inspection, (inspection) => inspection.listingCar)
-  inspectionId: number;
 
   //希望出品２
   @ManyToOne(

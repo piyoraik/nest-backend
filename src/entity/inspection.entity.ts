@@ -2,10 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
@@ -37,8 +38,9 @@ export class Inspection {
   @Column() //X要ス
   isAB: boolean;
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.inspectionId)
-  listingCar: ListingCar[];
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;
