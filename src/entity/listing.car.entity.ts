@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
@@ -29,8 +30,8 @@ export class ListingCar {
   evaluationPoint: EvaluationPoint;
 
   //セールスポイント
-  @ManyToOne(() => SalesPoint, (salesPoint) => salesPoint.listingCar)
-  salesPointId: number;
+  @OneToMany(() => SalesPoint, (salesPoint) => salesPoint.listingCar)
+  salesPoint: SalesPoint[];
 
   //紙類
   @ManyToOne(() => PaperClass, (paperClass) => paperClass.listingCar)
