@@ -11,6 +11,7 @@ import { ListingCar } from './listing.car.entity';
 
 @Entity()
 export class TestingRecord {
+  // 検査記録
   //出品店記入
 
   @PrimaryGeneratedColumn()
