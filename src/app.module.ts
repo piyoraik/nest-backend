@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { ListingCarModule } from './listing-car/listing-car.module';
 import { TestingRecordModule } from './testing-record/testing-record.module';
 import { InspectionModule } from './inspection/inspection.module';
+import { CarBodyEvaluationModule } from './car-body-evaluation/car-body-evaluation.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { InspectionModule } from './inspection/inspection.module';
     ListingCarModule,
     TestingRecordModule,
     InspectionModule,
+    CarBodyEvaluationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
