@@ -8,7 +8,6 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
-import { TestingRecord } from './testing.record.entity';
 import { SalesPoint } from './sales.point.entity';
 import { PaperClass } from './paper.class.entity';
 import { Cigarette } from '../enum/cigarette.enum';
@@ -31,10 +30,6 @@ export class ListingCar {
   //評価点
   @Column()
   evaluationPoint: EvaluationPoint;
-
-  //出品店記入
-  @ManyToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
-  testingRecordId: number;
 
   //セールスポイント
   @ManyToOne(() => SalesPoint, (salesPoint) => salesPoint.listingCar)

@@ -2,15 +2,17 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
 @Entity()
 export class TestingRecord {
+  // 検査記録
   //出品店記入
 
   @PrimaryGeneratedColumn()
@@ -29,10 +31,11 @@ export class TestingRecord {
   text: string; //出品者記入テキスト
 
   @Column()
-  recycling: string; //リサイクル料金
+  recycling: number; //リサイクル料金
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.testingRecordId)
-  listingCar: ListingCar[];
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;
