@@ -56,10 +56,6 @@ export class ListingCar {
   @ManyToOne(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
   carBodyImageId: number;
 
-  //付加
-  @ManyToOne(() => Addition, (addition) => addition.listingCar)
-  additionId: number;
-
   //希望出品２
   @ManyToOne(
     () => SuggestedListing,

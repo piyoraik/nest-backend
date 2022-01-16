@@ -2,10 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
@@ -49,8 +50,9 @@ export class Addition {
   @Column() //カセット
   isCAS: boolean;
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.additionId)
-  listingCar: ListingCar[];
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;
