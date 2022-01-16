@@ -10,6 +10,7 @@ import { TestingRecordModule } from './testing-record/testing-record.module';
 import { InspectionModule } from './inspection/inspection.module';
 import { CarBodyEvaluationModule } from './car-body-evaluation/car-body-evaluation.module';
 import { AdditionModule } from './addition/addition.module';
+import { SalesPointModule } from './sales-point/sales-point.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AdditionModule } from './addition/addition.module';
     InspectionModule,
     CarBodyEvaluationModule,
     AdditionModule,
+    SalesPointModule,
   ],
   controllers: [AppController],
   providers: [AppService],
