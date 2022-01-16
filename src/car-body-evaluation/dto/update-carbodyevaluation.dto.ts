@@ -1,110 +1,107 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  UpdateDateColumn,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
-import { ListingCar } from './listing.car.entity';
+import { IsOptional, IsString } from 'class-validator';
 
-@Entity()
-export class CarBodyEvaluation {
-  //車体評価
-
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
+export class UpdateCarBodyEvaluationDTO {
+  @IsOptional()
+  @IsString()
   left_f_tire: string; //左Fタイヤ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_r_tire: string; //左Rタイヤ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_f_tire: string; //右Fタイヤ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_r_tire: string; //右Rタイヤ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   spare_tire: string; //スペアタイヤ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   f_bumper: string; //Fバンパー
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_f_fender: string; //左Fフェンダー
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_f_door: string; //左Fドア
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_locker_panel: string; //左ロッカーパネル
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_r_door: string; //左Rドア
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_quarter: string; //左クォーター
 
-  @Column()
+  @IsOptional()
+  @IsString()
   left_r_bumper: string; //左Rバンパー
 
-  @Column()
+  @IsOptional()
+  @IsString()
   bonnet: string; //ボンネット
 
-  @Column()
+  @IsOptional()
+  @IsString()
   f_under_aero_parts: string; //Fアンダースポイラ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   f_glass: string; //Fガラス
 
-  @Column()
+  @IsOptional()
+  @IsString()
   roof: string; //ルーフ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   r_glass: string; //Rガラス
 
-  @Column()
+  @IsOptional()
+  @IsString()
   trunk: string; //トランク
 
-  @Column()
+  @IsOptional()
+  @IsString()
   r_under_aero_parts: string; //Rアンダースポイラ
 
-  @Column()
+  @IsOptional()
+  @IsString()
   f_panel: string; //Fパネル
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_fender: string; //右フェンダー
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_door: string; //右ドア
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_locker_panel: string; //右ロッカーパネル
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_r_door: string; //右Rドア
 
-  @Column()
+  @IsOptional()
+  @IsString()
   right_quarter: string; //右クォーター
 
-  @Column()
+  @IsOptional()
+  @IsString()
   r_panel: string; //Rパネル
-
-  @OneToOne(() => ListingCar)
-  @JoinColumn()
-  listingCar: ListingCar;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 }

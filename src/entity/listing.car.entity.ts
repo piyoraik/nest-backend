@@ -6,6 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
@@ -64,13 +66,6 @@ export class ListingCar {
     (suggestedListing) => suggestedListing.listingCar,
   )
   suggestedListingId: number;
-
-  //車体評価
-  @ManyToOne(
-    () => CarBodyEvaluation,
-    (carBodyEvaluation) => carBodyEvaluation.listingCar,
-  )
-  carBodyEvaluationId: number;
 
   //車歴 ＊変更
   @Column()

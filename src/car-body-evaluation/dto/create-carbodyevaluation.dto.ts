@@ -1,110 +1,81 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  UpdateDateColumn,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
-import { ListingCar } from './listing.car.entity';
+import { IsString } from 'class-validator';
 
-@Entity()
-export class CarBodyEvaluation {
-  //車体評価
-
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
+export class CreateCarBodyEvaluationDTO {
+  @IsString()
   left_f_tire: string; //左Fタイヤ
 
-  @Column()
+  @IsString()
   left_r_tire: string; //左Rタイヤ
 
-  @Column()
+  @IsString()
   right_f_tire: string; //右Fタイヤ
 
-  @Column()
+  @IsString()
   right_r_tire: string; //右Rタイヤ
 
-  @Column()
+  @IsString()
   spare_tire: string; //スペアタイヤ
 
-  @Column()
+  @IsString()
   f_bumper: string; //Fバンパー
 
-  @Column()
+  @IsString()
   left_f_fender: string; //左Fフェンダー
 
-  @Column()
+  @IsString()
   left_f_door: string; //左Fドア
 
-  @Column()
+  @IsString()
   left_locker_panel: string; //左ロッカーパネル
 
-  @Column()
+  @IsString()
   left_r_door: string; //左Rドア
 
-  @Column()
+  @IsString()
   left_quarter: string; //左クォーター
 
-  @Column()
+  @IsString()
   left_r_bumper: string; //左Rバンパー
 
-  @Column()
+  @IsString()
   bonnet: string; //ボンネット
 
-  @Column()
+  @IsString()
   f_under_aero_parts: string; //Fアンダースポイラ
 
-  @Column()
+  @IsString()
   f_glass: string; //Fガラス
 
-  @Column()
+  @IsString()
   roof: string; //ルーフ
 
-  @Column()
+  @IsString()
   r_glass: string; //Rガラス
 
-  @Column()
+  @IsString()
   trunk: string; //トランク
 
-  @Column()
+  @IsString()
   r_under_aero_parts: string; //Rアンダースポイラ
 
-  @Column()
+  @IsString()
   f_panel: string; //Fパネル
 
-  @Column()
+  @IsString()
   right_fender: string; //右フェンダー
 
-  @Column()
+  @IsString()
   right_door: string; //右ドア
 
-  @Column()
+  @IsString()
   right_locker_panel: string; //右ロッカーパネル
 
-  @Column()
+  @IsString()
   right_r_door: string; //右Rドア
 
-  @Column()
+  @IsString()
   right_quarter: string; //右クォーター
 
-  @Column()
+  @IsString()
   r_panel: string; //Rパネル
-
-  @OneToOne(() => ListingCar)
-  @JoinColumn()
-  listingCar: ListingCar;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 }
