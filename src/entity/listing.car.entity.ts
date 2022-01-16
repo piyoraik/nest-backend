@@ -8,7 +8,6 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
-import { TestingRecord } from './testing.record.entity';
 import { SalesPoint } from './sales.point.entity';
 import { PaperClass } from './paper.class.entity';
 import { Cigarette } from '../enum/cigarette.enum';
@@ -16,7 +15,6 @@ import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
 import { Addition } from './addition.entity';
-import { Inspection } from './inspection.entity';
 import { SuggestedListing } from './suggested.listing.entity';
 import { CarBodyEvaluation } from './car.body.evaluation.entity';
 import { CarHistory } from '../enum/car.history.enum';
@@ -31,10 +29,6 @@ export class ListingCar {
   //評価点
   @Column()
   evaluationPoint: EvaluationPoint;
-
-  //出品店記入
-  @ManyToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
-  testingRecordId: number;
 
   //セールスポイント
   @ManyToOne(() => SalesPoint, (salesPoint) => salesPoint.listingCar)
@@ -63,10 +57,6 @@ export class ListingCar {
   //付加
   @ManyToOne(() => Addition, (addition) => addition.listingCar)
   additionId: number;
-
-  //検査
-  @ManyToOne(() => Inspection, (inspection) => inspection.listingCar)
-  inspectionId: number;
 
   //希望出品２
   @ManyToOne(
