@@ -8,7 +8,6 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
-import { TestingRecord } from './testing.record.entity';
 import { SalesPoint } from './sales.point.entity';
 import { PaperClass } from './paper.class.entity';
 import { Cigarette } from '../enum/cigarette.enum';
