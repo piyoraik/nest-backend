@@ -17,10 +17,10 @@ export class PaperClass {
   id: number;
 
   @Column()
-  securityDocument: string; //新車保証書
+  securityDocument: boolean; //新車保証書
 
   @Column()
-  manual: string; //取扱説明書
+  manual: boolean; //取扱説明書
 
   @OneToMany(() => ListingCar, (listingCar) => listingCar.paperClassId)
   listingCar: ListingCar[];
