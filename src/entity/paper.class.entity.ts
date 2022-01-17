@@ -25,7 +25,7 @@ export class PaperClass {
 
   @OneToOne(() => ListingCar)
   @JoinColumn()
-  listingCar: ListingCar[];
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;
