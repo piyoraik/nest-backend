@@ -33,10 +33,6 @@ export class ListingCar {
   @OneToMany(() => SalesPoint, (salesPoint) => salesPoint.listingCar)
   salesPoint: SalesPoint[];
 
-  //紙類
-  @ManyToOne(() => PaperClass, (paperClass) => paperClass.listingCar)
-  paperClassId: number;
-
   //タバコ ＊変更
   @Column()
   cigarette: Cigarette;

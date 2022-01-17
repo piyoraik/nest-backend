@@ -2,10 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
@@ -22,7 +23,8 @@ export class PaperClass {
   @Column()
   manual: boolean; //取扱説明書
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.paperClassId)
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
   listingCar: ListingCar[];
 
   @CreateDateColumn()
