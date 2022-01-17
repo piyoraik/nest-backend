@@ -5,7 +5,11 @@ import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 @EntityRepository(ListingCar)
 export class ListingCarRepository extends Repository<ListingCar> {
   async createListingCar(createListingCarDTO: CreateListingCarDTO) {
-    return this.create(createListingCarDTO);
+    const listingCar = {
+      ...createListingCarDTO,
+    };
+    await this.save(listingCar);
+    return listingCar;
   }
 
   async findOneListingCar(attrs: Partial<ListingCar>) {
