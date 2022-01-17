@@ -13,7 +13,7 @@ export class AuctionService {
   ) {}
 
   fetchAll() {
-    return this.auctionRepository.find();
+    return this.auctionRepository.find({ relations: ["member"] });
   }
 
   async create(createAuctionDTO: CreateAuctionDto, attrsMember: PayLoad) {
@@ -23,8 +23,8 @@ export class AuctionService {
     return this.auctionRepository.createAuction(createAuctionDTO, member);
   }
 
-  findOne(id: number) {
-    return this.auctionRepository.findOneAuction({ id });
+  async findOne(id: number) {
+    return await this.auctionRepository.findOneAuction({ id });
   }
 
   async update(id: number, attrs: Partial<Auction>) {
