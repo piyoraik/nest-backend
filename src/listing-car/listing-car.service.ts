@@ -1,17 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
 import { ListingCar } from 'src/entity/listing.car.entity';
+import { SalesPointService } from 'src/sales-point/sales-point.service';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { ListingCarRepository } from './listing-car.repository';
 
 @Injectable()
 export class ListingCarService {
-  constructor(private readonly listingCarRepository: ListingCarRepository) {}
+  constructor(
+    private readonly listingCarRepository: ListingCarRepository,
+    private readonly salesPointService: SalesPointService,
+    private readonly carBodyImageService: CarBodyImageService,
+  ) {}
 
   // memo
   // どうするか考える
   // ここで必要なDTOを呼び込んでがっちゃんこするとか
   async create(createListingCarDTO: CreateListingCarDTO) {
-    return await this.listingCarRepository.createListingCar(
+    const listingCar = await this.listingCarRepository.createListingCar(
       createListingCarDTO,
     );
   }

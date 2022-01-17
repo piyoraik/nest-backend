@@ -13,7 +13,10 @@ export class ListingCarRepository extends Repository<ListingCar> {
   }
 
   async findOneListingCar(attrs: Partial<ListingCar>) {
-    return await this.findOne(attrs);
+    return await this.findOne({
+      relations: ['salesPoint', 'CarBodyImage'],
+      ...attrs,
+    });
   }
 
   async findWhereListingCar(attrs: Partial<ListingCar>) {

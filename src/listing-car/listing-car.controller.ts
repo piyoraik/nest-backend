@@ -1,7 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
-import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimage.dto';
-import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { ListingCarService } from './listing-car.service';
 
@@ -17,5 +14,10 @@ export class ListingCarController {
   @Post()
   create(@Body() body: CreateListingCarDTO) {
     return this.listingCarService.create(body);
+  }
+
+  @Get(':id')
+  findOneId(@Param('id') id: string) {
+    return this.listingCarService.findOneId(+id);
   }
 }
