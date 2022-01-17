@@ -48,13 +48,6 @@ export class ListingCar {
   @OneToMany(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
   CarBodyImage: CarBodyImage[];
 
-  //希望出品２
-  @ManyToOne(
-    () => SuggestedListing,
-    (suggestedListing) => suggestedListing.listingCar,
-  )
-  suggestedListingId: number;
-
   //車歴 ＊変更
   @Column()
   CarHistory: CarHistory;
