@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToOne,
+} from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
 @Entity()
@@ -9,20 +15,8 @@ export class CarBodyImage {
   id: number;
 
   @Column()
-  img1: string;
+  img: string;
 
-  @Column()
-  img2: string;
-
-  @Column()
-  img3: string;
-
-  @Column()
-  img4: string;
-
-  @Column()
-  img5: string;
-
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.carBodyImageId)
-  listingCar: ListingCar[];
+  @ManyToOne(() => ListingCar, (listingCar) => listingCar.CarBodyImage)
+  listingCar: ListingCar;
 }
