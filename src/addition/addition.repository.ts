@@ -35,7 +35,7 @@ export class AdditionRepository extends Repository<Addition> {
   }
 
   async updateAddition(id: number, attrs: Partial<Addition>) {
-    const addition = await this.findOneAddition(attrs);
+    const addition = await this.findOneAddition({ id });
     Object.assign(addition, attrs);
     await this.save(addition);
     return addition;

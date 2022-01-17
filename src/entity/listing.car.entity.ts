@@ -2,7 +2,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
@@ -14,7 +13,6 @@ import { Cigarette } from '../enum/cigarette.enum';
 import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
-import { SuggestedListing } from './suggested.listing.entity';
 import { CarHistory } from '../enum/car.history.enum';
 
 @Entity()
@@ -47,13 +45,6 @@ export class ListingCar {
   //車体画像
   @OneToMany(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
   CarBodyImage: CarBodyImage[];
-
-  //希望出品２
-  @ManyToOne(
-    () => SuggestedListing,
-    (suggestedListing) => suggestedListing.listingCar,
-  )
-  suggestedListingId: number;
 
   //車歴 ＊変更
   @Column()

@@ -2,10 +2,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ListingCar } from './listing.car.entity';
 
@@ -57,8 +58,9 @@ export class SuggestedListing {
   @Column()
   orange: string; //オレンジ
 
-  @OneToMany(() => ListingCar, (listingCar) => listingCar.suggestedListingId)
-  listingCar: ListingCar[];
+  @OneToOne(() => ListingCar)
+  @JoinColumn()
+  listingCar: ListingCar;
 
   @CreateDateColumn()
   createdAt: Date;

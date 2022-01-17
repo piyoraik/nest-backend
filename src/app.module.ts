@@ -13,6 +13,7 @@ import { AdditionModule } from './addition/addition.module';
 import { SalesPointModule } from './sales-point/sales-point.module';
 import { CarBodyImageModule } from './car-body-image/car-body-image.module';
 import { PaperClassModule } from './paper-class/paper-class.module';
+import { SuggestedListingModule } from './suggested-listing/suggested-listing.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { PaperClassModule } from './paper-class/paper-class.module';
     SalesPointModule,
     CarBodyImageModule,
     PaperClassModule,
+    SuggestedListingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
