@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
-import { PaperClass } from './paper.class.entity';
 import { Cigarette } from '../enum/cigarette.enum';
 import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';

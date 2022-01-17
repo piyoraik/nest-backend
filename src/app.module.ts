@@ -12,6 +12,7 @@ import { CarBodyEvaluationModule } from './car-body-evaluation/car-body-evaluati
 import { AdditionModule } from './addition/addition.module';
 import { SalesPointModule } from './sales-point/sales-point.module';
 import { CarBodyImageModule } from './car-body-image/car-body-image.module';
+import { PaperClassModule } from './paper-class/paper-class.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CarBodyImageModule } from './car-body-image/car-body-image.module';
     AdditionModule,
     SalesPointModule,
     CarBodyImageModule,
+    PaperClassModule,
   ],
   controllers: [AppController],
   providers: [AppService],
