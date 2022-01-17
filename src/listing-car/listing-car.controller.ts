@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { ListingCarService } from './listing-car.service';
 
 @Controller('listing-car')
-export class ListingCarController {}
+export class ListingCarController {
+  constructor(private readonly listingCarService: ListingCarService) {}
+
+  @Get()
+  fetchAll() {
+    return this.listingCarService.findAll();
+  }
+}
