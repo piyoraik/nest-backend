@@ -50,8 +50,8 @@ export class ListingCar {
   scratchEvaluation: ScratchEvaluation;
 
   //車体画像
-  @ManyToOne(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
-  carBodyImageId: number;
+  @OneToMany(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
+  CarBodyImage: CarBodyImage[];
 
   //希望出品２
   @ManyToOne(
