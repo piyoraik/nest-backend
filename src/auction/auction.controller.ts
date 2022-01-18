@@ -21,8 +21,7 @@ export class AuctionController {
   constructor(private readonly auctionService: AuctionService) {}
 
   @Get()
-  fetchAll(@GetMember() member: any) {
-    console.log(member);
+  fetchAll() {
     return this.auctionService.fetchAll();
   }
 
