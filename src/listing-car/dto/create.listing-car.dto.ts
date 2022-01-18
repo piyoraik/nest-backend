@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsEnum, IsNumber, IsString, ValidateNested } from 'class-validator';
 import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimage.dto';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
@@ -20,9 +21,11 @@ export class CreateListingCarDTO {
 
   //セールスポイント
   @ApiProperty({
-    type: CreateSalesPointDTO,
+    type: [CreateSalesPointDTO],
   })
-  salesPoint: SalesPoint[];
+  @Type(() => CreateSalesPointDTO)
+  @ValidateNested()
+  salesPoint?: SalesPoint[];
 
   //タバコ ＊変更
   @ApiProperty({
@@ -47,9 +50,11 @@ export class CreateListingCarDTO {
 
   //車体画像
   @ApiProperty({
-    type: CreateCarBodyImageDTO,
+    type: [CreateCarBodyImageDTO],
   })
-  CarBodyImage: CarBodyImage[];
+  @Type(() => CreateCarBodyImageDTO)
+  @ValidateNested()
+  CarBodyImage?: CarBodyImage[];
 
   //車歴 ＊変更
   @ApiProperty({

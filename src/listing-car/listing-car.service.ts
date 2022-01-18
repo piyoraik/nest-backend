@@ -13,17 +13,21 @@ export class ListingCarService {
     private readonly carBodyImageService: CarBodyImageService,
   ) {}
 
-  // memo
-  // どうするか考える
-  // ここで必要なDTOを呼び込んでがっちゃんこするとか
   async create(createListingCarDTO: CreateListingCarDTO) {
-    const listingCar = await this.listingCarRepository.createListingCar(
-      createListingCarDTO,
-    );
+    const { CarBodyImage, salesPoint, ...listingCarObject } =
+      createListingCarDTO;
+    const listingCar = (await this.listingCarRepository.createListingCar(
+      listingCarObject,
+    )) as ListingCar;
+    await this.salesPointService.create(salesPoint, listingCar);
+    await this.carBodyImageService.create(CarBodyImage, listingCar);
+    return createListingCarDTO;
   }
 
   async findAll() {
-    return await this.listingCarRepository.find();
+    return await this.listingCarRepository.find({
+      relations: ['CarBodyImage', 'salesPoint'],
+    });
   }
 
   async findOneId(id: number) {
