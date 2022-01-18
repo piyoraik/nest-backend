@@ -34,4 +34,12 @@ export class AuctionService {
   async softDelete(id: number) {
     return this.auctionRepository.softDeleteAuction(id);
   }
+
+  async findWhere(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findWhereAuction(attrs);
+  }
+
+  async findWhereLike(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findWhereLikeAuction(attrs);
+  }
 }
