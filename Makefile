@@ -11,6 +11,13 @@ fix:
 	git push origin fix-$(issue) && \
 	gh pr create -b "close #$(issue)" -a @me -w
 
+up:
+	docker compose up -d
+	docker logs -f node
+
+down:
+	docker compose down
+
 ## TypeORM Operation
 migration:
 	@npm run typeorm migration:run
