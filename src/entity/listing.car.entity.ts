@@ -14,8 +14,7 @@ import { MeterExchangeHistory } from '../enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
 import { CarHistory } from '../enum/car.history.enum';
-import { CarBodyNumber } from "./car.body.number.entity";
-
+import { CarBodyNumber } from './car.body.number.entity';
 
 @Entity()
 export class ListingCar {
@@ -24,9 +23,9 @@ export class ListingCar {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(() => CarBodyNumber, carBodyNumber => carBodyNumber.listingCar)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.listingCar)
   carBodyNumber: CarBodyNumber[];
-  
+
   //評価点
   @Column()
   evaluationPoint: EvaluationPoint;

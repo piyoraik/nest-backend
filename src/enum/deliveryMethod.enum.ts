@@ -1,4 +1,4 @@
 export enum DeliveryMethod {
-    LandTransportation = '陸送',
-    ferry = 'フェリー',
+  LandTransportation = '陸送',
+  Ferry = 'フェリー',
 }
