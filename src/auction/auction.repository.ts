@@ -35,10 +35,12 @@ export class AuctionRepository extends Repository<Auction> {
 
   async findWhereLikeAuction(attrs: Partial<Auction>) {
     // const likeAuctionName = ILike("%" + attrs.auctionName + "%");
+    const parseAttrs: Partial<Auction> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
     const auctions = await this.find({
-      where: {
-        auctionName: ILike('%' + attrs.auctionName + '%'),
-      },
+      where: parseAttrs,
       relations: ['member'],
     });
     console.log(attrs.auctionName);
