@@ -35,13 +35,13 @@ export class AuctionController {
   }
 
   @Get('search')
-  search(@Query() attrs: Partial<Auction>){
-    this.auctionService.findWhere(attrs)
+  search(@Query() attrs: Partial<Auction>) {
+    this.auctionService.findWhere(attrs);
   }
 
   @Get('searchLike')
-  searchLike(@Query() attrs: Partial<Auction>){
-    this.auctionService.findWhereLike(attrs)
+  searchLike(@Query() attrs: Partial<Auction>) {
+    this.auctionService.findWhereLike(attrs);
   }
 
   @Get(':id')
