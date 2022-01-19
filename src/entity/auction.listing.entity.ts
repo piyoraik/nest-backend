@@ -12,6 +12,10 @@ import { AfterSuccessfulBid } from './after.successful.bid.entity';
 import { Auction } from './auction.entity';
 import { Members } from './member.entity';
 import { PurchaseManagement } from './purchase.management.entity';
+import { CarBodyNumber } from './car.body.number.entity';
+import { AuctionSituation } from './auction.situation.entity';
+import { Purchase } from './purchase.entity';
+import { Price } from './price.entity';
 
 @Entity()
 export class AuctionListing {
@@ -19,6 +23,18 @@ export class AuctionListing {
 
   @PrimaryGeneratedColumn()
   id: number;
+
+  @OneToMany(
+    () => AuctionSituation,
+    (auctionSituation) => auctionSituation.auctionListing,
+  )
+  auctionSituation: AuctionSituation[];
+
+  @OneToMany(() => Purchase, (purchase) => purchase.auctionListing)
+  purchase: Purchase[];
+
+  @OneToMany(() => Price, (price) => price.auctionListing)
+  price: Price[];
 
   //オークションID
   @ManyToOne(() => Auction, (auction) => auction.auctionListing)
@@ -40,8 +56,11 @@ export class AuctionListing {
   membersId: number;
 
   //車体ID
-  // @ManyToOne(() => CarBodyNumber, carBodyNumber => carBodyNumber.auctionListing)
-  // carId:number;
+  @ManyToOne(
+    () => CarBodyNumber,
+    (carBodyNumber) => carBodyNumber.auctionListing,
+  )
+  carId: number;
 
   @OneToMany(
     () => AfterSuccessfulBid,

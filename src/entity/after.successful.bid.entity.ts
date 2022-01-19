@@ -29,7 +29,7 @@ export class AfterSuccessfulBid {
 
   //オプション ＊変更
   @Column()
-  option:Option;
+  option: Option;
 
   //配送
   @ManyToOne(() => DeliveryMethod, (delivery) => delivery.afterSuccessfulBid)
@@ -41,7 +41,7 @@ export class AfterSuccessfulBid {
 
   //支払い方法 ＊変更
   @Column()
-  paymentMethod:PaymentMethod;
+  paymentMethod: PaymentMethod;
 
   //入金
   @Column()
