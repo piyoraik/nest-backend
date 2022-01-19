@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
@@ -20,5 +20,10 @@ export class AuctionSituationController {
     @GetMember() payloadMember: PayLoad,
   ) {
     return this.auctionSituationService.create(body, payloadMember);
+  }
+
+  @Get(':id')
+  findOneId(@Param('id') id: string) {
+    return this.auctionSituationService.findOneId(+id);
   }
 }
