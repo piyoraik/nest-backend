@@ -39,7 +39,7 @@ export class AuctionRepository extends Repository<Auction> {
       where: {
         auctionName: ILike('%' + attrs.auctionName + '%'),
       },
-      // relations: ['member'],
+      relations: ['member'],
     });
     console.log(attrs.auctionName);
     console.log(auctions);
