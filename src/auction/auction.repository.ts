@@ -16,7 +16,7 @@ export class AuctionRepository extends Repository<Auction> {
   }
 
   async findOneAuction(attrs: Partial<Auction>) {
-    const auction = await this.findOne(attrs,{ relations: ["member"] });
+    const auction = await this.findOne(attrs, { relations: ['member'] });
     if (!auction) {
       throw new NotFoundException('Auction Not Found');
     }
