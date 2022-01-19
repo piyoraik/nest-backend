@@ -13,20 +13,26 @@ fix:
 
 up:
 	docker compose up -d
-	docker logs -f node
+	yarn start:dev
 
 down:
 	docker compose down
 
+sync:
+	docker container exec -it node bash -c "yarn typeorm schema:sync"
+
+drop:
+	docker container exec -it node bash -c "yarn typeorm schema:drop"
+
 ## TypeORM Operation
 migration:
-	@npm run typeorm migration:run
+	@npx typeorm migration:run
 
 migration.gen:
-	@npm run typeorm migration:generate -n $(name)
+	@npx typeorm migration:generate -n $(name)
 
 migration.create:
-	@npm run typeorm migration:create -n $(name)
+	@npx typeorm migration:create -n $(name)
 
 migration.rollback:
-	@npm run typeorm migration:revert
+	@npx typeorm migration:revert

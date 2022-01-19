@@ -60,7 +60,7 @@ export class Members {
 
   @OneToMany(
     () => AuctionSituation,
-    (auctionSituation) => auctionSituation.membersId,
+    (auctionSituation) => auctionSituation.member,
   )
   auctionSituation: AuctionSituation[];
 

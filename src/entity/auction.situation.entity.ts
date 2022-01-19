@@ -22,7 +22,7 @@ export class AuctionSituation {
   auctionListing: AuctionListing;
 
   @ManyToOne(() => Members, (member) => member.auctionSituation)
-  membersId: Members;
+  member: Members;
 
   @Column()
   bidPrice: number;
