@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Repository, getConnection } from 'typeorm';
 import { CreateSalesPointDTO } from './dto/create-salespoint.dto';
 
 @EntityRepository(SalesPoint)
