@@ -1,22 +1,12 @@
 version: '3.9'
 services:
-  node:
-    container_name: node
-    build:
-      context: ./
-      target: dev
-    ports:
-      - 9000:9000
-    volumes:
-      - ./:/app
-
   mysql:
     container_name: mysql
     image: mariadb:10.5
     ports:
       - 33060:3306
     volumes:
-      - database:/var/lib/mysql
+      - database:/var/lib/mysql:delegated
     env_file:
       - .database.env
 

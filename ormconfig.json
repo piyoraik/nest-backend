@@ -1,13 +1,15 @@
 {
   "type": "mysql",
-  "host": "mysql",
-  "port": 3306,
+  "host": "localhost",
+  "port": 33060,
   "username": "root",
   "password": "example",
   "database": "case-study",
   "entities": ["./dist/entity/*.entity.js"],
-  "synchronize": true,
+  "migrations": ["./dist/migration/**/*.ts"],
+  "synchronize": false,
   "cli": {
-    "entitiesDir": "src/entities"
+    "entitiesDir": "src/entities",
+    "migrationsDir": "src/migration"
   }
 }
