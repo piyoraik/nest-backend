@@ -19,8 +19,6 @@ import { PriceModule } from './price/price.module';
 import { AuctionListingModule } from './auction-listing/auction-listing.module';
 import { AfterSuccessfulBidModule } from './after-successful-bid/after-successful-bid.module';
 import { AdminModule } from './admin/admin.module';
-import { PurchaseModule } from './purchase/purchase.module';
-import { PurchaseManagementModule } from './purchase-management/purchase-management.module';
 import { CarModelModule } from './car-model/car-model.module';
 import { GearModule } from './gear/gear.module';
 import { AirConditionerModule } from './air-conditioner/air-conditioner.module';
@@ -70,8 +68,6 @@ import { PurchaseModule } from './purchase/purchase.module';
     AirBackModule,
     ExhibitorEntryModule,
     CarBodyNumberModule,
-    PurchaseModule,
-    PurchaseManagementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
