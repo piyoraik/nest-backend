@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 
-import { Option } from '../enum/option.enum';
+import { CarOption } from '../enum/option.enum';
 import { PaymentMethod } from '../enum/paymentMethod.enum';
 import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 
@@ -29,7 +29,7 @@ export class AfterSuccessfulBid {
 
   //オプション ＊変更
   @Column()
-  option: Option;
+  option: CarOption;
 
   //配送
   @Column()
