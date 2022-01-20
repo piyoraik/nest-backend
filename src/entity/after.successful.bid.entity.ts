@@ -8,10 +8,10 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
-import { DeliveryMethod } from './delivery.method.entity';
 
 import { Option } from '../enum/option.enum';
 import { PaymentMethod } from '../enum/paymentMethod.enum';
+import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 
 @Entity()
 export class AfterSuccessfulBid {
@@ -32,8 +32,8 @@ export class AfterSuccessfulBid {
   option: Option;
 
   //配送
-  @ManyToOne(() => DeliveryMethod, (delivery) => delivery.afterSuccessfulBid)
-  deliveryId: number;
+  @Column()
+  deliveryMethod: DeliveryMethod;
 
   //フェリー
   @Column()
