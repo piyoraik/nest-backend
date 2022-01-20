@@ -24,7 +24,7 @@ export class Price {
   successfulBidPrice: number;
 
   @Column()
-  successfulbidCommission: number;
+  successfulBidCommission: number;
 
   @Column()
   useCommission: number;

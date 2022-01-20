@@ -15,6 +15,7 @@ import { CarBodyImageModule } from './car-body-image/car-body-image.module';
 import { PaperClassModule } from './paper-class/paper-class.module';
 import { SuggestedListingModule } from './suggested-listing/suggested-listing.module';
 import { AuctionSituationModule } from './auction-situation/auction-situation.module';
+import { PriceModule } from './price/price.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AuctionSituationModule } from './auction-situation/auction-situation.mo
     PaperClassModule,
     SuggestedListingModule,
     AuctionSituationModule,
+    PriceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
