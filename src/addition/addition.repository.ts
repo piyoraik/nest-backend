@@ -1,18 +1,18 @@
 import { NotFoundException } from '@nestjs/common';
-import { CreateAuctionDto } from 'src/auction/dto/create-auction.dto';
 import { Addition } from 'src/entity/addition.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, Repository } from 'typeorm';
+import { CreateAdditionDTO } from './dto/create-addition.dto';
 
 @EntityRepository(Addition)
 export class AdditionRepository extends Repository<Addition> {
   async createAddition(
-    createAuctionDto: CreateAuctionDto,
+    createAddition: CreateAdditionDTO,
     listingCar: ListingCar,
   ) {
     const addition = this.create({
       listingCar,
-      ...createAuctionDto,
+      ...createAddition,
     });
     await this.save(addition);
     return addition;

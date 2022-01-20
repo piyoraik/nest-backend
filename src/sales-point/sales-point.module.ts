@@ -6,5 +6,6 @@ import { SalesPointService } from './sales-point.service';
 @Module({
   imports: [TypeOrmModule.forFeature([SalesPointRepository])],
   providers: [SalesPointService],
+  exports: [SalesPointService],
 })
 export class SalesPointModule {}

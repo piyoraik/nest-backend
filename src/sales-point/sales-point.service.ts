@@ -12,13 +12,18 @@ export class SalesPointService {
   }
 
   async create(
-    createSalesPointDTO: CreateSalesPointDTO,
+    createSalesPointDTO: CreateSalesPointDTO[],
     listingCar: ListingCar,
   ) {
-    return await this.salesPointRepository.createSalesPoint(
-      createSalesPointDTO,
-      listingCar,
+    const res = await Promise.all(
+      createSalesPointDTO.map(async (salesPoint) => {
+        return this.salesPointRepository.createSalesPoint(
+          salesPoint,
+          listingCar,
+        );
+      }),
     );
+    return res;
   }
 
   async findOne(id: number) {

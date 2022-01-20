@@ -11,15 +11,28 @@ fix:
 	git push origin fix-$(issue) && \
 	gh pr create -b "close #$(issue)" -a @me -w
 
+up:
+	docker compose up -d
+	yarn start:dev
+
+down:
+	docker compose down
+
 ## TypeORM Operation
+migration.sync:
+	@npx typeorm schema:sync
+
+migration.drop:
+	@npx typeorm schema:drop
+
 migration:
-	@npm run typeorm migration:run
+	@npx typeorm migration:run
 
 migration.gen:
-	@npm run typeorm migration:generate -n $(name)
+	@npx typeorm migration:generate -n $(name)
 
 migration.create:
-	@npm run typeorm migration:create -n $(name)
+	@npx typeorm migration:create -n $(name)
 
 migration.rollback:
-	@npm run typeorm migration:revert
+	@npx typeorm migration:revert

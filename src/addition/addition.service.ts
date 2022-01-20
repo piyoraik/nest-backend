@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuctionDto } from 'src/auction/dto/create-auction.dto';
 import { Addition } from 'src/entity/addition.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { AdditionRepository } from './addition.repository';
+import { CreateAdditionDTO } from './dto/create-addition.dto';
 
 @Injectable()
 export class AdditionService {
   constructor(private readonly additionRepository: AdditionRepository) {}
 
-  async create(createAdditionDTO: CreateAuctionDto, listingCar: ListingCar) {
+  async create(createAdditionDTO: CreateAdditionDTO, listingCar: ListingCar) {
     return await this.additionRepository.createAddition(
       createAdditionDTO,
       listingCar,

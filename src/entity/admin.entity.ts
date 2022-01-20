@@ -5,7 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { Purchase } from './purchase.entity';
 
 @Entity()
 export class Admin {
@@ -13,6 +15,9 @@ export class Admin {
 
   @PrimaryGeneratedColumn('increment')
   id: number;
+
+  @OneToMany(() => Purchase, (purchase) => purchase.adminId)
+  purchase: Purchase[];
 
   @Column()
   adminId: number;

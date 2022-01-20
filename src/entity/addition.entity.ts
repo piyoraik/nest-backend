@@ -13,7 +13,6 @@ import { ListingCar } from './listing.car.entity';
 @Entity()
 export class Addition {
   //付加
-
   @PrimaryGeneratedColumn()
   id: number;
 

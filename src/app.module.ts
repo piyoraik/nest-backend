@@ -14,6 +14,9 @@ import { SalesPointModule } from './sales-point/sales-point.module';
 import { CarBodyImageModule } from './car-body-image/car-body-image.module';
 import { PaperClassModule } from './paper-class/paper-class.module';
 import { SuggestedListingModule } from './suggested-listing/suggested-listing.module';
+import { AuctionSituationModule } from './auction-situation/auction-situation.module';
+import { PriceModule } from './price/price.module';
+import { AuctionListingModule } from './auction-listing/auction-listing.module';
 
 @Module({
   imports: [
@@ -30,6 +33,9 @@ import { SuggestedListingModule } from './suggested-listing/suggested-listing.mo
     CarBodyImageModule,
     PaperClassModule,
     SuggestedListingModule,
+    AuctionSituationModule,
+    PriceModule,
+    AuctionListingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

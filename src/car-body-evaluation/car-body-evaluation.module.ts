@@ -6,5 +6,6 @@ import { CarBodyEvaluationService } from './car-body-evaluation.service';
 @Module({
   imports: [TypeOrmModule.forFeature([CarBodyEvaluationRepository])],
   providers: [CarBodyEvaluationService],
+  exports: [CarBodyEvaluationService],
 })
 export class CarBodyEvaluationModule {}

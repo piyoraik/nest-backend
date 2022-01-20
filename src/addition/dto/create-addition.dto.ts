@@ -1,31 +1,59 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean } from 'class-validator';
 
 export class CreateAdditionDTO {
-  // キズ
+  //PS
+  @ApiProperty()
   @IsBoolean()
   isPS: boolean;
 
-  //コゲ
+  //PW
+  @ApiProperty()
   @IsBoolean()
   isPW: boolean;
 
-  //コゲ穴
+  //AW
+  @ApiProperty()
   @IsBoolean()
   isAW: boolean;
 
-  //汚れ
+  //SR
+  @ApiProperty()
   @IsBoolean()
   isSR: boolean;
 
-  //破れ
+  //背面
+  @ApiProperty()
   @IsBoolean()
   isBACK: boolean;
 
-  //A
+  //カワ
+  @ApiProperty()
   @IsBoolean()
   isPEEL: boolean;
 
-  //X要ス
+  //AB
+  @ApiProperty()
   @IsBoolean()
   isAB: boolean;
+
+  //TV
+  @ApiProperty()
+  @IsBoolean()
+  isTV: boolean;
+
+  //ナビ
+  @ApiProperty()
+  @IsBoolean()
+  isNAVI: boolean;
+
+  //Rスポ
+  @ApiProperty()
+  @IsBoolean()
+  isRSP: boolean;
+
+  //カセット
+  @ApiProperty()
+  @IsBoolean()
+  isCAS: boolean;
 }

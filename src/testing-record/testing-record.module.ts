@@ -6,5 +6,6 @@ import { TestingRecordRepository } from './testing-record.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([TestingRecordRepository])],
   providers: [TestingRecordService],
+  exports: [TestingRecordService],
 })
 export class TestingRecordModule {}

@@ -15,13 +15,18 @@ export class CarBodyImageService {
   }
 
   async create(
-    createCarBodyImageDTO: CreateCarBodyImageDTO,
+    createCarBodyImageDTO: CreateCarBodyImageDTO[],
     listingCar: ListingCar,
   ) {
-    return await this.carBodyImageRepository.createCarBodyImage(
-      createCarBodyImageDTO,
-      listingCar,
+    const res = await Promise.all(
+      createCarBodyImageDTO.map(async (image) => {
+        return this.carBodyImageRepository.createCarBodyImage(
+          image,
+          listingCar,
+        );
+      }),
     );
+    return res;
   }
 
   async findOne(id: number) {

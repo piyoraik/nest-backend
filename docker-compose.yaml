@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  mysql:
+    container_name: mysql
+    image: mariadb:10.5
+    ports:
+      - 33060:3306
+    volumes:
+      - database:/var/lib/mysql:delegated
+    env_file:
+      - .database.env
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8081:80
+    env_file:
+      - .database.env
+
+volumes:
+  database:
