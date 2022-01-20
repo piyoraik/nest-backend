@@ -18,13 +18,13 @@ up:
 down:
 	docker compose down
 
-sync:
-	npx typeorm schema:sync
-
-drop:
-	npx typeorm schema:drop
-
 ## TypeORM Operation
+migration.sync:
+	@npx typeorm schema:sync
+
+migration.drop:
+	@npx typeorm schema:drop
+
 migration:
 	@npx typeorm migration:run
 
