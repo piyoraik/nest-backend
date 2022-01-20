@@ -24,9 +24,6 @@ export class Purchase {
   @ManyToOne(() => Members, (member) => member.purchase)
   membersId: Members;
 
-  @ManyToOne(() => Admin, (admin) => admin.purchase)
-  adminId: Admin;
-
   @Column()
   option: boolean;
 
