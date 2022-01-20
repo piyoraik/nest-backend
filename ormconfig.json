@@ -1,15 +1,15 @@
 {
-    "type": "mysql",
-    "host": "localhost",
-    "port": 33060,
-    "username": "root",
-    "password": "example",
-    "database": "case-study",
-    "entities": ["./dist/entity/*.entity.js"],
-    "migrations": ["./dist/migration/**/*.ts"],
-    "synchronize": false,
-    "cli": {
-        "entitiesDir": "src/entities",
-        "migrationsDir": "src/migration"
-    }
+  "type": "mysql",
+  "host": "localhost",
+  "port": 33060,
+  "username": "root",
+  "password": "example",
+  "database": "case-study",
+  "entities": ["./dist/entity/*.entity.js"],
+  "migrations": ["./dist/migration/**/*.ts"],
+  "synchronize": false,
+  "cli": {
+    "entitiesDir": "src/entities",
+    "migrationsDir": "src/migration"
+  }
 }

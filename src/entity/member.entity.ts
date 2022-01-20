@@ -64,7 +64,7 @@ export class Members {
   )
   auctionSituation: AuctionSituation[];
 
-  @OneToMany(() => Purchase, (purchase) => purchase.membersId)
+  @OneToMany(() => Purchase, (purchase) => purchase.member)
   purchase: Purchase[];
 
   @OneToMany(() => Auction, (auction) => auction.member)

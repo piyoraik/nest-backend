@@ -6,6 +6,6 @@ import { PurchaseService } from './purchase.service';
 @Module({
   imports: [TypeOrmModule.forFeature([PurchaseRepository])],
   providers: [PurchaseService],
-  exports: [PurchaseService]
+  exports: [PurchaseService],
 })
 export class PurchaseModule {}
