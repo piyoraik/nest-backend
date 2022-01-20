@@ -21,7 +21,7 @@ export class Purchase {
   auctionListing: AuctionListing;
 
   @ManyToOne(() => Members, (member) => member.purchase)
-  membersId: Members;
+  member: Members;
 
   @Column()
   option: boolean;
