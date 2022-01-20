@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsEnum, IsOptional } from 'class-validator';
-import { DeliveryMethod } from 'src/entity/delivery.method.entity';
+import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreatePurchaseDTO {
