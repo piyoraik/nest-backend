@@ -18,13 +18,14 @@ up:
 down:
 	docker compose down
 
-sync:
-	docker container exec -it node bash -c "yarn typeorm schema:sync"
-
-drop:
-	docker container exec -it node bash -c "yarn typeorm schema:drop"
 
 ## TypeORM Operation
+migration.sync:
+	@npx typeorm schema:sync
+
+migration.drop:
+	@npx typeorm schema:drop
+
 migration:
 	@npx typeorm migration:run
 
