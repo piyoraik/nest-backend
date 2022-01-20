@@ -6,5 +6,6 @@ import { AdditionService } from './addition.service';
 @Module({
   imports: [TypeOrmModule.forFeature([AdditionRepository])],
   providers: [AdditionService],
+  exports: [AdditionService],
 })
 export class AdditionModule {}

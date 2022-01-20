@@ -18,7 +18,6 @@ up:
 down:
 	docker compose down
 
-
 ## TypeORM Operation
 migration.sync:
 	@npx typeorm schema:sync
