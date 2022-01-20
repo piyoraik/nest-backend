@@ -95,6 +95,12 @@ export class CarBodyNumber {
   @Column()
   crewNumber: number;
 
+  @Column()
+  interiorColorId: number; //内装
+
+  @Column()
+  exteriorColorId: number; //外装
+
   @CreateDateColumn()
   createdAt: Date;
 

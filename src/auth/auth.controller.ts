@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { CreateMemberDTO } from 'src/member/dto/create-member-dto';
-import { MemberService } from 'src/member/member.service';
+import { CreateMemberDTO } from 'src/members/dto/create-members-dto';
+import { MemberService } from 'src/members/members.service';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/member-login-dto';
 

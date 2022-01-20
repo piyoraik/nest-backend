@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuctionModule } from './auction/auction.module';
-import { MemberModule } from './member/member.module';
+import { MemberModule } from './members/members.module';
 import { AuthModule } from './auth/auth.module';
 import { ListingCarModule } from './listing-car/listing-car.module';
 import { TestingRecordModule } from './testing-record/testing-record.module';

@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Auction } from 'src/entity/auction.entity';
-import { Members } from 'src/entity/member.entity';
+import { Members } from 'src/entity/members.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 

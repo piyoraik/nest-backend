@@ -7,7 +7,7 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class UpdateMemberDTO {
+export class UpdateMembersDTO {
   @ApiProperty({
     required: false,
     default: 'テスト 太郎',

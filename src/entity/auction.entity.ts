@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionColor } from '../enum/auctionColor.enum';
-import { Members } from './member.entity';
+import { Members } from './members.entity';
 
 @Entity()
 export class Auction {

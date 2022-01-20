@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 import { Auction } from './auction.entity';
-import { Members } from './member.entity';
+import { Members } from './members.entity';
 import { PurchaseManagement } from './purchase.management.entity';
 import { CarBodyNumber } from './car.body.number.entity';
 import { AuctionSituation } from './auction.situation.entity';

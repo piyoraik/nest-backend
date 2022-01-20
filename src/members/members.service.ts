@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Members } from 'src/entity/member.entity';
+import { Members } from 'src/entity/members.entity';
 import { Repository } from 'typeorm';
-import { CreateMemberDTO } from './dto/create-member-dto';
+import { CreateMembersDTO } from './dto/create-members-dto';
 
 @Injectable()
-export class MemberService {
+export class MembersService {
   constructor(
     @InjectRepository(Members) private readonly memberRepo: Repository<Members>,
   ) {}
@@ -16,8 +16,8 @@ export class MemberService {
     return this.memberRepo.find();
   }
 
-  create(createMemberDTO: CreateMemberDTO) {
-    const member = this.memberRepo.create(createMemberDTO);
+  create(createMembersDTO: CreateMembersDTO) {
+    const member = this.memberRepo.create(createMembersDTO);
     return this.memberRepo.save(member);
   }
 
@@ -26,7 +26,7 @@ export class MemberService {
       where: attrs,
     });
     if (!member) {
-      throw new NotFoundException('Member not found');
+      throw new NotFoundException('Members not found');
     }
     return member;
   }
@@ -41,7 +41,7 @@ export class MemberService {
   async update(id: number, attrs: Partial<Members>) {
     const member = await this.memberRepo.findOne({ id });
     if (!member) {
-      throw new NotFoundException('Member not found');
+      throw new NotFoundException('Members not found');
     }
     Object.assign(member, attrs);
     return this.memberRepo.save(member);
@@ -50,7 +50,7 @@ export class MemberService {
   async softDelete(id: number) {
     const member = await this.memberRepo.findOne({ id });
     if (!member) {
-      throw new NotFoundException('Member not found');
+      throw new NotFoundException('Members not found');
     }
     return this.memberRepo.softRemove(member);
   }

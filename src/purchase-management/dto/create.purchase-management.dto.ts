@@ -1,66 +1,91 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsEnum } from 'class-validator';
+import { IsBoolean, IsDate, IsEnum, IsNumber, IsString } from 'class-validator';
 import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreatePurchaseManagementDTO {
+  //仕入れ日
   @ApiProperty()
-  @IsBoolean()
-  option: boolean;
+  @IsDate()
+  purchaseData: Date;
 
+  //仕入れ先
   @ApiProperty()
-  @IsBoolean()
-  sealCertificate: boolean;
+  @IsString()
+  supplier: string;
 
+  //仕入金額
   @ApiProperty()
-  @IsBoolean()
-  seal: boolean;
+  @IsNumber()
+  purchaseAmount: number;
 
+  //
   @ApiProperty()
-  @IsBoolean()
-  residentsCard: boolean;
+  @IsNumber()
+  expense: number;
 
+  //名変期限
   @ApiProperty()
-  @IsBoolean()
-  vehicleInspection: boolean;
+  @IsDate()
+  nameStrangePeriod: Date;
 
+  //備考
   @ApiProperty()
-  @IsBoolean()
-  LiabilityInsurance: boolean;
+  @IsString()
+  note: string;
 
+  //仕入原価
   @ApiProperty()
-  @IsBoolean()
-  commission: boolean;
+  @IsNumber()
+  purchasingCost: number;
 
+  //消費税
   @ApiProperty()
-  @IsBoolean()
-  commissionReturn: boolean;
+  @IsNumber()
+  tax: number;
 
+  //売上日
   @ApiProperty()
-  @IsBoolean()
-  garageCertificate: boolean;
+  @IsDate()
+  salesDate: Date;
 
-  @ApiProperty({
-    enum: DeliveryMethod,
-  })
-  @IsEnum(DeliveryMethod)
-  deliveryMethod: DeliveryMethod;
-
-  @ApiProperty({
-    enum: PaymentMethod,
-  })
-  @IsEnum(PaymentMethod)
-  paymentMethod: PaymentMethod;
-
+  //売上先
   @ApiProperty()
-  @IsBoolean()
-  payment: boolean;
+  @IsString()
+  salesTarget: string;
 
+  //担当
   @ApiProperty()
-  @IsBoolean()
-  delivery: boolean;
+  @IsString()
+  rep: string;
 
+  //売上
   @ApiProperty()
-  @IsBoolean()
-  cancel: boolean;
+  @IsNumber()
+  sales: number;
+
+  //手数料
+  @ApiProperty()
+  @IsNumber()
+  fee: number;
+
+  //売上合計
+  @ApiProperty()
+  @IsNumber()
+  salesTotal: number;
+
+  //純利益
+  @ApiProperty()
+  @IsNumber()
+  netProfit: number;
+
+  //自税預
+  @ApiProperty()
+  @IsNumber()
+  selfTax: number;
+
+  //名変更日
+  @ApiProperty()
+  @IsDate()
+  nameChangeDate: Date;
 }

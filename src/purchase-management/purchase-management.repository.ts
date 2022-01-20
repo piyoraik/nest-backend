@@ -1,11 +1,15 @@
-import { PurchaseManagement } from "src/entity/purchase.management.entity";
-import { EntityRepository, Repository } from "typeorm";
-import { CreatePurchaseManagementDTO } from "./dto/create.purchase-management.dto";
+import { NotFoundException } from '@nestjs/common';
+import { AuctionListing } from 'src/entity/auction.listing.entity';
+import { PurchaseManagement } from 'src/entity/purchase.management.entity';
+import { EntityRepository, ILike, Repository } from 'typeorm';
+import { CreatePurchaseManagementDTO } from './dto/create.purchase-management.dto';
 
 @EntityRepository(PurchaseManagement)
-export class PurchaseManagementRepository extends Repository<PurchaseManagement> { 
-    // Createの操作
-  async createPurchaseManagement(createPurchaseManagementDTO: CreatePurchaseManagementDTO) {
+export class PurchaseManagementRepository extends Repository<PurchaseManagement> {
+  // Createの操作
+  async createPurchaseManagement(
+    createPurchaseManagementDTO: CreatePurchaseManagementDTO,
+  ) {
     const purchaseManagement = this.create({
       ...createPurchaseManagementDTO,
     });
@@ -14,43 +18,45 @@ export class PurchaseManagementRepository extends Repository<PurchaseManagement>
   }
 
   // findOne
-  async findOneHoge(attrs: Partial<Hoge>) {
-    const hoge = await this.findOne(attrs)
-    if (!hoge) {
-      throw new NotFoundException('Hoge Not Found')
+  async findOnePurchaseManagement(attrs: Partial<PurchaseManagement>) {
+    const purchaseManagement = await this.findOne(attrs);
+    if (!purchaseManagement) {
+      throw new NotFoundException('PurchaseManagement Not Found');
     }
-    return hoge
+    return purchaseManagement;
   }
 
   // findWhere
-  async findWhereLikeHoge(attrs: Partial<Hoge>) {
-    const parseAttrs: Partial<Hoge> = {};
+  async findWhereLikePurchaseManagement(attrs: Partial<PurchaseManagement>) {
+    const parseAttrs: Partial<PurchaseManagement> = {};
     for (const key in attrs) {
       parseAttrs[key] = ILike('%' + attrs[key] + '%');
     }
-    const hoges = await this.find({
+    const purchaseManagements = await this.find({
       where: parseAttrs,
       relations: ['member'],
     });
-    if (!hoges) {
-      throw new NotFoundException('Hoge Not Found');
+    if (!purchaseManagements) {
+      throw new NotFoundException('PurchaseManagement Not Found');
     }
-    return hoges;
-  }
+    return purchaseManagements;
   }
 
   // update
-  async updateHoge(id: number, attrs: Partial<Hoge>) {
-    const hoge = await this.findOneHoge({ id })
-    Object.assign(hoge, attrs)
-    await this.save(hoge)
-    return hoge
+  async updatePurchaseManagement(
+    id: number,
+    attrs: Partial<PurchaseManagement>,
+  ) {
+    const purchaseManagement = await this.findOnePurchaseManagement({ id });
+    Object.assign(purchaseManagement, attrs);
+    await this.save(purchaseManagement);
+    return purchaseManagement;
   }
 
   // softDelete
-  async softDeleteHoge(id: number) {
-    const hoge = await this.findOneHoge({ id })
-    await this.softRemove(hoge)
-    return hoge
+  async softDeletePurchaseManagement(id: number) {
+    const purchaseManagement = await this.findOnePurchaseManagement({ id });
+    await this.softRemove(purchaseManagement);
+    return purchaseManagement;
   }
 }

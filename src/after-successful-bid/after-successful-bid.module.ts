@@ -4,8 +4,12 @@ import { AfterSuccessfulBidRepository } from './after-successful-bid.repository'
 import { AfterSuccessfulBidService } from './after-successful-bid.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AfterSuccessfulBidRepository])],
+  imports: [
+    TypeOrmModule.forFeature([AfterSuccessfulBidRepository]),
+    deliveryMethodModule,
+    auctionListingModule,
+  ],
   providers: [AfterSuccessfulBidService],
-  exports: [AfterSuccessfulBidService]
+  exports: [AfterSuccessfulBidService],
 })
 export class AfterSuccessfulBidModule {}

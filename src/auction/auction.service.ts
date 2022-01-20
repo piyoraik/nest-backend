@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { Auction } from 'src/entity/auction.entity';
-import { MemberService } from 'src/member/member.service';
+import { MemberService } from 'src/members/members.service';
 import { AuctionRepository } from './auction.repository';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 
