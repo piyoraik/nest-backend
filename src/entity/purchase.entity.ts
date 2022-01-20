@@ -7,7 +7,6 @@ import {
   DeleteDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Admin } from './admin.entity';
 import { Members } from './member.entity';
 import { PaymentMethod } from '../enum/paymentMethod.enum';
 import { DeliveryMethod } from '../enum/deliveryMethod.enum';
@@ -22,10 +21,7 @@ export class Purchase {
   auctionListing: AuctionListing;
 
   @ManyToOne(() => Members, (member) => member.purchase)
-  membersId: Members;
-
-  @ManyToOne(() => Admin, (admin) => admin.purchase)
-  adminId: Admin;
+  member: Members;
 
   @Column()
   option: boolean;
