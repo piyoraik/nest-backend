@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Auction } from 'src/entity/auction.entity';
 import { Members } from 'src/entity/member.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 
 @EntityRepository(Auction)
@@ -24,7 +24,27 @@ export class AuctionRepository extends Repository<Auction> {
   }
 
   async findWhereAuction(attrs: Partial<Auction>) {
-    const auctions = await this.find(attrs);
+    // const auctions = await this.find({...attrs, relations: ["member"]});
+    console.log(attrs);
+    // const auctions = await this.find({ where: attrs ,relations: ["member"]});
+    const auctions = await this.find({ where: attrs, relations: ['member'] });
+    // console.log("今ここです");
+    console.log(auctions);
+    return auctions;
+  }
+
+  async findWhereLikeAuction(attrs: Partial<Auction>) {
+    // const likeAuctionName = ILike("%" + attrs.auctionName + "%");
+    const parseAttrs: Partial<Auction> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
+    const auctions = await this.find({
+      where: parseAttrs,
+      relations: ['member'],
+    });
+    console.log(attrs.auctionName);
+    console.log(auctions);
     return auctions;
   }
 

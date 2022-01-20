@@ -46,6 +46,9 @@ export class Auction {
   @ManyToOne(() => Members, (member) => member.auctions)
   member: Members;
 
+  @Column()
+  memberId: number;
+
   @CreateDateColumn()
   createdAt: Date;
 

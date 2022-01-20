@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AdditionService } from 'src/addition/addition.service';
+import { CreateAuctionSituationDTO } from 'src/auction-situation/dto/create.auction-situation.dto';
 import { CarBodyEvaluationService } from 'src/car-body-evaluation/car-body-evaluation.service';
 import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
 import { ListingCar } from 'src/entity/listing.car.entity';

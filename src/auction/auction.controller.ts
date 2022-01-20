@@ -6,12 +6,14 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
+import { Auction } from 'src/entity/auction.entity';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
@@ -30,6 +32,16 @@ export class AuctionController {
   @UseGuards(AuthGuard('jwt'))
   create(@Body() body: CreateAuctionDto, @GetMember() payloadMember: PayLoad) {
     return this.auctionService.create(body, payloadMember);
+  }
+
+  @Get('search')
+  search(@Query() attrs: Partial<Auction>) {
+    this.auctionService.findWhere(attrs);
+  }
+
+  @Get('searchLike')
+  searchLike(@Query() attrs: Partial<Auction>) {
+    this.auctionService.findWhereLike(attrs);
   }
 
   @Get(':id')
