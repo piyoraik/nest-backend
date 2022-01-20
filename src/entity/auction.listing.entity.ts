@@ -45,7 +45,7 @@ export class AuctionListing {
     () => PurchaseManagement,
     (purchaseManagement) => purchaseManagement.auctionListing,
   )
-  purchaseManagementId: number;
+  purchaseManagement: PurchaseManagement;
 
   //落札価格
   @Column()

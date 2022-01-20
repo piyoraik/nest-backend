@@ -86,7 +86,7 @@ export class PurchaseManagement {
 
   @OneToMany(
     () => AuctionListing,
-    (auctionListing) => auctionListing.purchaseManagementId,
+    (auctionListing) => auctionListing.purchaseManagement,
   )
   auctionListing: AuctionListing[];
 
