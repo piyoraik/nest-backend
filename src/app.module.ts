@@ -17,6 +17,7 @@ import { SuggestedListingModule } from './suggested-listing/suggested-listing.mo
 import { AuctionSituationModule } from './auction-situation/auction-situation.module';
 import { PriceModule } from './price/price.module';
 import { AuctionListingModule } from './auction-listing/auction-listing.module';
+import { PurchaseModule } from './purchase/purchase.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { AuctionListingModule } from './auction-listing/auction-listing.module';
     AuctionSituationModule,
     PriceModule,
     AuctionListingModule,
+    PurchaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
