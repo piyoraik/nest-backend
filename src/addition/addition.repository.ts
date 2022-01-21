@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Addition } from 'src/entity/addition.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAdditionDTO } from './dto/create-addition.dto';
 
 @EntityRepository(Addition)
@@ -27,7 +27,14 @@ export class AdditionRepository extends Repository<Addition> {
   }
 
   async findWhereAddition(attrs: Partial<Addition>) {
-    const additions = await this.find(attrs);
+    const parseAttrs: Partial<Addition> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
+    const additions = await this.find({
+      where: parseAttrs,
+      relations: ['member'],
+    });
     if (!additions) {
       throw new NotFoundException('Addition Not Found');
     }
