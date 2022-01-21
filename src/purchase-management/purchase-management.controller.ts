@@ -12,4 +12,8 @@ export class PurchaseManagementController {
   create(@Body() body: CreatePurchaseManagementDTO) {
     return this.purchaseManagementService.create(body);
   }
+
+  findAll() {
+    // return this.purchaseManagementService.
+  }
 }

@@ -1,14 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsBoolean,
-  IsDate,
-  IsDateString,
-  IsEnum,
-  IsNumber,
-  IsString,
-} from 'class-validator';
-import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
-import { PaymentMethod } from 'src/enum/paymentMethod.enum';
+import { IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class CreatePurchaseManagementDTO {
   //仕入れ日
