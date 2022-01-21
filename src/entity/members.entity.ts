@@ -20,31 +20,31 @@ export class Members {
   id: number;
 
   //名前
-  @Column()
+  @Column({ unique: true })
   name: string;
 
   //企業名
-  @Column()
+  @Column({ unique: true })
   companyName: string;
 
   //メールアドレス
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   //パスワード
-  @Column()
+  @Column({ unique: true })
   password: string;
 
   //電話番号
-  @Column()
+  @Column({ unique: true })
   phoneNumber: string;
 
   //アイコン画像
-  @Column()
+  @Column({ unique: true })
   iconImage: string;
 
   //住所
-  @Column()
+  @Column({ unique: true })
   address: string;
 
   //悪質フラグ

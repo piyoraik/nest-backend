@@ -2,7 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AuctionSituation } from 'src/entity/auction.situation.entity';
 import { Members } from 'src/entity/members.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAuctionSituationDTO } from './dto/create.auction-situation.dto';
 
 @EntityRepository(AuctionSituation)
@@ -23,13 +23,12 @@ export class AuctionSituationRepository extends Repository<AuctionSituation> {
   }
 
   async findAll() {
-    return this.find({ relations: ['member'] });
+    return this.find();
   }
 
   async findOneAuctionSituation(attrs: Partial<AuctionSituation>) {
     const auctionSituation = await this.findOne({
       where: attrs,
-      relations: ['member'],
     });
     if (!auctionSituation) {
       throw new NotFoundException('AuctionSituation Not Found');
@@ -38,13 +37,31 @@ export class AuctionSituationRepository extends Repository<AuctionSituation> {
   }
 
   async findWhereAuctionSituation(attrs: Partial<AuctionSituation>) {
+    const parseAttrs: Partial<AuctionSituation> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
     const auctionSituations = await this.find({
-      where: attrs,
-      relations: ['member'],
+      where: parseAttrs,
     });
     if (!auctionSituations) {
       throw new NotFoundException('AuctionSituation Not Found');
     }
     return auctionSituations;
+  }
+
+  // update
+  async updateAuctionSituation(id: number, attrs: Partial<AuctionSituation>) {
+    const auctionSituation = await this.findOneAuctionSituation({ id });
+    Object.assign(auctionSituation, attrs);
+    await this.save(auctionSituation);
+    return auctionSituation;
+  }
+
+  // softDelete
+  async softDeleteAuctionSituation(id: number) {
+    const auctionSituation = await this.findOneAuctionSituation({ id });
+    await this.softRemove(auctionSituation);
+    return auctionSituation;
   }
 }

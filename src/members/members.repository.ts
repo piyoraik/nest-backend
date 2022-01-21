@@ -31,7 +31,6 @@ export class MembersRepository extends Repository<Members> {
     }
     const memberss = await this.find({
       where: parseAttrs,
-      relations: ['member'],
     });
     if (!memberss) {
       throw new NotFoundException('Members Not Found');

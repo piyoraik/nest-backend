@@ -13,4 +13,7 @@ export class SalesPoint {
 
   @ManyToOne(() => ListingCar, (listingCar) => listingCar.salesPoint)
   listingCar: ListingCar;
+
+  @Column()
+  listingCarId: number;
 }

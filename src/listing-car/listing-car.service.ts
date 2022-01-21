@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { AdditionService } from 'src/addition/addition.service';
-import { CreateAuctionSituationDTO } from 'src/auction-situation/dto/create.auction-situation.dto';
 import { CarBodyEvaluationService } from 'src/car-body-evaluation/car-body-evaluation.service';
 import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
 import { ListingCar } from 'src/entity/listing.car.entity';
@@ -32,10 +31,6 @@ export class ListingCarService {
       TestingRecord,
       ...listingCarObject
     } = createListingCarDTO;
-    console.log(Addition);
-    console.log(CarBodyEvaluation);
-    console.log(Inspection);
-    console.log(TestingRecord);
     const listingCar = (await this.listingCarRepository.createListingCar(
       listingCarObject,
     )) as ListingCar;
@@ -58,8 +53,12 @@ export class ListingCarService {
     return await this.listingCarRepository.findOneListingCar({ id });
   }
 
-  async find(attrs: Partial<ListingCar>) {
+  async findOne(attrs: Partial<ListingCar>) {
     return await this.listingCarRepository.findOneListingCar(attrs);
+  }
+
+  async findWhere(attrs: Partial<ListingCar>) {
+    return await this.listingCarRepository.findWhereListingCar(attrs);
   }
 
   async update(id: number, attrs: Partial<ListingCar>) {

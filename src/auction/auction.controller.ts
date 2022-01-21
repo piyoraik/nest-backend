@@ -40,18 +40,18 @@ export class AuctionController {
     return this.auctionService.findWhereLike(attrs);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(':auctionID')
+  findOne(@Param('auctionID') id: string) {
     return this.auctionService.findOne({ id: +id });
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() body: UpdateAuctionDto) {
+  @Patch(':auctionID')
+  update(@Param('auctionID') id: string, @Body() body: UpdateAuctionDto) {
     return this.auctionService.update(+id, body);
   }
 
-  @Delete(':id')
-  delete(@Param('id') id: string) {
+  @Delete(':auctionID')
+  delete(@Param('auctionID') id: string) {
     return this.auctionService.softDelete(+id);
   }
 }

@@ -1,16 +1,32 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, PartialType } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
+import { AuctionSituation } from 'src/entity/auction.situation.entity';
 import { AuctionSituationService } from './auction-situation.service';
 import { CreateAuctionSituationDTO } from './dto/create.auction-situation.dto';
+import { UpdateAuctionSituationDTO } from './dto/update.auction-situation.dto';
 
 @Controller('auction-situation')
 export class AuctionSituationController {
   constructor(
     private readonly auctionSituationService: AuctionSituationService,
   ) {}
+  @Get()
+  findAll() {
+    return this.auctionSituationService.findAll();
+  }
 
   @Post(':auctionListingID')
   @ApiBearerAuth()
@@ -27,8 +43,27 @@ export class AuctionSituationController {
     );
   }
 
-  @Get(':id')
-  findOneId(@Param('id') id: string) {
+  @ApiQuery({ type: PartialType(CreateAuctionSituationDTO), required: false })
+  @Get('search')
+  search(@Query() attrs: Partial<AuctionSituation>) {
+    return this.auctionSituationService.findWhere(attrs);
+  }
+
+  @Get(':auctionListingID')
+  findOneId(@Param('auctionListingID') id: string) {
     return this.auctionSituationService.findOneId(+id);
+  }
+
+  @Patch(':auctionListingID')
+  update(
+    @Param('auctionListingID') id: string,
+    @Body() body: UpdateAuctionSituationDTO,
+  ) {
+    return this.auctionSituationService.update(+id, body);
+  }
+
+  @Delete(':auctionListingID')
+  delete(@Param('auctionListingID') id: string) {
+    return this.auctionSituationService.softDelete(+id);
   }
 }

@@ -25,7 +25,7 @@ import { CreateInspectionDTO } from 'src/inspection/dto/create-inspection.dto';
 import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
 import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
 
-export class CreateListingCarDTO {
+export class UpdateListingCarDTO {
   // 評価点
   @ApiProperty({
     enum: EvaluationPoint,
