@@ -1,21 +1,65 @@
 import { Injectable } from '@nestjs/common';
-import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
-import { MembersService } from 'src/members/members.service';
+import { AfterSuccessfulBid } from 'src/entity/after.successful.bid.entity';
+import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AfterSuccessfulBidRepository } from './after-successful-bid.repository';
 import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.dto';
 
 @Injectable()
+// afterSuccessfulBid.service.ts
 export class AfterSuccessfulBidService {
   constructor(
     private afterSuccessfulBidRepository: AfterSuccessfulBidRepository,
-    private memberService: MembersService,
   ) {}
 
+  // create
   async create(
     createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO,
-    payLoad: PayLoad,
+    auctionListing: AuctionListing,
   ) {
-    const member = await this.memberService.findOne({ email: payLoad.email });
-    // return this.afterSuccessfulBidRepository.createAfterSuccessfulBid();
+    return await this.afterSuccessfulBidRepository.createAfterSuccessfulBid(
+      createAfterSuccessfulBidDTO,
+      auctionListing,
+    );
+  }
+
+  // findAll
+  async findAll() {
+    return await this.afterSuccessfulBidRepository.find();
+  }
+
+  // findOneID
+  async findOneID(id: number) {
+    return await this.afterSuccessfulBidRepository.findOneAfterSuccessfulBid({
+      id,
+    });
+  }
+
+  // findOne
+  async findOne(attrs: Partial<AfterSuccessfulBid>) {
+    return await this.afterSuccessfulBidRepository.findOneAfterSuccessfulBid(
+      attrs,
+    );
+  }
+
+  // findWhere
+  async findWhere(attrs: Partial<AfterSuccessfulBid>) {
+    return await this.afterSuccessfulBidRepository.findWhereLikeAfterSuccessfulBid(
+      attrs,
+    );
+  }
+
+  // update
+  async update(id: number, attrs: Partial<AfterSuccessfulBid>) {
+    return await this.afterSuccessfulBidRepository.updateAfterSuccessfulBid(
+      id,
+      attrs,
+    );
+  }
+
+  // softDelete
+  async softDelete(id: number) {
+    return await this.afterSuccessfulBidRepository.softDeleteAfterSuccessfulBid(
+      id,
+    );
   }
 }
