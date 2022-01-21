@@ -3,7 +3,5 @@ import { GearRepository } from './gear.repository';
 
 @Injectable()
 export class GearService {
-    constructor(
-        private gearRepository: GearRepository,
-      ) {}
+  constructor(private gearRepository: GearRepository) {}
 }
