@@ -23,12 +23,10 @@ export class CarBodyNumberService {
   // create
   async create(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    createCarBodyNumber,
     listingCar: ListingCar,
     airBack: AirBack,
     shift: Shift,
     fuel: Fuel,
-    color: Color,
     importedCar: ImportedCar,
     maker: Maker,
     shape: Shape,
@@ -36,15 +34,11 @@ export class CarBodyNumberService {
     carModel: CarModel,
     gear: Gear,
     airConditioner: AirConditioner,
+    interiorColorId: number,
+    exteriorColorId: number,
   ) {
     return await this.carBodyNumberRepository.createCarBodyNumber(
       createCarBodyNumberDTO,
-      createCarBodyNumber,
-      listingCar,
-      airBack,
-      shift,
-      fuel,
-      color,
       importedCar,
       maker,
       shape,
@@ -52,6 +46,12 @@ export class CarBodyNumberService {
       carModel,
       gear,
       airConditioner,
+      fuel,
+      shift,
+      airBack,
+      listingCar,
+      interiorColorId,
+      exteriorColorId,
     );
   }
 

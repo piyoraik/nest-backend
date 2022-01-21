@@ -1,7 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { AfterSuccessfulBid } from 'src/entity/after.successful.bid.entity';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
-import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.dto';
 
@@ -10,12 +9,10 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
   // Createの操作
   async createAfterSuccessfulBid(
     createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO,
-    deliveryMethod: DeliveryMethod,
     auctionListing: AuctionListing,
   ) {
     const afterSuccessfulBid = this.create({
       ...createAfterSuccessfulBidDTO,
-      deliveryMethod,
       auctionListing,
     });
     await this.save(afterSuccessfulBid);

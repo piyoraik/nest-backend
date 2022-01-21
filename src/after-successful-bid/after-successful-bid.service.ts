@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { AfterSuccessfulBid } from 'src/entity/after.successful.bid.entity';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
-import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
-import { MembersService } from 'src/members/members.service';
 import { AfterSuccessfulBidRepository } from './after-successful-bid.repository';
 import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.dto';
 
@@ -12,15 +9,15 @@ import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.d
 export class AfterSuccessfulBidService {
   constructor(
     private afterSuccessfulBidRepository: AfterSuccessfulBidRepository,
-    deliveryMethod: DeliveryMethod,
-    auctionListing: AuctionListing,
   ) {}
 
   // create
-  async create(createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO) {
+  async create(
+    createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO,
+    auctionListing: AuctionListing,
+  ) {
     return await this.afterSuccessfulBidRepository.createAfterSuccessfulBid(
       createAfterSuccessfulBidDTO,
-      deliveryMethod,
       auctionListing,
     );
   }
