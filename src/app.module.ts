@@ -33,6 +33,7 @@ import { AirBackModule } from './air-back/air-back.module';
 import { ExhibitorEntryModule } from './exhibitor-entry/exhibitor-entry.module';
 import { CarBodyNumberModule } from './car-body-number/car-body-number.module';
 import { PurchaseModule } from './purchase/purchase.module';
+import { PurchaseManagementModule } from './purchase-management/purchase-management.module';
 
 @Module({
   imports: [
@@ -68,6 +69,7 @@ import { PurchaseModule } from './purchase/purchase.module';
     AirBackModule,
     ExhibitorEntryModule,
     CarBodyNumberModule,
+    PurchaseManagementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
