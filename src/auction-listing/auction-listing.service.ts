@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Auction } from 'src/entity/auction.entity';
-import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { AuctionListingRepository } from './auction-listing.repository';
 import { CreateAuctionListingDTO } from './dto/create.auction-listing.dto';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
@@ -17,6 +15,11 @@ export class AuctionListingService {
     private carBodyNumberService: CarBodyNumberService,
     private auctionService: AuctionService,
   ) {}
+
+  async findAll() {
+    return this.auctionListingRepository.find();
+  }
+
   async create(
     createAuctionListingDTO: CreateAuctionListingDTO,
     payLoad: PayLoad,
@@ -42,6 +45,12 @@ export class AuctionListingService {
 
   async findOne(attrs: Partial<AuctionListing>) {
     return await this.auctionListingRepository.findOneAuctionListing(attrs);
+  }
+
+  async findWhere(attrs: Partial<AuctionListing>) {
+    return await this.auctionListingRepository.findWhereLikeAuctionListing(
+      attrs,
+    );
   }
 
   // update
