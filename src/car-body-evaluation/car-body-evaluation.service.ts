@@ -5,34 +5,61 @@ import { CarBodyEvaluationRepository } from './car-body-evaluation.repostiroy';
 import { CreateCarBodyEvaluationDTO } from './dto/create-carbodyevaluation.dto';
 
 @Injectable()
+// carBodyEvaluation.service.ts
 export class CarBodyEvaluationService {
   constructor(
-    private readonly carBodyEvaluationRepository: CarBodyEvaluationRepository,
+    private carBodyEvaluationRepository: CarBodyEvaluationRepository,
   ) {}
 
+  // create
   async create(
     createCarBodyEvaluationDTO: CreateCarBodyEvaluationDTO,
     listingCar: ListingCar,
   ) {
-    return this.carBodyEvaluationRepository.createCarBodyEvaluation(
+    return await this.carBodyEvaluationRepository.createCarBodyEvaluation(
       createCarBodyEvaluationDTO,
       listingCar,
     );
   }
 
-  async findOne(id: number) {
-    return this.carBodyEvaluationRepository.findOneCarBodyEvaluation({ id });
+  // findAll
+  async findAll() {
+    return await this.carBodyEvaluationRepository.find();
   }
 
-  async find(attrs: Partial<CarBodyEvaluation>) {
-    return this.carBodyEvaluationRepository.findWhereCarBodyEvaluation(attrs);
+  // findOneID
+  async findOneID(id: number) {
+    return await this.carBodyEvaluationRepository.findOneCarBodyEvaluation({
+      id,
+    });
   }
 
+  // findOne
+  async findOne(attrs: Partial<CarBodyEvaluation>) {
+    return await this.carBodyEvaluationRepository.findOneCarBodyEvaluation(
+      attrs,
+    );
+  }
+
+  // findWhere
+  async findWhere(attrs: Partial<CarBodyEvaluation>) {
+    return await this.carBodyEvaluationRepository.findWhereCarBodyEvaluation(
+      attrs,
+    );
+  }
+
+  // update
   async update(id: number, attrs: Partial<CarBodyEvaluation>) {
-    return this.carBodyEvaluationRepository.updateCarBodyEvaluation(id, attrs);
+    return await this.carBodyEvaluationRepository.updateCarBodyEvaluation(
+      id,
+      attrs,
+    );
   }
 
-  async delete(id: number) {
-    return this.carBodyEvaluationRepository.softDeleteCarBodyEvaluation(id);
+  // softDelete
+  async softDelete(id: number) {
+    return await this.carBodyEvaluationRepository.softDeleteCarBodyEvaluation(
+      id,
+    );
   }
 }

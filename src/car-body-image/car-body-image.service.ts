@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
+import { ListingCarService } from 'src/listing-car/listing-car.service';
 import { CarBodyImageRepository } from './car-body-image.repository';
 import { CreateCarBodyImageDTO } from './dto/create.carbodyimage.dto';
 
