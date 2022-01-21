@@ -23,18 +23,7 @@ export class AuctionRepository extends Repository<Auction> {
     return auction;
   }
 
-  async findWhereAuction(attrs: Partial<Auction>) {
-    // const auctions = await this.find({...attrs, relations: ["member"]});
-    console.log(attrs);
-    // const auctions = await this.find({ where: attrs ,relations: ["member"]});
-    const auctions = await this.find({ where: attrs, relations: ['member'] });
-    // console.log("今ここです");
-    console.log(auctions);
-    return auctions;
-  }
-
   async findWhereLikeAuction(attrs: Partial<Auction>) {
-    // const likeAuctionName = ILike("%" + attrs.auctionName + "%");
     const parseAttrs: Partial<Auction> = {};
     for (const key in attrs) {
       parseAttrs[key] = ILike('%' + attrs[key] + '%');
@@ -43,8 +32,9 @@ export class AuctionRepository extends Repository<Auction> {
       where: parseAttrs,
       relations: ['member'],
     });
-    console.log(attrs.auctionName);
-    console.log(auctions);
+    if (!auctions) {
+      throw new NotFoundException('Auction Not Found');
+    }
     return auctions;
   }
 

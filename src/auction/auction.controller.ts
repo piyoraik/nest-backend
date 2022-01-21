@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, PartialType } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { Auction } from 'src/entity/auction.entity';
@@ -34,14 +34,10 @@ export class AuctionController {
     return this.auctionService.create(body, payloadMember);
   }
 
+  @ApiQuery({ type: PartialType(CreateAuctionDto), required: false })
   @Get('search')
   search(@Query() attrs: Partial<Auction>) {
-    this.auctionService.findWhere(attrs);
-  }
-
-  @Get('searchLike')
-  searchLike(@Query() attrs: Partial<Auction>) {
-    this.auctionService.findWhereLike(attrs);
+    return this.auctionService.findWhereLike(attrs);
   }
 
   @Get(':id')
