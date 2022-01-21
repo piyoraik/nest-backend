@@ -1,52 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { ListingCar } from 'src/entity/listing.car.entity';
-import { SalesPoint } from 'src/entity/sales.point.entity';
 import { CreateSalesPointDTO } from './dto/create-salespoint.dto';
 import { SalesPointRepository } from './sales-point.repository';
 
 @Injectable()
-// salesPoint.service.ts
 export class SalesPointService {
-  constructor(private salesPointRepository: SalesPointRepository) {}
+  constructor(private readonly salesPointRepository: SalesPointRepository) {}
 
-  // create
-  async create(
-    createSalesPointDTO: CreateSalesPointDTO,
-    listingCar: ListingCar,
-  ) {
-    return await this.salesPointRepository.createSalesPoint(
-      createSalesPointDTO,
-      listingCar,
-    );
-  }
-
-  // findAll
-  async findAll() {
+  async fetchAll() {
     return await this.salesPointRepository.find();
   }
 
-  // findOneID
-  async findOneID(id: number) {
+  async create(
+    createSalesPointDTO: CreateSalesPointDTO[],
+    listingCar: ListingCar,
+  ) {
+    const res = await Promise.all(
+      createSalesPointDTO.map(async (salesPoint) => {
+        return this.salesPointRepository.createSalesPoint(
+          salesPoint,
+          listingCar,
+        );
+      }),
+    );
+    return res;
+  }
+
+  async findOne(id: number) {
     return await this.salesPointRepository.findOneSalesPoint({ id });
   }
 
-  // findOne
-  async findOne(attrs: Partial<SalesPoint>) {
-    return await this.salesPointRepository.findOneSalesPoint(attrs);
-  }
-
-  // findWhere
-  async findWhere(attrs: Partial<SalesPoint>) {
+  async find(attrs: Partial<ListingCar>) {
     return await this.salesPointRepository.findWhereSalesPoint(attrs);
   }
 
-  // update
-  async update(id: number, attrs: Partial<SalesPoint>) {
+  async update(id: number, attrs: Partial<ListingCar>) {
     return await this.salesPointRepository.updateSalesPoint(id, attrs);
   }
 
-  // softDelete
-  async softDelete(id: number) {
+  async delete(id: number) {
     return await this.salesPointRepository.softDeleteSalesPoint(id);
   }
 }
