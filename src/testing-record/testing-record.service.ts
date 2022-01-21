@@ -8,6 +8,7 @@ export class TestingRecordService {
   constructor(
     private readonly testingRecordRepository: TestingRecordRepository,
   ) {}
+
   async findAll() {
     return await this.testingRecordRepository.find();
   }

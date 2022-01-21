@@ -5,7 +5,7 @@ import { AdditionRepository } from './addition.repository';
 import { AdditionService } from './addition.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AdditionRepository])],
+  imports: [TypeOrmModule.forFeature([AdditionRepository]), ListingCarModule],
   providers: [AdditionService],
   exports: [AdditionService],
 })

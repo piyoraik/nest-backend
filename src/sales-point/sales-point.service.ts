@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ListingCar } from 'src/entity/listing.car.entity';
+import { ListingCarService } from 'src/listing-car/listing-car.service';
 import { CreateSalesPointDTO } from './dto/create-salespoint.dto';
 import { SalesPointRepository } from './sales-point.repository';
 
