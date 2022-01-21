@@ -25,7 +25,7 @@ export class AfterSuccessfulBid {
     () => AuctionListing,
     (auctionListing) => auctionListing.afterSuccessfulBid,
   )
-  auctionListingId: number;
+  auctionListing: AuctionListing;
 
   //オプション ＊変更
   @Column()

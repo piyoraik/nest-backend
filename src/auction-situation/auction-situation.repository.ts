@@ -1,4 +1,5 @@
 import { NotFoundException } from '@nestjs/common';
+import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AuctionSituation } from 'src/entity/auction.situation.entity';
 import { Members } from 'src/entity/members.entity';
 import { EntityRepository, Repository } from 'typeorm';

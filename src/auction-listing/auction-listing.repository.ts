@@ -19,7 +19,6 @@ export class AuctionListingRepository extends Repository<AuctionListing> {
   ) {
     const auctionListing = this.create({
       ...createAuctionListingDTO,
-      afterSuccessfulBid,
       member,
       auction,
       carBodyNumber,

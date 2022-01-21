@@ -11,12 +11,11 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
   async createAfterSuccessfulBid(
     createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO,
     deliveryMethod: DeliveryMethod,
-    auction_listing: AuctionListing,
+    auctionListing: AuctionListing,
   ) {
     const afterSuccessfulBid = this.create({
       ...createAfterSuccessfulBidDTO,
-      deliveryMethod,
-      auction_listing,
+      auctionListing,
     });
     await this.save(afterSuccessfulBid);
     return afterSuccessfulBid;

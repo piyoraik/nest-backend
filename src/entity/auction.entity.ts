@@ -40,7 +40,7 @@ export class Auction {
   selectionImg: string;
 
   //オークションID
-  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auctionId)
+  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auction)
   auctionListing: AuctionListing[];
 
   @ManyToOne(() => Members, (member) => member.auctions)

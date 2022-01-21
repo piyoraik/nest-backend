@@ -4,12 +4,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Members } from 'src/entity/members.entity';
 import { Repository } from 'typeorm';
 import { CreateMembersDTO } from './dto/create-members-dto';
+import { MembersRepository } from './members.repository';
 
 @Injectable()
 export class MembersService {
-  constructor(
-    @InjectRepository(Members) private readonly memberRepo: Repository<Members>,
-  ) {}
+  constructor(private readonly memberRepo: MembersRepository) {}
 
   @UseGuards(AuthGuard('jwt'))
   findAll() {

@@ -110,6 +110,9 @@ export class CarBodyNumber {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.carId)
+  @OneToMany(
+    () => AuctionListing,
+    (auctionListing) => auctionListing.carBodyNumber,
+  )
   auctionListing: AuctionListing[];
 }

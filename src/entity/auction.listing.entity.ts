@@ -38,7 +38,7 @@ export class AuctionListing {
 
   //オークションID
   @ManyToOne(() => Auction, (auction) => auction.auctionListing)
-  auctionId: number;
+  auction: Auction;
 
   //仕入れ管理ID
   @ManyToOne(
@@ -53,18 +53,18 @@ export class AuctionListing {
 
   //会員ID
   @ManyToOne(() => Members, (members) => members.auctionListing)
-  membersId: number;
+  member: Members;
 
   //車体ID
   @ManyToOne(
     () => CarBodyNumber,
     (carBodyNumber) => carBodyNumber.auctionListing,
   )
-  carId: number;
+  carBodyNumber: CarBodyNumber;
 
   @OneToMany(
     () => AfterSuccessfulBid,
-    (afterSuccessfulBid) => afterSuccessfulBid.auctionListingId,
+    (afterSuccessfulBid) => afterSuccessfulBid.auctionListing,
   )
   afterSuccessfulBid: AfterSuccessfulBid[];
 
