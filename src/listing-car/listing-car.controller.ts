@@ -6,7 +6,10 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
+import { ApiQuery, PartialType } from '@nestjs/swagger';
+import { ListingCar } from 'src/entity/listing.car.entity';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarService } from './listing-car.service';
@@ -23,6 +26,12 @@ export class ListingCarController {
   @Post()
   create(@Body() body: CreateListingCarDTO) {
     return this.listingCarService.create(body);
+  }
+
+  @ApiQuery({ type: PartialType(CreateListingCarDTO), required: false })
+  @Get('search')
+  search(@Query() attrs: Partial<ListingCar>) {
+    return this.listingCarService.findWhere(attrs);
   }
 
   @Get(':listingCarID')

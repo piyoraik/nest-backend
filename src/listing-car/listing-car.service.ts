@@ -53,8 +53,12 @@ export class ListingCarService {
     return await this.listingCarRepository.findOneListingCar({ id });
   }
 
-  async find(attrs: Partial<ListingCar>) {
+  async findOne(attrs: Partial<ListingCar>) {
     return await this.listingCarRepository.findOneListingCar(attrs);
+  }
+
+  async findWhere(attrs: Partial<ListingCar>) {
+    return await this.listingCarRepository.findWhereListingCar(attrs);
   }
 
   async update(id: number, attrs: Partial<ListingCar>) {
