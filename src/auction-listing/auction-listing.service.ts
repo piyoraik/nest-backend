@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { create } from 'domain';
 import { Auction } from 'src/entity/auction.entity';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { AuctionListingRepository } from './auction-listing.repository';

@@ -12,5 +12,6 @@ import { AuctionListingService } from './auction-listing.service';
   ],
   controllers: [AuctionListingController],
   providers: [AuctionListingService],
+  exports: [AuctionListingService],
 })
 export class AuctionListingModule {}

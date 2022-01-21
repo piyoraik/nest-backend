@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { AuctionListingService } from 'src/auction-listing/auction-listing.service';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
-import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AuctionSituation } from 'src/entity/auction.situation.entity';
 import { MembersService } from 'src/members/members.service';
 import { AuctionSituationRepository } from './auction-situation.repository';
@@ -11,16 +11,20 @@ export class AuctionSituationService {
   constructor(
     private readonly auctionSituationRepository: AuctionSituationRepository,
     private readonly memberService: MembersService,
+    private readonly auctionListingService: AuctionListingService,
   ) {}
 
   async create(
     createAuctionSituation: CreateAuctionSituationDTO,
     payloadMember: PayLoad,
-    auctionListing: AuctionListing,
+    auctionListingID: number,
   ) {
     const member = await this.memberService.findOne({
       email: payloadMember.email,
     });
+    const auctionListing = await this.auctionListingService.findOneID(
+      auctionListingID,
+    );
     const auctionSituation =
       await this.auctionSituationRepository.createAuctionSituation(
         createAuctionSituation,
