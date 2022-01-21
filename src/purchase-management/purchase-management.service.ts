@@ -15,10 +15,15 @@ export class PurchaseManagementService {
     );
   }
 
+  // findAl
+  async findAll() {
+    return await this.purchaseManagementRepository.find();
+  }
+
   // findOneID
   async findOneID(id: number) {
     return await this.purchaseManagementRepository.findOnePurchaseManagement({
-      id: +id,
+      id,
     });
   }
 

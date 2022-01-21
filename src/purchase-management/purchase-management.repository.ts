@@ -33,7 +33,6 @@ export class PurchaseManagementRepository extends Repository<PurchaseManagement>
     }
     const purchaseManagements = await this.find({
       where: parseAttrs,
-      relations: ['member'],
     });
     if (!purchaseManagements) {
       throw new NotFoundException('PurchaseManagement Not Found');
