@@ -10,6 +10,6 @@ export class CarBodyNumberController {
   }
 
   create() {
-    return this.carBodyNumberService.create()
+    // return this.carBodyNumberService.create()
   }
 }
