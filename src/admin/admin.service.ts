@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Admin } from 'typeorm';
 import { AdminRepository } from './admin.repository';
 import { CreateAdminDTO } from './dto/create.admin.dto';
 import { UpdateAdminDTO } from './dto/update.admin.dto';
