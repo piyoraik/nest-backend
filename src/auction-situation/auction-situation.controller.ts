@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -22,6 +23,10 @@ export class AuctionSituationController {
   constructor(
     private readonly auctionSituationService: AuctionSituationService,
   ) {}
+  @Get()
+  findAll() {
+    return this.auctionSituationService.findAll();
+  }
 
   @Post(':auctionListingID')
   @ApiBearerAuth()
@@ -36,11 +41,6 @@ export class AuctionSituationController {
       payloadMember,
       +auctionListingID,
     );
-  }
-
-  @Get()
-  findAll() {
-    return this.auctionSituationService.findAll();
   }
 
   @ApiQuery({ type: PartialType(CreateAuctionSituationDTO), required: false })
@@ -60,5 +60,10 @@ export class AuctionSituationController {
     @Body() body: UpdateAuctionSituationDTO,
   ) {
     return this.auctionSituationService.update(+id, body);
+  }
+
+  @Delete(':auctionListingID')
+  delete(@Param('auctionListingID') id: string) {
+    return this.auctionSituationService.softDelete(+id);
   }
 }
