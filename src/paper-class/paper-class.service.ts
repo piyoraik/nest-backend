@@ -5,9 +5,11 @@ import { CreatePaperClassDTO } from './dto/create.paperclass.dto';
 import { PaperClassRepository } from './paper-class.repository';
 
 @Injectable()
+// paperClass.service.ts
 export class PaperClassService {
-  constructor(private readonly paperClassRepository: PaperClassRepository) {}
+  constructor(private paperClassRepository: PaperClassRepository) {}
 
+  // create
   async create(
     createPaperClassDTO: CreatePaperClassDTO,
     listingCar: ListingCar,
@@ -18,19 +20,33 @@ export class PaperClassService {
     );
   }
 
-  async findOneId(id: number) {
+  // findAll
+  async findAll() {
+    return await this.paperClassRepository.find();
+  }
+
+  // findOneID
+  async findOneID(id: number) {
     return await this.paperClassRepository.findOnePaperClass({ id });
   }
 
+  // findOne
   async findOne(attrs: Partial<PaperClass>) {
     return await this.paperClassRepository.findOnePaperClass(attrs);
   }
 
-  async find(attrs: Partial<PaperClass>) {
+  // findWhere
+  async findWhere(attrs: Partial<PaperClass>) {
     return await this.paperClassRepository.findWherePaperClass(attrs);
   }
 
-  async delete(id: number) {
+  // update
+  async update(id: number, attrs: Partial<PaperClass>) {
+    return await this.paperClassRepository.updatePaperClass(id, attrs);
+  }
+
+  // softDelete
+  async softDelete(id: number) {
     return await this.paperClassRepository.softDeletePaperClass(id);
   }
 }
