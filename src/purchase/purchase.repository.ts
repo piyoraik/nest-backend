@@ -2,7 +2,7 @@ import { Purchase } from 'src/entity/purchase.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
-import { Members } from 'src/entity/member.entity';
+import { Members } from 'src/entity/members.entity';
 import { CreatePurchaseDTO } from './dto/create.purchase.dto';
 
 @EntityRepository(Purchase)

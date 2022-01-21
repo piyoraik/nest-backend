@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ListingCarModule } from 'src/listing-car/listing-car.module';
 import { InspectionRepository } from './inspection.repository';
 import { InspectionService } from './inspection.service';
 

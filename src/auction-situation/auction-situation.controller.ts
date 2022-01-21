@@ -12,14 +12,19 @@ export class AuctionSituationController {
     private readonly auctionSituationService: AuctionSituationService,
   ) {}
 
-  @Post()
+  @Post(':auctionListingID')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(
+    @Param('auctionListingID') auctionListingID: string,
     @Body() body: CreateAuctionSituationDTO,
     @GetMember() payloadMember: PayLoad,
   ) {
-    return this.auctionSituationService.create(body, payloadMember);
+    return this.auctionSituationService.create(
+      body,
+      payloadMember,
+      +auctionListingID,
+    );
   }
 
   @Get(':id')

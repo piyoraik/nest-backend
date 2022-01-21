@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { Auction } from 'src/entity/auction.entity';
-import { MemberService } from 'src/member/member.service';
+import { MembersService } from 'src/members/members.service';
 import { AuctionRepository } from './auction.repository';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 
@@ -9,7 +9,7 @@ import { CreateAuctionDto } from './dto/create-auction.dto';
 export class AuctionService {
   constructor(
     private auctionRepository: AuctionRepository,
-    private memberService: MemberService,
+    private memberService: MembersService,
   ) {}
 
   fetchAll() {
@@ -23,8 +23,16 @@ export class AuctionService {
     return this.auctionRepository.createAuction(createAuctionDTO, member);
   }
 
-  async findOne(id: number) {
-    return await this.auctionRepository.findOneAuction({ id });
+  async findOneId(id: number) {
+    return await this.auctionRepository.findOne({ id });
+  }
+
+  async findOne(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findOneAuction(attrs);
+  }
+
+  async findWhere(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findWhereLikeAuction(attrs);
   }
 
   async update(id: number, attrs: Partial<Auction>) {

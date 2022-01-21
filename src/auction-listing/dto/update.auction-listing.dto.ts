@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsOptional } from 'class-validator';
 
-export class CreateAuctionListingDTO {
+export class UpdateAuctionListingDTO {
   //落札価格
   @ApiProperty()
   @IsOptional()
