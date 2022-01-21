@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Admin } from 'typeorm';
 import { AdminRepository } from './admin.repository';
 import { CreateAdminDTO } from './dto/create.admin.dto';
+import { UpdateAdminDTO } from './dto/update.admin.dto';
 
 @Injectable()
 // admin.service.ts
@@ -24,17 +25,17 @@ export class AdminService {
   }
 
   // findOne
-  async findOne(attrs: Partial<Admin>) {
+  async findOne(attrs: UpdateAdminDTO) {
     return await this.adminRepository.findOneAdmin(attrs);
   }
 
   // findWhere
-  async findWhere(attrs: Partial<Admin>) {
+  async findWhere(attrs: UpdateAdminDTO) {
     return await this.adminRepository.findWhereLikeAdmin(attrs);
   }
 
   // update
-  async update(id: number, attrs: Partial<Admin>) {
+  async update(id: number, attrs: UpdateAdminDTO) {
     return await this.adminRepository.updateAdmin(id, attrs);
   }
 
