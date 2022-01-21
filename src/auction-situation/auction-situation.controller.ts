@@ -27,8 +27,8 @@ export class AuctionSituationController {
     );
   }
 
-  @Get(':id')
-  findOneId(@Param('id') id: string) {
+  @Get(':auctionListingID')
+  findOneId(@Param('auctionListingID') id: string) {
     return this.auctionSituationService.findOneId(+id);
   }
 }

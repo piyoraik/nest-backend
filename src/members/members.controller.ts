@@ -11,18 +11,18 @@ export class MembersController {
     return this.memberService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(':memberID')
+  findOne(@Param('memberID') id: string) {
     return this.memberService.findOne({ id: +id });
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() body: UpdateMembersDTO) {
+  @Patch(':memberID')
+  update(@Param('memberID') id: string, @Body() body: UpdateMembersDTO) {
     return this.memberService.update(+id, body);
   }
 
-  @Delete(':id')
-  delete(@Param('id') id: string) {
+  @Delete(':memberID')
+  delete(@Param('memberID') id: string) {
     return this.memberService.softDelete(+id);
   }
 }

@@ -16,8 +16,8 @@ export class ListingCarController {
     return this.listingCarService.create(body);
   }
 
-  @Get(':id')
-  findOneId(@Param('id') id: string) {
+  @Get(':listingCarID')
+  findOneId(@Param('listingCarID') id: string) {
     return this.listingCarService.findOneId(+id);
   }
 }

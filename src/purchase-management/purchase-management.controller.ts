@@ -4,14 +4,12 @@ import {
   Delete,
   Get,
   Param,
-  Paramtype,
   Patch,
   Post,
   Query,
 } from '@nestjs/common';
 import { ApiQuery, PartialType } from '@nestjs/swagger';
 import { PurchaseManagement } from 'src/entity/purchase.management.entity';
-import { CreatePurchaseDTO } from 'src/purchase/dto/create.purchase.dto';
 import { CreatePurchaseManagementDTO } from './dto/create.purchase-management.dto';
 import { UpdatePurchaseManagementDTO } from './dto/update.purchase-management.dto';
 import { PurchaseManagementService } from './purchase-management.service';
