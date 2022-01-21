@@ -1,5 +1,6 @@
+import { NotFoundException } from '@nestjs/common';
 import { ListingCar } from 'src/entity/listing.car.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 
 @EntityRepository(ListingCar)
@@ -13,14 +14,29 @@ export class ListingCarRepository extends Repository<ListingCar> {
   }
 
   async findOneListingCar(attrs: Partial<ListingCar>) {
-    return await this.findOne({
+    const listingCar = await this.findOne({
+      where: attrs,
       relations: ['salesPoint', 'CarBodyImage'],
-      ...attrs,
     });
+    if (!listingCar) {
+      throw new NotFoundException('ListingCar Not Found');
+    }
+    return listingCar;
   }
 
   async findWhereListingCar(attrs: Partial<ListingCar>) {
-    return await this.find(attrs);
+    const parseAttrs: Partial<ListingCar> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
+    const listingCars = await this.find({
+      where: parseAttrs,
+      relations: ['salesPoint', 'CarBodyImage'],
+    });
+    if (!listingCars) {
+      throw new NotFoundException('ListingCar Not Found');
+    }
+    return listingCars;
   }
 
   async updateListingCar(id: number, attrs: Partial<ListingCar>) {
