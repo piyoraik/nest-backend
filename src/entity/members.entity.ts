@@ -6,7 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  ManyToOne,
 } from 'typeorm';
 import { Auction } from './auction.entity';
 import { AuctionListing } from './auction.listing.entity';

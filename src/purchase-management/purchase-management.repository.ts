@@ -1,5 +1,4 @@
 import { NotFoundException } from '@nestjs/common';
-import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { PurchaseManagement } from 'src/entity/purchase.management.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreatePurchaseManagementDTO } from './dto/create.purchase-management.dto';
@@ -9,11 +8,9 @@ export class PurchaseManagementRepository extends Repository<PurchaseManagement>
   // Createの操作
   async createPurchaseManagement(
     createPurchaseManagementDTO: CreatePurchaseManagementDTO,
-    auctionListing: AuctionListing,
   ) {
     const purchaseManagement = this.create({
       ...createPurchaseManagementDTO,
-      auctionListing,
     });
     await this.save(purchaseManagement);
     return purchaseManagement;
@@ -36,7 +33,6 @@ export class PurchaseManagementRepository extends Repository<PurchaseManagement>
     }
     const purchaseManagements = await this.find({
       where: parseAttrs,
-      relations: ['member'],
     });
     if (!purchaseManagements) {
       throw new NotFoundException('PurchaseManagement Not Found');

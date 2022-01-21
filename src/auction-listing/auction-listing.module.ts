@@ -10,11 +10,12 @@ import { AuctionListingService } from './auction-listing.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([AuctionListingRepository]),
+    MembersModule,
     CarBodyNumberModule,
     AuctionModule,
-    MembersModule,
   ],
   controllers: [AuctionListingController],
   providers: [AuctionListingService],
+  exports: [AuctionListingService],
 })
 export class AuctionListingModule {}

@@ -23,8 +23,16 @@ export class AuctionService {
     return this.auctionRepository.createAuction(createAuctionDTO, member);
   }
 
-  async findOne(id: number) {
-    return await this.auctionRepository.findOneAuction({ id });
+  async findOneId(id: number) {
+    return await this.auctionRepository.findOne({ id });
+  }
+
+  async findOne(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findOneAuction(attrs);
+  }
+
+  async findWhere(attrs: Partial<Auction>) {
+    return await this.auctionRepository.findWhereLikeAuction(attrs);
   }
 
   async update(id: number, attrs: Partial<Auction>) {
