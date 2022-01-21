@@ -34,6 +34,10 @@ export class AuctionSituationService {
     return auctionSituation;
   }
 
+  async findAll() {
+    return await this.auctionSituationRepository.findAll();
+  }
+
   async findOneId(id: number) {
     return await this.auctionSituationRepository.findOneAuctionSituation({
       id,
@@ -46,5 +50,18 @@ export class AuctionSituationService {
 
   async findWhere(attrs: Partial<AuctionSituation>) {
     return await this.auctionSituationRepository.findOneAuctionSituation(attrs);
+  }
+
+  // update
+  async update(id: number, attrs: Partial<AuctionSituation>) {
+    return await this.auctionSituationRepository.updateAuctionSituation(
+      id,
+      attrs,
+    );
+  }
+
+  // softDelete
+  async softDelete(id: number) {
+    return await this.auctionSituationRepository.softDeleteAuctionSituation(id);
   }
 }
