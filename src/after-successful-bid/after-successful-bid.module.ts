@@ -9,7 +9,6 @@ import { AfterSuccessfulBidService } from './after-successful-bid.service';
   imports: [
     TypeOrmModule.forFeature([AfterSuccessfulBidRepository]),
     MembersModule,
-    AuctionListingModule,
   ],
   providers: [AfterSuccessfulBidService],
   exports: [AfterSuccessfulBidService],

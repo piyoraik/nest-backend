@@ -4,7 +4,6 @@ import { AdditionModule } from 'src/addition/addition.module';
 import { CarBodyEvaluationModule } from 'src/car-body-evaluation/car-body-evaluation.module';
 import { CarBodyImageModule } from 'src/car-body-image/car-body-image.module';
 import { InspectionModule } from 'src/inspection/inspection.module';
-import { PaperClassModule } from 'src/paper-class/paper-class.module';
 import { SalesPointModule } from 'src/sales-point/sales-point.module';
 import { TestingRecordModule } from 'src/testing-record/testing-record.module';
 import { ListingCarController } from './listing-car.controller';
@@ -20,7 +19,6 @@ import { ListingCarService } from './listing-car.service';
     CarBodyEvaluationModule,
     InspectionModule,
     TestingRecordModule,
-    PaperClassModule,
   ],
   controllers: [ListingCarController],
   providers: [ListingCarService],
