@@ -1,5 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
+import { CreateAirBackDTO } from 'src/air-back/dto/create.air-back.dto';
+import { CreateAirConditionerDTO } from 'src/air-conditioner/dto/create.air-conditioner.dto';
+import { CreateCarModelDTO } from 'src/car-model/dto/create.car-model.dto';
+import { AirBack } from 'src/entity/air.back.entity';
+import { AirConditioner } from 'src/entity/air.conditioner.entity';
+import { CarModel } from 'src/entity/car.model.entity';
+import { Fuel } from 'src/entity/fuel.entity';
+import { Gear } from 'src/entity/gear.entity';
+import { Handle } from 'src/entity/handle.entity';
+import { ImportedCar } from 'src/entity/imported.car.entity';
+import { Maker } from 'src/entity/maker.entity';
+import { Shape } from 'src/entity/shape.entity';
+import { Shift } from 'src/entity/shift.entity';
+import { CreateFuelDTO } from 'src/fuel/dto/create.fuel.dto';
+import { CreateGearDTO } from 'src/gear/dto/create.gear.dto';
+import { CreateHandleDTO } from 'src/handle/dto/create.handle.dto';
+import { CreateImportedCarDTO } from 'src/imported-car/dto/create.imported-car.dto';
+import { CreateMakerDTO } from 'src/maker/dto/create.maker.dto';
+import { CreateShapeDTO } from 'src/shape/dto/create.shape.dto';
+import { CreateShiftDTO } from 'src/shift/dto/create.shift.dto';
 
 export class CreateCarBodyNumberDTO {
   @ApiProperty()
@@ -33,4 +53,60 @@ export class CreateCarBodyNumberDTO {
   @ApiProperty()
   @IsNumber()
   crewNumber: number;
+
+  // ここから紐付いてるやつ
+
+  @ApiProperty({
+    type: CreateAirBackDTO,
+  })
+  AirBack?: AirBack;
+
+  @ApiProperty({
+    type: CreateShiftDTO,
+  })
+  Shift?: Shift;
+
+  @ApiProperty({
+    type: CreateFuelDTO,
+  })
+  Fuel?: Fuel;
+
+  @ApiProperty({
+    type: CreateImportedCarDTO,
+  })
+  ImportedCar?: ImportedCar;
+
+  @ApiProperty({
+    type: CreateMakerDTO,
+  })
+  Maker?: Maker;
+
+  @ApiProperty({
+    type: CreateShapeDTO,
+  })
+  Shape?: Shape;
+
+  @ApiProperty({
+    type: CreateHandleDTO,
+  })
+  Handle?: Handle;
+
+  @ApiProperty({
+    type: CreateCarModelDTO,
+  })
+  CarModel?: CarModel;
+
+  @ApiProperty({
+    type: CreateGearDTO,
+  })
+  Gear?: Gear;
+
+  @ApiProperty({
+    type: CreateAirConditionerDTO,
+  })
+  AirConditioner?: AirConditioner;
+
+  interiorColorId: number;
+  exteriorColorId: number;
+  listingColorId: number;
 }

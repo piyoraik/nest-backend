@@ -1,28 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { AirBackService } from 'src/air-back/air-back.service';
-import { CreateAirBackDTO } from 'src/air-back/dto/create.air-back.dto';
 import { AirConditionerService } from 'src/air-conditioner/air-conditioner.service';
 import { CarModelService } from 'src/car-model/car-model.service';
-import { CreateCarModelDTO } from 'src/car-model/dto/create.car-model.dto';
 import { ColorService } from 'src/color/color.service';
-import { AirBack } from 'src/entity/air.back.entity';
-import { AirConditioner } from 'src/entity/air.conditioner.entity';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
-import { Handle } from 'src/entity/handle.entity';
-import { ImportedCar } from 'src/entity/imported.car.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
-import { Shape } from 'src/entity/shape.entity';
-import { CreateFuelDTO } from 'src/fuel/dto/create.fuel.dto';
 import { FuelService } from 'src/fuel/fuel.service';
-import { CreateGearDTO } from 'src/gear/dto/create.gear.dto';
 import { GearService } from 'src/gear/gear.service';
-import { CreateHandleDTO } from 'src/handle/dto/create.handle.dto';
 import { HandleService } from 'src/handle/handle.service';
 import { ImportedCarService } from 'src/imported-car/imported-car.service';
-import { CreateMakerDTO } from 'src/maker/dto/create.maker.dto';
+import { ListingCarService } from 'src/listing-car/listing-car.service';
 import { MakerService } from 'src/maker/maker.service';
 import { ShapeService } from 'src/shape/shape.service';
-import { CreateShiftDTO } from 'src/shift/dto/create.shift.dto';
 import { ShiftService } from 'src/shift/shift.service';
 import { CarBodyNumberRepository } from './car-body-number.repository';
 import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
@@ -32,6 +20,7 @@ import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
 export class CarBodyNumberService {
   constructor(
     private readonly carBodyNumberRepository: CarBodyNumberRepository,
+    private readonly listingCarService: ListingCarService,
     private readonly makerService: MakerService,
     private readonly carModelService: CarModelService,
     private readonly shiftService: ShiftService,
@@ -48,31 +37,35 @@ export class CarBodyNumberService {
   // create
   async create(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    listingCar: ListingCar,
-    attrsAirBack: CreateAirBackDTO,
-    attrsShift: CreateShiftDTO,
-    attrsFuel: CreateFuelDTO,
-    attrsImportedCar: ImportedCar,
-    attrsMaker: CreateMakerDTO,
-    attrsShape: Shape,
-    attrsHandle: CreateHandleDTO,
-    attrsCarModel: CreateCarModelDTO,
-    attrsGear: CreateGearDTO,
-    attrsAirConditioner: AirConditioner,
     attrsInteriorColor: string,
     attrsExteriorColor: string,
+    attrsListingCarId: number,
   ) {
-    const maker = await this.makerService.create(attrsMaker);
-    const carModel = await this.carModelService.create(attrsCarModel);
-    const shift = await this.shiftService.create(attrsShift);
-    const gear = await this.gearService.create(attrsGear);
-    const fuel = await this.fuelService.create(attrsFuel);
-    const airBack = await this.airBackService.create(attrsAirBack);
-    const shape = await this.shapeService.create(attrsShape);
-    const handle = await this.handleService.create(attrsHandle);
-    const importedCar = await this.importedCarService.create(attrsImportedCar);
+    const {
+      Maker,
+      CarModel,
+      Shift,
+      Gear,
+      Fuel,
+      AirBack,
+      Shape,
+      Handle,
+      ImportedCar,
+      AirConditioner,
+      ...CarBodyNumber
+    } = createCarBodyNumberDTO;
+
+    const maker = await this.makerService.create(Maker);
+    const carModel = await this.carModelService.create(CarModel);
+    const shift = await this.shiftService.create(Shift);
+    const gear = await this.gearService.create(Gear);
+    const fuel = await this.fuelService.create(Fuel);
+    const airBack = await this.airBackService.create(AirBack);
+    const shape = await this.shapeService.create(Shape);
+    const handle = await this.handleService.create(Handle);
+    const importedCar = await this.importedCarService.create(ImportedCar);
     const airConditioner = await this.airConditionerService.create(
-      attrsAirConditioner,
+      AirConditioner,
     );
     const interiorColor = await this.colorService.create({
       name: attrsInteriorColor,
@@ -80,22 +73,29 @@ export class CarBodyNumberService {
     const exteriorColor = await this.colorService.create({
       name: attrsExteriorColor,
     });
+    const listingCar = await this.listingCarService.findOneId(
+      attrsListingCarId,
+    );
+
+    const attrsCarBodyNumber: CreateCarBodyNumberDTO = {
+      ...CarBodyNumber,
+      Maker: maker,
+      CarModel: carModel,
+      Shift: shift,
+      Gear: gear,
+      Fuel: fuel,
+      AirBack: airBack,
+      Shape: shape,
+      Handle: handle,
+      ImportedCar: importedCar,
+      AirConditioner: airConditioner,
+      interiorColorId: interiorColor.id,
+      exteriorColorId: exteriorColor.id,
+      listingColorId: listingCar.id,
+    };
 
     return await this.carBodyNumberRepository.createCarBodyNumber(
-      createCarBodyNumberDTO,
-      importedCar,
-      maker,
-      shape,
-      handle,
-      carModel,
-      gear,
-      airConditioner,
-      fuel,
-      shift,
-      airBack,
-      listingCar,
-      interiorColor.id,
-      exteriorColor.id,
+      attrsCarBodyNumber,
     );
   }
 

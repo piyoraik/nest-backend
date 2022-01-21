@@ -22,5 +22,6 @@ import { ListingCarService } from './listing-car.service';
   ],
   controllers: [ListingCarController],
   providers: [ListingCarService],
+  exports: [ListingCarService],
 })
 export class ListingCarModule {}

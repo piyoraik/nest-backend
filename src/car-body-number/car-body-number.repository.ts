@@ -1,53 +1,14 @@
 import { NotFoundException } from '@nestjs/common';
-import { AirBack } from 'src/entity/air.back.entity';
-import { AirConditioner } from 'src/entity/air.conditioner.entity';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
-import { CarModel } from 'src/entity/car.model.entity';
-import { Fuel } from 'src/entity/fuel.entity';
-import { Gear } from 'src/entity/gear.entity';
-import { Handle } from 'src/entity/handle.entity';
-import { ImportedCar } from 'src/entity/imported.car.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
-import { Maker } from 'src/entity/maker.entity';
-import { Shape } from 'src/entity/shape.entity';
-import { Shift } from 'src/entity/shift.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
 
 @EntityRepository(CarBodyNumber)
 export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
   // Createの操作
-  async createCarBodyNumber(
-    createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    importedCar: ImportedCar,
-    maker: Maker,
-    shape: Shape,
-    handle: Handle,
-    carModel: CarModel,
-    gear: Gear,
-    airConditoner: AirConditioner,
-    fuel: Fuel,
-    shift: Shift,
-    airBack: AirBack,
-    listingCar: ListingCar,
-    interiorColorId: number,
-    exteriorColorId: number,
-  ) {
+  async createCarBodyNumber(createCarBodyNumberDTO: CreateCarBodyNumberDTO) {
     const carBodyNumber = this.create({
       ...createCarBodyNumberDTO,
-      importedCar,
-      maker,
-      shape,
-      handle,
-      carModel,
-      gear,
-      airConditoner,
-      fuel,
-      shift,
-      airBack,
-      listingCar,
-      interiorColorId,
-      exteriorColorId,
     });
     await this.save(carBodyNumber);
     return carBodyNumber;
