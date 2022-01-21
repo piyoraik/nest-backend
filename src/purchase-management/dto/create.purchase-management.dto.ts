@@ -1,67 +1,91 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsEnum } from "class-validator";
-import { DeliveryMethod } from "src/enum/deliveryMethod.enum";
-import { PaymentMethod } from "src/enum/paymentMethod.enum";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsBoolean, IsDate, IsEnum, IsNumber, IsString } from 'class-validator';
+import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
+import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreatePurchaseManagementDTO {
-    @ApiProperty()
-    @IsBoolean()
-    option: boolean;
+  //仕入れ日
+  @ApiProperty()
+  @IsDate()
+  purchaseData: Date;
 
-    @ApiProperty()
-    @IsBoolean()
-    sealCertificate: boolean;
+  //仕入れ先
+  @ApiProperty()
+  @IsString()
+  supplier: string;
 
-    @ApiProperty()
-    @IsBoolean()
-    seal: boolean;
+  //仕入金額
+  @ApiProperty()
+  @IsNumber()
+  purchaseAmount: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    residentsCard: boolean;
+  //
+  @ApiProperty()
+  @IsNumber()
+  expense: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    vehicleInspection: boolean;
+  //名変期限
+  @ApiProperty()
+  @IsDate()
+  nameStrangePeriod: Date;
 
-    @ApiProperty()
-    @IsBoolean()
-    LiabilityInsurance: boolean;
+  //備考
+  @ApiProperty()
+  @IsString()
+  note: string;
 
-    @ApiProperty()
-    @IsBoolean()
-    commission: boolean;
+  //仕入原価
+  @ApiProperty()
+  @IsNumber()
+  purchasingCost: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    commissionReturn: boolean;
+  //消費税
+  @ApiProperty()
+  @IsNumber()
+  tax: number;
 
-    @ApiProperty()
-    @IsBoolean()
-    garageCertificate: boolean;
+  //売上日
+  @ApiProperty()
+  @IsDate()
+  salesDate: Date;
 
-    @ApiProperty({
-        enum: DeliveryMethod,
-      })
-    @IsEnum(DeliveryMethod)
-    deliveryMethod: DeliveryMethod;
-    
-    @ApiProperty({
-        enum: PaymentMethod,
-      })
-    @IsEnum(PaymentMethod)
-    paymentMethod: PaymentMethod;
-    
-    @ApiProperty()
-    @IsBoolean()
-    payment: boolean;
-    
-    @ApiProperty()
-    @IsBoolean()
-    delivery: boolean;
-    
-    @ApiProperty()
-    @IsBoolean()
-    cancel: boolean;
-  
+  //売上先
+  @ApiProperty()
+  @IsString()
+  salesTarget: string;
+
+  //担当
+  @ApiProperty()
+  @IsString()
+  rep: string;
+
+  //売上
+  @ApiProperty()
+  @IsNumber()
+  sales: number;
+
+  //手数料
+  @ApiProperty()
+  @IsNumber()
+  fee: number;
+
+  //売上合計
+  @ApiProperty()
+  @IsNumber()
+  salesTotal: number;
+
+  //純利益
+  @ApiProperty()
+  @IsNumber()
+  netProfit: number;
+
+  //自税預
+  @ApiProperty()
+  @IsNumber()
+  selfTax: number;
+
+  //名変更日
+  @ApiProperty()
+  @IsDate()
+  nameChangeDate: Date;
 }

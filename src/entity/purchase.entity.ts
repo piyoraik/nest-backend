@@ -7,7 +7,7 @@ import {
   DeleteDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Members } from './member.entity';
+import { Members } from './members.entity';
 import { PaymentMethod } from '../enum/paymentMethod.enum';
 import { DeliveryMethod } from '../enum/deliveryMethod.enum';
 import { AuctionListing } from './auction.listing.entity';

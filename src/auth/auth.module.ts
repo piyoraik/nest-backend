@@ -4,7 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './local.strategy';
 import { AuthController } from './auth.controller';
-import { MemberModule } from 'src/member/member.module';
+import { MembersModule } from 'src/members/members.module';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
@@ -16,7 +16,7 @@ import { JwtModule } from '@nestjs/jwt';
         expiresIn: '3600s',
       },
     }),
-    MemberModule,
+    MembersModule,
     PassportModule,
   ],
   providers: [AuthService, JwtStrategy],

@@ -19,7 +19,7 @@ export class AuctionSituationController {
     @Body() body: CreateAuctionSituationDTO,
     @GetMember() payloadMember: PayLoad,
   ) {
-    return this.auctionSituationService.create(body, payloadMember);
+    // return this.auctionSituationService.create(body, payloadMember);
   }
 
   @Get(':id')

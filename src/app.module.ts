@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuctionModule } from './auction/auction.module';
-import { MemberModule } from './member/member.module';
+import { MembersModule } from './members/members.module';
 import { AuthModule } from './auth/auth.module';
 import { ListingCarModule } from './listing-car/listing-car.module';
 import { TestingRecordModule } from './testing-record/testing-record.module';
@@ -32,13 +32,12 @@ import { ShiftModule } from './shift/shift.module';
 import { AirBackModule } from './air-back/air-back.module';
 import { ExhibitorEntryModule } from './exhibitor-entry/exhibitor-entry.module';
 import { CarBodyNumberModule } from './car-body-number/car-body-number.module';
-import { PurchaseModule } from './purchase/purchase.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     AuctionModule,
-    MemberModule,
+    MembersModule,
     AuthModule,
     ListingCarModule,
     TestingRecordModule,

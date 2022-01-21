@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 import { Auction } from './auction.entity';
-import { Members } from './member.entity';
+import { Members } from './members.entity';
 import { PurchaseManagement } from './purchase.management.entity';
 import { CarBodyNumber } from './car.body.number.entity';
 import { AuctionSituation } from './auction.situation.entity';
@@ -38,14 +38,14 @@ export class AuctionListing {
 
   //オークションID
   @ManyToOne(() => Auction, (auction) => auction.auctionListing)
-  auctionId: number;
+  auction: Auction;
 
   //仕入れ管理ID
   @ManyToOne(
     () => PurchaseManagement,
     (purchaseManagement) => purchaseManagement.auctionListing,
   )
-  purchaseManagementId: number;
+  purchaseManagement: PurchaseManagement;
 
   //落札価格
   @Column()
@@ -53,18 +53,18 @@ export class AuctionListing {
 
   //会員ID
   @ManyToOne(() => Members, (members) => members.auctionListing)
-  membersId: number;
+  member: Members;
 
   //車体ID
   @ManyToOne(
     () => CarBodyNumber,
     (carBodyNumber) => carBodyNumber.auctionListing,
   )
-  carId: number;
+  carBodyNumber: CarBodyNumber;
 
   @OneToMany(
     () => AfterSuccessfulBid,
-    (afterSuccessfulBid) => afterSuccessfulBid.auctionListingId,
+    (afterSuccessfulBid) => afterSuccessfulBid.auctionListing,
   )
   afterSuccessfulBid: AfterSuccessfulBid[];
 
