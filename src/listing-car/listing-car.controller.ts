@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UploadedFiles,
+  UseInterceptors,
+} from '@nestjs/common';
+import { ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { ListingCarService } from './listing-car.service';
 
@@ -12,7 +21,18 @@ export class ListingCarController {
   }
 
   @Post()
-  create(@Body() body: CreateListingCarDTO) {
+  @UseInterceptors()
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: 'List of cats',
+    type: CreateListingCarDTO,
+  })
+  create(
+    @Body() body: CreateListingCarDTO,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    console.log(files);
+    console.log(body);
     return this.listingCarService.create(body);
   }
 

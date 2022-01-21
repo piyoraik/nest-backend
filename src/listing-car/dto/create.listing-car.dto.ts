@@ -58,7 +58,14 @@ export class CreateListingCarDTO {
 
   //車体画像
   @ApiProperty({
-    type: [CreateCarBodyImageDTO],
+    type: 'array',
+    items: {
+      type: 'file',
+      items: {
+        type: 'string',
+        format: 'binary',
+      },
+    },
   })
   @Type(() => CreateCarBodyImageDTO)
   @ValidateNested()
