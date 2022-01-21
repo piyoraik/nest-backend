@@ -15,9 +15,9 @@ export class CarBodyNumberController {
   @ApiProperty({ required: true })
   @Post(':listingCarID')
   create(
-    @Body() createCarBodyNumber: CreateCarBodyNumberDTO,
+    @Body() createCarBodyNumberDTO: CreateCarBodyNumberDTO,
     @Param('listingCarID') id: string,
   ) {
-    // return this.carBodyNumberService.create()
+    return this.carBodyNumberService.create(createCarBodyNumberDTO, +id);
   }
 }

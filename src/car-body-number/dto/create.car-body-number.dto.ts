@@ -1,11 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNumber, IsString, ValidateNested } from 'class-validator';
 import { CreateAirBackDTO } from 'src/air-back/dto/create.air-back.dto';
 import { CreateAirConditionerDTO } from 'src/air-conditioner/dto/create.air-conditioner.dto';
 import { CreateCarModelDTO } from 'src/car-model/dto/create.car-model.dto';
+import { CreateColorDTO } from 'src/color/dto/create.color.dto';
 import { AirBack } from 'src/entity/air.back.entity';
 import { AirConditioner } from 'src/entity/air.conditioner.entity';
 import { CarModel } from 'src/entity/car.model.entity';
+import { Color } from 'src/entity/color.entity';
 import { Fuel } from 'src/entity/fuel.entity';
 import { Gear } from 'src/entity/gear.entity';
 import { Handle } from 'src/entity/handle.entity';
@@ -59,54 +62,83 @@ export class CreateCarBodyNumberDTO {
   @ApiProperty({
     type: CreateAirBackDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateAirBackDTO)
   AirBack?: AirBack;
 
   @ApiProperty({
     type: CreateShiftDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateShiftDTO)
   Shift?: Shift;
 
   @ApiProperty({
     type: CreateFuelDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateFuelDTO)
   Fuel?: Fuel;
 
   @ApiProperty({
     type: CreateImportedCarDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateImportedCarDTO)
   ImportedCar?: ImportedCar;
 
   @ApiProperty({
     type: CreateMakerDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateMakerDTO)
   Maker?: Maker;
 
   @ApiProperty({
     type: CreateShapeDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateShapeDTO)
   Shape?: Shape;
 
   @ApiProperty({
     type: CreateHandleDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateHandleDTO)
   Handle?: Handle;
 
   @ApiProperty({
     type: CreateCarModelDTO,
   })
+  @Type(() => CreateCarModelDTO)
   CarModel?: CarModel;
 
   @ApiProperty({
     type: CreateGearDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateGearDTO)
   Gear?: Gear;
 
   @ApiProperty({
     type: CreateAirConditionerDTO,
   })
+  @ValidateNested()
+  @Type(() => CreateAirConditionerDTO)
   AirConditioner?: AirConditioner;
 
-  interiorColorId: number;
-  exteriorColorId: number;
-  listingColorId: number;
+  @ApiProperty({
+    type: CreateColorDTO,
+  })
+  @Type(() => CreateColorDTO)
+  @ValidateNested()
+  interiorColor: Color;
+
+  @ApiProperty({
+    type: CreateColorDTO,
+  })
+  @Type(() => CreateColorDTO)
+  @ValidateNested()
+  exteriorColor: Color;
 }

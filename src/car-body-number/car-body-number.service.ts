@@ -9,6 +9,7 @@ import { GearService } from 'src/gear/gear.service';
 import { HandleService } from 'src/handle/handle.service';
 import { ImportedCarService } from 'src/imported-car/imported-car.service';
 import { ListingCarService } from 'src/listing-car/listing-car.service';
+import { CreateMakerDTO } from 'src/maker/dto/create.maker.dto';
 import { MakerService } from 'src/maker/maker.service';
 import { ShapeService } from 'src/shape/shape.service';
 import { ShiftService } from 'src/shift/shift.service';
@@ -37,8 +38,6 @@ export class CarBodyNumberService {
   // create
   async create(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    attrsInteriorColor: string,
-    attrsExteriorColor: string,
     attrsListingCarId: number,
   ) {
     const {
@@ -52,6 +51,8 @@ export class CarBodyNumberService {
       Handle,
       ImportedCar,
       AirConditioner,
+      interiorColor,
+      exteriorColor,
       ...CarBodyNumber
     } = createCarBodyNumberDTO;
 
@@ -67,36 +68,34 @@ export class CarBodyNumberService {
     const airConditioner = await this.airConditionerService.create(
       AirConditioner,
     );
-    const interiorColor = await this.colorService.create({
-      name: attrsInteriorColor,
-    });
-    const exteriorColor = await this.colorService.create({
-      name: attrsExteriorColor,
-    });
+
+    const attrsInteriorColor = await this.colorService.create(interiorColor);
+    const attrsExteriorColor = await this.colorService.create(exteriorColor);
     const listingCar = await this.listingCarService.findOneId(
       attrsListingCarId,
     );
 
-    const attrsCarBodyNumber: CreateCarBodyNumberDTO = {
-      ...CarBodyNumber,
-      Maker: maker,
-      CarModel: carModel,
-      Shift: shift,
-      Gear: gear,
-      Fuel: fuel,
-      AirBack: airBack,
-      Shape: shape,
-      Handle: handle,
-      ImportedCar: importedCar,
-      AirConditioner: airConditioner,
-      interiorColorId: interiorColor.id,
-      exteriorColorId: exteriorColor.id,
-      listingColorId: listingCar.id,
-    };
+    console.log(attrsInteriorColor, attrsExteriorColor);
+    // const attrsCarBodyNumber: CreateCarBodyNumberDTO = {
+    //   ...CarBodyNumber,
+    //   Maker: maker,
+    //   CarModel: carModel,
+    //   Shift: shift,
+    //   Gear: gear,
+    //   Fuel: fuel,
+    //   AirBack: airBack,
+    //   Shape: shape,
+    //   Handle: handle,
+    //   ImportedCar: importedCar,
+    //   AirConditioner: airConditioner,
+    //   interiorColor: attrsInteriorColor,
+    //   exteriorColor: attrsExteriorColor,
+    // };
 
-    return await this.carBodyNumberRepository.createCarBodyNumber(
-      attrsCarBodyNumber,
-    );
+    // return await this.carBodyNumberRepository.createCarBodyNumber(
+    //   attrsCarBodyNumber,
+    //   listingCar,
+    // );
   }
 
   // findAll
