@@ -1,33 +1,35 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn,
-    OneToMany
-} from "typeorm";
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  OneToMany,
+} from 'typeorm';
 
-import { CarBodyNumber } from "./car.body.number.entity";
+import { CarBodyNumber } from './car.body.number.entity';
 
 @Entity()
 export class AirConditioner {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-    @DeleteDateColumn()
-    deletedAt: Date;
+  @DeleteDateColumn()
+  deletedAt: Date;
 
-    @OneToMany(() => CarBodyNumber, carBodyNumber => carBodyNumber.maker)
-    carBodyNumber: CarBodyNumber[];
-
+  @OneToMany(
+    () => CarBodyNumber,
+    (carBodyNumber) => carBodyNumber.airConditoner,
+  )
+  carBodyNumber: CarBodyNumber[];
 }

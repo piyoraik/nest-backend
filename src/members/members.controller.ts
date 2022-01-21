@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Patch } from '@nestjs/common';
-import { UpdateMemberDTO } from './dto/update-member-dto';
-import { MemberService } from './member.service';
+import { UpdateMembersDTO } from './dto/update-members-dto';
+import { MembersService } from './members.service';
 
 @Controller('member')
-export class MemberController {
-  constructor(private readonly memberService: MemberService) {}
+export class MembersController {
+  constructor(private readonly memberService: MembersService) {}
 
   @Get()
   fetchAll() {
@@ -17,7 +17,7 @@ export class MemberController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: UpdateMemberDTO) {
+  update(@Param('id') id: string, @Body() body: UpdateMembersDTO) {
     return this.memberService.update(+id, body);
   }
 

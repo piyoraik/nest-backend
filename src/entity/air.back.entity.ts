@@ -27,6 +27,6 @@ export class AirBack {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.airBack)
   carBodyNumber: CarBodyNumber[];
 }

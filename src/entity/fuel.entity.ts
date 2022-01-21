@@ -27,6 +27,6 @@ export class Fuel {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.fuel)
   carBodyNumber: CarBodyNumber[];
 }

@@ -55,7 +55,7 @@ export class Members {
   @Column({ default: false })
   creditCheck: boolean;
 
-  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.membersId)
+  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.member)
   auctionListing: AuctionListing[];
 
   @OneToMany(

@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionColor } from '../enum/auctionColor.enum';
-import { Members } from './member.entity';
+import { Members } from './members.entity';
 
 @Entity()
 export class Auction {
@@ -40,7 +40,7 @@ export class Auction {
   selectionImg: string;
 
   //オークションID
-  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auctionId)
+  @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auction)
   auctionListing: AuctionListing[];
 
   @ManyToOne(() => Members, (member) => member.auctions)
