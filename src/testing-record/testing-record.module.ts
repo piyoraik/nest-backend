@@ -5,10 +5,7 @@ import { TestingRecordRepository } from './testing-record.repository';
 import { ListingCarModule } from 'src/listing-car/listing-car.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([TestingRecordRepository]),
-    ListingCarModule,
-  ],
+  imports: [TypeOrmModule.forFeature([TestingRecordRepository])],
   providers: [TestingRecordService],
   exports: [TestingRecordService],
 })

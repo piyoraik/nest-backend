@@ -5,7 +5,7 @@ import { InspectionRepository } from './inspection.repository';
 import { InspectionService } from './inspection.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([InspectionRepository]), ListingCarModule],
+  imports: [TypeOrmModule.forFeature([InspectionRepository])],
   providers: [InspectionService],
   exports: [InspectionService],
 })

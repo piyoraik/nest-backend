@@ -5,10 +5,7 @@ import { CarBodyImageRepository } from './car-body-image.repository';
 import { CarBodyImageService } from './car-body-image.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([CarBodyImageRepository]),
-    ListingCarModule,
-  ],
+  imports: [TypeOrmModule.forFeature([CarBodyImageRepository])],
   providers: [CarBodyImageService],
   exports: [CarBodyImageService],
 })

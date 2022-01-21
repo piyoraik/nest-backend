@@ -5,7 +5,7 @@ import { SalesPointRepository } from './sales-point.repository';
 import { SalesPointService } from './sales-point.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SalesPointRepository]), ListingCarModule],
+  imports: [TypeOrmModule.forFeature([SalesPointRepository])],
   providers: [SalesPointService],
   exports: [SalesPointService],
 })
