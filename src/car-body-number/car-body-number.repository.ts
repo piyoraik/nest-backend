@@ -42,7 +42,7 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
       handle,
       carModel,
       gear,
-      // airConditioner, //こいつのせい
+      airConditioner, //こいつのせい
       fuel,
       shift,
       airBack,

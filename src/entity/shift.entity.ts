@@ -27,6 +27,6 @@ export class Shift {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.shift)
   carBodyNumber: CarBodyNumber[];
 }

@@ -9,9 +9,11 @@ export class PurchaseManagementRepository extends Repository<PurchaseManagement>
   // Createの操作
   async createPurchaseManagement(
     createPurchaseManagementDTO: CreatePurchaseManagementDTO,
+    auctionListing: AuctionListing,
   ) {
     const purchaseManagement = this.create({
       ...createPurchaseManagementDTO,
+      auctionListing,
     });
     await this.save(purchaseManagement);
     return purchaseManagement;

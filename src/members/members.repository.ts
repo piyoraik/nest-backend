@@ -1,14 +1,26 @@
 import { NotFoundException } from '@nestjs/common';
+import { Auction } from 'src/entity/auction.entity';
+import { AuctionListing } from 'src/entity/auction.listing.entity';
+import { AuctionSituation } from 'src/entity/auction.situation.entity';
 import { Members } from 'src/entity/members.entity';
+import { Purchase } from 'src/entity/purchase.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateMembersDTO } from './dto/create-members-dto';
 
 @EntityRepository(Members)
 export class MembersRepository extends Repository<Members> {
   // Createの操作
-  async createMembers(createMembersDTO: CreateMembersDTO) {
+  async createMembers(
+    createMembersDTO: CreateMembersDTO,
+    auctionSituation: AuctionSituation,
+    auction: Auction,
+    purchase: Purchase,
+  ) {
     const members = this.create({
       ...createMembersDTO,
+      auctionSituation,
+      auction,
+      purchase,
     });
     await this.save(members);
     return members;

@@ -27,6 +27,15 @@ export class Color {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
-  carBodyNumber: CarBodyNumber[];
+  @OneToMany(
+    () => CarBodyNumber,
+    (carBodyNumber) => carBodyNumber.exteriorColor,
+  )
+  carBodyNumberExterior: CarBodyNumber[];
+
+  @OneToMany(
+    () => CarBodyNumber,
+    (carBodyNumber) => carBodyNumber.interiorColor,
+  )
+  carBodyNumberInterior: CarBodyNumber[];
 }

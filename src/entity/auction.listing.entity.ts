@@ -41,11 +41,11 @@ export class AuctionListing {
   auction: Auction;
 
   //仕入れ管理ID
-  @ManyToOne(
+  @OneToMany(
     () => PurchaseManagement,
     (purchaseManagement) => purchaseManagement.auctionListing,
   )
-  purchaseManagement: PurchaseManagement;
+  purchaseManagement: PurchaseManagement[];
 
   //落札価格
   @Column()

@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 
@@ -84,11 +85,11 @@ export class PurchaseManagement {
   @Column()
   nameChangeDate: Date;
 
-  @OneToMany(
+  @ManyToOne(
     () => AuctionListing,
     (auctionListing) => auctionListing.purchaseManagement,
   )
-  auctionListing: AuctionListing[];
+  auctionListing: AuctionListing;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -1,4 +1,5 @@
 import { NotFoundException } from '@nestjs/common';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { Fuel } from 'src/entity/fuel.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateFuelDTO } from './dto/create.fuel.dto';

@@ -15,6 +15,7 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
   ) {
     const afterSuccessfulBid = this.create({
       ...createAfterSuccessfulBidDTO,
+      deliveryMethod,
       auctionListing,
     });
     await this.save(afterSuccessfulBid);

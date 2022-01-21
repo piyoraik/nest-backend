@@ -27,6 +27,6 @@ export class Shape {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.shape)
   carBodyNumber: CarBodyNumber[];
 }

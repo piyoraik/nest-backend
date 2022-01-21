@@ -1,5 +1,4 @@
 import { NotFoundException } from '@nestjs/common';
-import { AfterSuccessfulBid } from 'src/entity/after.successful.bid.entity';
 import { Auction } from 'src/entity/auction.entity';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
@@ -12,7 +11,6 @@ export class AuctionListingRepository extends Repository<AuctionListing> {
   // Createの操作
   async createAuctionListing(
     createAuctionListingDTO: CreateAuctionListingDTO,
-    afterSuccessfulBid: AfterSuccessfulBid,
     member: Members,
     auction: Auction,
     carBodyNumber: CarBodyNumber,

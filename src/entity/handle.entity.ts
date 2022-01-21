@@ -27,6 +27,6 @@ export class Handle {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)
+  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.handle)
   carBodyNumber: CarBodyNumber[];
 }
