@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   UseGuards,
@@ -14,6 +16,7 @@ import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AuctionListingService } from './auction-listing.service';
 import { CreateAuctionListingDTO } from './dto/create.auction-listing.dto';
+import { UpdateAuctionListingDTO } from './dto/update.auction-listing.dto';
 
 @Controller('auction-listing')
 export class AuctionListingController {
@@ -45,5 +48,18 @@ export class AuctionListingController {
   @Get('search')
   search(@Param() attrs: Partial<AuctionListing>) {
     return this.auctionListingService.findWhere(attrs);
+  }
+
+  @Patch('auctionId')
+  update(
+    @Param('auctionId') id: string,
+    @Body() body: UpdateAuctionListingDTO,
+  ) {
+    return this.auctionListingService.update(+id, body);
+  }
+
+  @Delete('auctionId')
+  delete(@Param('auctionId') id: string) {
+    return this.auctionListingService.softDelete(+id);
   }
 }
