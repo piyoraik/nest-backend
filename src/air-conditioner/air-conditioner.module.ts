@@ -6,6 +6,6 @@ import { AirConditionerService } from './air-conditioner.service';
 @Module({
   imports: [TypeOrmModule.forFeature([AirConditionerRepository])],
   providers: [AirConditionerService],
-  exports: [AirConditionerService]
+  exports: [AirConditionerService],
 })
 export class AirConditionerModule {}

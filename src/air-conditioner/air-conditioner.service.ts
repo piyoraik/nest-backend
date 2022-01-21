@@ -3,7 +3,5 @@ import { AirConditionerRepository } from './air-conditioner.repository';
 
 @Injectable()
 export class AirConditionerService {
-    constructor(
-        private airConditionerRepository: AirConditionerRepository,
-      ) {}
+  constructor(private airConditionerRepository: AirConditionerRepository) {}
 }
