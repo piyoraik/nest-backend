@@ -1,20 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsBoolean,
-  IsDate,
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
-import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
-import { PaymentMethod } from 'src/enum/paymentMethod.enum';
+import { IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdatePurchaseManagementDTO {
   //仕入れ日
   @ApiProperty()
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   purchaseData: Date;
 
   //仕入れ先
@@ -38,7 +29,7 @@ export class UpdatePurchaseManagementDTO {
   //名変期限
   @ApiProperty()
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   nameStrangePeriod: Date;
 
   //備考
@@ -62,7 +53,7 @@ export class UpdatePurchaseManagementDTO {
   //売上日
   @ApiProperty()
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   salesDate: Date;
 
   //売上先
@@ -110,6 +101,6 @@ export class UpdatePurchaseManagementDTO {
   //名変更日
   @ApiProperty()
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   nameChangeDate: Date;
 }
