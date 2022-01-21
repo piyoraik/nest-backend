@@ -44,10 +44,16 @@ export class CarBodyNumber {
   @ManyToOne(() => Fuel, (fuel) => fuel.carBodyNumber)
   fuel: Fuel;
 
-  @ManyToOne(() => Color, (exteriorColor) => exteriorColor.carBodyNumber)
+  @ManyToOne(
+    () => Color,
+    (exteriorColor) => exteriorColor.carBodyNumberExterior,
+  )
   exteriorColor: Color;
 
-  @ManyToOne(() => Color, (interiorColor) => interiorColor.carBodyNumber)
+  @ManyToOne(
+    () => Color,
+    (interiorColor) => interiorColor.carBodyNumberInterior,
+  )
   interiorColor: Color;
 
   @ManyToOne(() => Shift, (shift) => shift.carBodyNumber)
