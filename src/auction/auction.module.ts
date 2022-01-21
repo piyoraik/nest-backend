@@ -9,5 +9,6 @@ import { MembersModule } from 'src/members/members.module';
   imports: [TypeOrmModule.forFeature([AuctionRepository]), MembersModule],
   providers: [AuctionService],
   controllers: [AuctionController],
+  exports: [AuctionService],
 })
 export class AuctionModule {}

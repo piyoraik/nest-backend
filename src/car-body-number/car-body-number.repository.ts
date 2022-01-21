@@ -3,7 +3,6 @@ import { AirBack } from 'src/entity/air.back.entity';
 import { AirConditioner } from 'src/entity/air.conditioner.entity';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { CarModel } from 'src/entity/car.model.entity';
-import { Color } from 'src/entity/color.entity';
 import { Fuel } from 'src/entity/fuel.entity';
 import { Gear } from 'src/entity/gear.entity';
 import { Handle } from 'src/entity/handle.entity';

@@ -42,7 +42,7 @@ export class AuctionController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.auctionService.findOne(+id);
+    return this.auctionService.findOne({ id: +id });
   }
 
   @Patch(':id')
