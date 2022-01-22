@@ -7,12 +7,13 @@ import {
   Patch,
   Query,
 } from '@nestjs/common';
-import { ApiQuery, PartialType } from '@nestjs/swagger';
+import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { Members } from 'src/entity/members.entity';
 import { CreateMembersDTO } from './dto/create-members-dto';
 import { UpdateMembersDTO } from './dto/update-members-dto';
 import { MembersService } from './members.service';
 
+@ApiTags('メンバー')
 @Controller('member')
 export class MembersController {
   constructor(private readonly memberService: MembersService) {}

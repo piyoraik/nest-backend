@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth, ApiQuery, PartialType } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { GetMember } from 'src/auth/decorator/member.decorator';
 import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
 import { AuctionSituation } from 'src/entity/auction.situation.entity';
@@ -18,6 +18,7 @@ import { AuctionSituationService } from './auction-situation.service';
 import { CreateAuctionSituationDTO } from './dto/create.auction-situation.dto';
 import { UpdateAuctionSituationDTO } from './dto/update.auction-situation.dto';
 
+@ApiTags('オークション状況')
 @Controller('auction-situation')
 export class AuctionSituationController {
   constructor(

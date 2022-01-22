@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateImportedCarDTO } from './dto/create.imported-car.dto';
 import { ImportedCarService } from './imported-car.service';
 
+@ApiTags('輸入車')
 @Controller('imported-car')
 export class ImportedCarController {
   constructor(private readonly importedCarService: ImportedCarService) {}

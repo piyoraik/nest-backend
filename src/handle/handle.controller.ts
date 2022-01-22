@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateHandleDTO } from './dto/create.handle.dto';
 import { HandleService } from './handle.service';
 
+@ApiTags('ハンドル')
 @Controller('handle')
 export class HandleController {
   constructor(private readonly handleService: HandleService) {}

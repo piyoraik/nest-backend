@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateShapeDTO } from './dto/create.shape.dto';
 import { ShapeService } from './shape.service';
 
+@ApiTags('形状')
 @Controller('shape')
 export class ShapeController {
   constructor(private readonly shapeService: ShapeService) {}
