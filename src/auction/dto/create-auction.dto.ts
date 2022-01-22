@@ -11,6 +11,7 @@ import { AuctionColor } from 'src/enum/auctionColor.enum';
 export class CreateAuctionDto {
   @ApiProperty({
     description: 'オークション名',
+    default: ' オークション名',
   })
   @IsString()
   @IsNotEmpty()
@@ -26,6 +27,7 @@ export class CreateAuctionDto {
 
   @ApiProperty({
     description: 'オークションのサブタイトル',
+    default: 'オークションのサブタイトル',
   })
   @IsString()
   subTitle: string;
@@ -39,6 +41,7 @@ export class CreateAuctionDto {
 
   @ApiProperty({
     description: 'オークションで使用する画像',
+    default: 'hoge.png',
   })
   @IsOptional()
   @IsString()
