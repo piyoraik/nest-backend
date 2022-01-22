@@ -1,6 +1,5 @@
 import { NotFoundException } from '@nestjs/common';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import {
   CreateCarBodyNumberDTO,
