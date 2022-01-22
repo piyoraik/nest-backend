@@ -30,19 +30,17 @@ export class CarBodyNumberService {
     private readonly airBackService: AirBackService,
     private readonly shapeService: ShapeService,
     private readonly handleService: HandleService,
-    private readonly importedCarService: ImportedCarService,
+    // private readonly importedCarService: ImportedCarService,
     private readonly airConditionerService: AirConditionerService,
-    private readonly colorService: ColorService,
+    // private readonly colorService: ColorService,
   ) {}
 
   // create
   async create(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    attrsListingCarId: number,
+    listingCarId: number,
   ) {
-    const listingCar = await this.listingCarService.findOneId(
-      attrsListingCarId,
-    );
+    const listingCar = await this.listingCarService.findOneId(listingCarId);
 
     return await this.carBodyNumberRepository.createCarBodyNumber(
       createCarBodyNumberDTO,
