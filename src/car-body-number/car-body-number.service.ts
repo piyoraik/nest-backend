@@ -56,45 +56,45 @@ export class CarBodyNumberService {
       ...CarBodyNumber
     } = createCarBodyNumberDTO;
 
-    // const maker = await this.makerService.create(Maker);
+    const maker = await this.makerService.create(Maker);
     const carModel = await this.carModelService.create(CarModel);
-    // const shift = await this.shiftService.create(Shift);
-    // const gear = await this.gearService.create(Gear);
-    // const fuel = await this.fuelService.create(Fuel);
-    // const airBack = await this.airBackService.create(AirBack);
-    // const shape = await this.shapeService.create(Shape);
-    // const handle = await this.handleService.create(Handle);
-    // const importedCar = await this.importedCarService.create(ImportedCar);
-    // const airConditioner = await this.airConditionerService.create(
-    //   AirConditioner,
-    // );
+    const shift = await this.shiftService.create(Shift);
+    const gear = await this.gearService.create(Gear);
+    const fuel = await this.fuelService.create(Fuel);
+    const airBack = await this.airBackService.create(AirBack);
+    const shape = await this.shapeService.create(Shape);
+    const handle = await this.handleService.create(Handle);
+    const importedCar = await this.importedCarService.create(ImportedCar);
+    const airConditioner = await this.airConditionerService.create(
+      AirConditioner,
+    );
 
-    // const attrsInteriorColor = await this.colorService.create(interiorColor);
-    // const attrsExteriorColor = await this.colorService.create(exteriorColor);
-    // const listingCar = await this.listingCarService.findOneId(
-    //   attrsListingCarId,
-    // );
+    const attrsInteriorColor = await this.colorService.create(interiorColor);
+    const attrsExteriorColor = await this.colorService.create(exteriorColor);
+    const listingCar = await this.listingCarService.findOneId(
+      attrsListingCarId,
+    );
 
-    // const attrsCarBodyNumber: CreateCarBodyNumberDTO = {
-    //   ...CarBodyNumber,
-    //   Maker: maker,
-    //   CarModel: carModel,
-    //   Shift: shift,
-    //   Gear: gear,
-    //   Fuel: fuel,
-    //   AirBack: airBack,
-    //   Shape: shape,
-    //   Handle: handle,
-    //   ImportedCar: importedCar,
-    //   AirConditioner: airConditioner,
-    //   interiorColor: attrsInteriorColor,
-    //   exteriorColor: attrsExteriorColor,
-    // };
+    const attrsCarBodyNumber: CreateCarBodyNumberDTO = {
+      ...CarBodyNumber,
+      Maker: maker,
+      CarModel: carModel,
+      Shift: shift,
+      Gear: gear,
+      Fuel: fuel,
+      AirBack: airBack,
+      Shape: shape,
+      Handle: handle,
+      ImportedCar: importedCar,
+      AirConditioner: airConditioner,
+      interiorColor: attrsInteriorColor,
+      exteriorColor: attrsExteriorColor,
+    };
 
-    // return await this.carBodyNumberRepository.createCarBodyNumber(
-    //   attrsCarBodyNumber,
-    //   listingCar,
-    // );
+    return await this.carBodyNumberRepository.createCarBodyNumber(
+      attrsCarBodyNumber,
+      listingCar,
+    );
   }
 
   // findAll

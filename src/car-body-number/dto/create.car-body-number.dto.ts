@@ -111,6 +111,7 @@ export class CreateCarBodyNumberDTO {
   @ApiProperty({
     type: CreateCarModelDTO,
   })
+  @ValidateNested()
   @Type(() => CreateCarModelDTO)
   CarModel?: CarModel;
 
