@@ -3,7 +3,5 @@ import { HandleRepository } from './handle.repository';
 
 @Injectable()
 export class HandleService {
-    constructor(
-        private handleRepository: HandleRepository,
-      ) {}
+  constructor(private handleRepository: HandleRepository) {}
 }

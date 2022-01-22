@@ -3,7 +3,5 @@ import { ShapeRepository } from './shape.repository';
 
 @Injectable()
 export class ShapeService {
-    constructor(
-        private shapeRepository: ShapeRepository,
-      ) {}
+  constructor(private shapeRepository: ShapeRepository) {}
 }
