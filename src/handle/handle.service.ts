@@ -7,7 +7,6 @@ import { HandleRepository } from './handle.repository';
 // handle.service.ts
 export class HandleService {
   constructor(private handleRepository: HandleRepository) {}
-
   // create
   async create(createHandleDTO: CreateHandleDTO) {
     return await this.handleRepository.createHandle(createHandleDTO);
