@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { ApiProperty, ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
+import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { UpdateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/update-carbodyevaluation.dto';
-import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { CarBodyNumberService } from './car-body-number.service';
 import {
   CreateCarBodyNumberDTO,

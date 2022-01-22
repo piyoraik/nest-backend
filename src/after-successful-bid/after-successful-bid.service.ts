@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { AuctionListingService } from 'src/auction-listing/auction-listing.service';
 import { AfterSuccessfulBid } from 'src/entity/after.successful.bid.entity';
-import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { AfterSuccessfulBidRepository } from './after-successful-bid.repository';
 import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.dto';
 
@@ -8,14 +8,18 @@ import { CreateAfterSuccessfulBidDTO } from './dto/create.after-successful-bid.d
 // afterSuccessfulBid.service.ts
 export class AfterSuccessfulBidService {
   constructor(
-    private afterSuccessfulBidRepository: AfterSuccessfulBidRepository,
+    private readonly afterSuccessfulBidRepository: AfterSuccessfulBidRepository,
+    private readonly auctionListingService: AuctionListingService,
   ) {}
 
   // create
   async create(
     createAfterSuccessfulBidDTO: CreateAfterSuccessfulBidDTO,
-    auctionListing: AuctionListing,
+    auctionListingId: number,
   ) {
+    const auctionListing = await this.auctionListingService.findOneID(
+      auctionListingId,
+    );
     return await this.afterSuccessfulBidRepository.createAfterSuccessfulBid(
       createAfterSuccessfulBidDTO,
       auctionListing,
@@ -24,7 +28,9 @@ export class AfterSuccessfulBidService {
 
   // findAll
   async findAll() {
-    return await this.afterSuccessfulBidRepository.find();
+    return await this.afterSuccessfulBidRepository.find({
+      relations: ['auctionListing'],
+    });
   }
 
   // findOneID
