@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateShiftDTO } from './dto/create.shift.dto';
 import { ShiftService } from './shift.service';
 
+@ApiTags('シフト')
 @Controller('shift')
 export class ShiftController {
   constructor(private readonly shiftService: ShiftService) {}

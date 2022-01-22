@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateMakerDTO } from './dto/create.maker.dto';
 import { MakerService } from './maker.service';
 
+@ApiTags('メーカー')
 @Controller('maker')
 export class MakerController {
   constructor(private readonly makerService: MakerService) {}

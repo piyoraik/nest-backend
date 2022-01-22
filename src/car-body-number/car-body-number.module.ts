@@ -14,6 +14,7 @@ import { ShapeModule } from 'src/shape/shape.module';
 import { ShiftModule } from 'src/shift/shift.module';
 import { CarBodyNumberRepository } from './car-body-number.repository';
 import { CarBodyNumberService } from './car-body-number.service';
+import { CarBodyNumberController } from './car-body-number.controller';
 
 @Module({
   imports: [
@@ -33,5 +34,6 @@ import { CarBodyNumberService } from './car-body-number.service';
   ],
   providers: [CarBodyNumberService],
   exports: [CarBodyNumberService],
+  controllers: [CarBodyNumberController],
 })
 export class CarBodyNumberModule {}

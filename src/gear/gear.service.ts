@@ -7,7 +7,6 @@ import { GearRepository } from './gear.repository';
 // gear.service.ts
 export class GearService {
   constructor(private gearRepository: GearRepository) {}
-
   // create
   async create(createGearDTO: CreateGearDTO) {
     return await this.gearRepository.createGear(createGearDTO);

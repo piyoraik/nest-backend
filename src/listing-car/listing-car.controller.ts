@@ -8,12 +8,13 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { ApiQuery, PartialType } from '@nestjs/swagger';
+import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarService } from './listing-car.service';
 
+@ApiTags('車体')
 @Controller('listing-car')
 export class ListingCarController {
   constructor(private readonly listingCarService: ListingCarService) {}

@@ -1,57 +1,44 @@
 import { Injectable } from '@nestjs/common';
-import { AirBack } from 'src/entity/air.back.entity';
-import { AirConditioner } from 'src/entity/air.conditioner.entity';
+import { AirBackService } from 'src/air-back/air-back.service';
+import { AirConditionerService } from 'src/air-conditioner/air-conditioner.service';
+import { CarModelService } from 'src/car-model/car-model.service';
+import { ColorService } from 'src/color/color.service';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
-import { CarModel } from 'src/entity/car.model.entity';
-import { Color } from 'src/entity/color.entity';
-import { Fuel } from 'src/entity/fuel.entity';
-import { Gear } from 'src/entity/gear.entity';
-import { Handle } from 'src/entity/handle.entity';
-import { ImportedCar } from 'src/entity/imported.car.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
-import { Maker } from 'src/entity/maker.entity';
-import { Shape } from 'src/entity/shape.entity';
-import { Shift } from 'src/entity/shift.entity';
+import { FuelService } from 'src/fuel/fuel.service';
+import { GearService } from 'src/gear/gear.service';
+import { HandleService } from 'src/handle/handle.service';
+import { ImportedCarService } from 'src/imported-car/imported-car.service';
+import { ListingCarService } from 'src/listing-car/listing-car.service';
+import { CreateMakerDTO } from 'src/maker/dto/create.maker.dto';
+import { MakerService } from 'src/maker/maker.service';
+import { ShapeService } from 'src/shape/shape.service';
+import { ShiftService } from 'src/shift/shift.service';
 import { CarBodyNumberRepository } from './car-body-number.repository';
 import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
 
 @Injectable()
 // carBodyNumber.service.ts
 export class CarBodyNumberService {
-  constructor(private carBodyNumberRepository: CarBodyNumberRepository) {}
+  constructor(
+    private readonly carBodyNumberRepository: CarBodyNumberRepository,
+    private readonly listingCarService: ListingCarService,
+    private readonly makerService: MakerService,
+    private readonly carModelService: CarModelService,
+    private readonly shiftService: ShiftService,
+    private readonly gearService: GearService,
+    private readonly fuelService: FuelService,
+    private readonly airBackService: AirBackService,
+    private readonly shapeService: ShapeService,
+    private readonly handleService: HandleService,
+    private readonly importedCarService: ImportedCarService,
+    private readonly airConditionerService: AirConditionerService,
+    private readonly colorService: ColorService,
+  ) {}
 
   // create
-  async create(
-    createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    listingCar: ListingCar,
-    airBack: AirBack,
-    shift: Shift,
-    fuel: Fuel,
-    importedCar: ImportedCar,
-    maker: Maker,
-    shape: Shape,
-    handle: Handle,
-    carModel: CarModel,
-    gear: Gear,
-    airConditioner: AirConditioner,
-    interiorColorId: number,
-    exteriorColorId: number,
-  ) {
+  async create(createCarBodyNumberDTO: CreateCarBodyNumberDTO) {
     return await this.carBodyNumberRepository.createCarBodyNumber(
       createCarBodyNumberDTO,
-      importedCar,
-      maker,
-      shape,
-      handle,
-      carModel,
-      gear,
-      airConditioner,
-      fuel,
-      shift,
-      airBack,
-      listingCar,
-      interiorColorId,
-      exteriorColorId,
     );
   }
 

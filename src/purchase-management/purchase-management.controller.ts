@@ -8,12 +8,13 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { ApiQuery, PartialType } from '@nestjs/swagger';
+import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { PurchaseManagement } from 'src/entity/purchase.management.entity';
 import { CreatePurchaseManagementDTO } from './dto/create.purchase-management.dto';
 import { UpdatePurchaseManagementDTO } from './dto/update.purchase-management.dto';
 import { PurchaseManagementService } from './purchase-management.service';
 
+@ApiTags('仕入れ管理')
 @Controller('purchase-management')
 export class PurchaseManagementController {
   constructor(

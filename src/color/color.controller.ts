@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ColorService } from './color.service';
 import { CreateColorDTO } from './dto/create.color.dto';
 
+@ApiTags('色')
 @Controller('color')
 export class ColorController {
   constructor(private readonly colorService: ColorService) {}

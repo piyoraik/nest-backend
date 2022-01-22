@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { AirBackService } from './air-back.service';
 import { CreateAirBackDTO } from './dto/create.air-back.dto';
 
+@ApiTags('エアバック')
 @Controller('air-back')
 export class AirBackController {
   constructor(private readonly airBackService: AirBackService) {}

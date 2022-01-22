@@ -1,9 +1,11 @@
 import { Controller, Post, Body } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateMembersDTO } from 'src/members/dto/create-members-dto';
 import { MembersService } from 'src/members/members.service';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/member-login-dto';
 
+@ApiTags('認証')
 @Controller('auth')
 export class AuthController {
   constructor(
