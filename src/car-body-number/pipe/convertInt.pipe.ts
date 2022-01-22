@@ -1,13 +1,10 @@
 import { Injectable, PipeTransform } from '@nestjs/common';
-import {
-  CreateCarBodyNumberForeignKeyDTO,
-  QueryCarBodyNumberForeignKey,
-} from '../dto/create.car-body-number.dto';
+import { CreateCarBodyNumberForeignKeyDTO } from '../dto/create.car-body-number.dto';
 
 @Injectable()
 export class ConvertIntPipe implements PipeTransform {
   transform(
-    stringForeignKeyDTO: QueryCarBodyNumberForeignKey,
+    stringForeignKeyDTO: CreateCarBodyNumberForeignKeyDTO,
   ): CreateCarBodyNumberForeignKeyDTO {
     const dto = {};
     Object.entries(stringForeignKeyDTO).forEach(

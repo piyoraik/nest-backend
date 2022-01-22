@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { UpdateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/update-carbodyevaluation.dto';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { CarBodyNumberRepository } from './car-body-number.repository';
 import {
   CreateCarBodyNumberDTO,
   CreateCarBodyNumberForeignKeyDTO,
 } from './dto/create.car-body-number.dto';
+import { UpdateCarBodyNumberDTO } from './dto/update.car-body-number.dto';
 
 @Injectable()
 // carBodyNumber.service.ts
@@ -58,7 +60,9 @@ export class CarBodyNumberService {
   }
 
   // findWhere
-  async findWhere(attrs: Partial<CarBodyNumber>) {
+  async findWhere(
+    attrs: Partial<UpdateCarBodyNumberDTO | UpdateCarBodyEvaluationDTO>,
+  ) {
     return await this.carBodyNumberRepository.findWhereLikeCarBodyNumber(attrs);
   }
 

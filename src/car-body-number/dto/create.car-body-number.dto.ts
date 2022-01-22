@@ -84,18 +84,3 @@ export class CreateCarBodyNumberForeignKeyDTO {
   @IsString()
   airBackId: number;
 }
-
-export class QueryCarBodyNumberForeignKey {
-  makerId: string;
-  carModelId: string;
-  shapeId: string;
-  fuelId: string;
-  exteriorColorId: string;
-  interiorColorId: string;
-  shiftId: string;
-  gearId: string;
-  airConditonerId: string;
-  importedCarId: string;
-  handleId: string;
-  airBackId: string;
-}

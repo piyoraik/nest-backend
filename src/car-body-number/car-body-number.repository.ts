@@ -1,10 +1,12 @@
 import { NotFoundException } from '@nestjs/common';
+import { UpdateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/update-carbodyevaluation.dto';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import {
   CreateCarBodyNumberDTO,
   CreateCarBodyNumberForeignKeyDTO,
 } from './dto/create.car-body-number.dto';
+import { UpdateCarBodyNumberDTO } from './dto/update.car-body-number.dto';
 
 @EntityRepository(CarBodyNumber)
 export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
@@ -50,7 +52,9 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
   }
 
   // findWhere
-  async findWhereLikeCarBodyNumber(attrs: Partial<CarBodyNumber>) {
+  async findWhereLikeCarBodyNumber(
+    attrs: Partial<UpdateCarBodyNumberDTO | UpdateCarBodyEvaluationDTO>,
+  ) {
     const parseAttrs: Partial<CarBodyNumber> = {};
     for (const key in attrs) {
       parseAttrs[key] = ILike('%' + attrs[key] + '%');
