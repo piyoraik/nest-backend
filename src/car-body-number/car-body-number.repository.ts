@@ -7,14 +7,10 @@ import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
 @EntityRepository(CarBodyNumber)
 export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
   // Createの操作
-  async createCarBodyNumber(
-    createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    listingCar: ListingCar,
-  ) {
+  async createCarBodyNumber(createCarBodyNumberDTO: CreateCarBodyNumberDTO) {
     console.log(createCarBodyNumberDTO);
     const carBodyNumber = this.create({
       ...createCarBodyNumberDTO,
-      listingCar,
     });
     await this.save(carBodyNumber);
     return carBodyNumber;

@@ -18,6 +18,6 @@ export class CarBodyNumberController {
     @Body() createCarBodyNumberDTO: CreateCarBodyNumberDTO,
     @Param('listingCarID') id: string,
   ) {
-    return this.carBodyNumberService.create(createCarBodyNumberDTO, +id);
+    return this.carBodyNumberService.create(createCarBodyNumberDTO);
   }
 }
