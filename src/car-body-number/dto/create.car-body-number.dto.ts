@@ -33,56 +33,54 @@ export class CreateCarBodyNumberDTO {
   @ApiProperty()
   @IsNumber()
   crewNumber: number;
+}
 
+export class CreateCarBodyNumberForeignKeyDTO {
   @ApiProperty()
-  @IsNumber()
-  listingCarId: number;
-
-  @ApiProperty()
-  @IsNumber()
+  @IsString()
   makerId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   carModelId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   shapeId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   fuelId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   exteriorColorId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   interiorColorId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   shiftId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   gearId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   airConditonerId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   importedCarId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   handleId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   airBackId: number;
 }

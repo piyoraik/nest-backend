@@ -41,69 +41,66 @@ export class UpdateCarBodyNumberDTO {
   @IsOptional()
   @IsNumber()
   crewNumber: number;
+}
 
+export class UpdateCarBodyNumberForeignKeyDTO {
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
-  listingCarId: number;
-
-  @ApiProperty()
-  @IsOptional()
-  @IsNumber()
+  @IsString()
   makerId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   carModelId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   shapeId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   fuelId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   exteriorColorId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   interiorColorId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   shiftId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   gearId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   airConditonerId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   importedCarId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   handleId: number;
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
+  @IsString()
   airBackId: number;
 }
