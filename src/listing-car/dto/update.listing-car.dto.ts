@@ -15,6 +15,7 @@ import { CarBodyEvaluation } from 'src/entity/car.body.evaluation.entity';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
 import { Inspection } from 'src/entity/inspection.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
+import { SuggestedListing } from 'src/entity/suggested.listing.entity';
 import { TestingRecord } from 'src/entity/testing.record.entity';
 import { CarHistory } from 'src/enum/car.history.enum';
 import { Cigarette } from 'src/enum/cigarette.enum';
@@ -23,6 +24,7 @@ import { MeterExchangeHistory } from 'src/enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from 'src/enum/scratchEvaluation.enum';
 import { CreateInspectionDTO } from 'src/inspection/dto/create-inspection.dto';
 import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
+import { CreateSuggestedListingDTO } from 'src/suggested-listing/dto/create.suggested-listing.dto';
 import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
 
 export class UpdateListingCarDTO {
@@ -126,6 +128,13 @@ export class UpdateListingCarDTO {
   @IsOptional()
   @IsNumber()
   suggestedListing: number;
+
+  @ApiProperty({
+    type: CreateSuggestedListingDTO,
+  })
+  @Type(() => SuggestedListing)
+  @ValidateNested()
+  SuggestedListing?: SuggestedListing;
 
   // 付加情報
   @ApiProperty({
