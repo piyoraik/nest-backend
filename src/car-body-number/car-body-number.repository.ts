@@ -11,6 +11,7 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
     listingCar: ListingCar,
   ) {
+    console.log(createCarBodyNumberDTO);
     const carBodyNumber = this.create({
       ...createCarBodyNumberDTO,
       listingCar,
