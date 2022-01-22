@@ -3,10 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CarBodyNumberModule } from 'src/car-body-number/car-body-number.module';
 import { MakerRepository } from './maker.repository';
 import { MakerService } from './maker.service';
+import { MakerController } from './maker.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MakerRepository])],
   providers: [MakerService],
   exports: [MakerService],
+  controllers: [MakerController],
 })
 export class MakerModule {}
