@@ -1,14 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateHandleDTO } from './dto/create.handle.dto';
 import { HandleService } from './handle.service';
 
 @Controller('handle')
 export class HandleController {
-  constructor(private readonly handleService: HandleService){}
+  constructor(private readonly handleService: HandleService) {}
 
   @Get()
   findAll() {
-    return this.handleService.findAll()
+    return this.handleService.findAll();
   }
 
-  // @
+  @Post()
+  create(@Body() body: CreateHandleDTO) {
+    return this.handleService.create(body);
+  }
+
+  @Get(':handleId')
+  findOne(@Param('handleId') id: string) {
+    return this.handleService.findOneID(+id);
+  }
 }
