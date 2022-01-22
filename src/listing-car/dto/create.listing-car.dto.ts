@@ -106,7 +106,7 @@ export class CreateListingCarDTO {
   //希望出品１
   @ApiProperty()
   @IsNumber()
-  suggestedListing: number;
+  SuggestedListingOne: number;
 
   @ApiProperty({
     type: CreateSuggestedListingDTO,

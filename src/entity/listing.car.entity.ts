@@ -80,7 +80,7 @@ export class ListingCar {
 
   //希望出品１
   @Column()
-  suggestedListing: number;
+  SuggestedListingOne: number;
 
   @CreateDateColumn()
   createdAt: Date;

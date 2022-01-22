@@ -125,9 +125,8 @@ export class UpdateListingCarDTO {
   //希望出品１
   @IsOptional()
   @ApiProperty()
-  @IsOptional()
   @IsNumber()
-  suggestedListing: number;
+  SuggestedListingOne: number;
 
   @ApiProperty({
     type: CreateSuggestedListingDTO,
