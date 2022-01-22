@@ -14,7 +14,7 @@ import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarService } from './listing-car.service';
 
-@ApiTags('車体')
+@ApiTags('出品車')
 @Controller('listing-car')
 export class ListingCarController {
   constructor(private readonly listingCarService: ListingCarService) {}
