@@ -2,7 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateSuggestedListingDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: '乗用車',
+    default: '乗用車',
+  })
   @IsString()
   car: string; //乗用車
 
