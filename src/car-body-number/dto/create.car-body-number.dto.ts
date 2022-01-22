@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import { IsNumber, IsString } from 'class-validator';
 
 export class CreateCarBodyNumberDTO {
@@ -33,56 +34,69 @@ export class CreateCarBodyNumberDTO {
   @ApiProperty()
   @IsNumber()
   crewNumber: number;
+}
 
+export class CreateCarBodyNumberForeignKeyDTO {
   @ApiProperty()
-  @IsNumber()
-  listingCarId: number;
-
-  @ApiProperty()
-  @IsNumber()
+  @IsString()
   makerId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   carModelId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   shapeId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   fuelId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   exteriorColorId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   interiorColorId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   shiftId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   gearId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   airConditonerId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   importedCarId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   handleId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   airBackId: number;
+}
+
+export class QueryCarBodyNumberForeignKey {
+  makerId: string;
+  carModelId: string;
+  shapeId: string;
+  fuelId: string;
+  exteriorColorId: string;
+  interiorColorId: string;
+  shiftId: string;
+  gearId: string;
+  airConditonerId: string;
+  importedCarId: string;
+  handleId: string;
+  airBackId: string;
 }

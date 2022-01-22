@@ -2,15 +2,23 @@ import { NotFoundException } from '@nestjs/common';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
-import { CreateCarBodyNumberDTO } from './dto/create.car-body-number.dto';
+import {
+  CreateCarBodyNumberDTO,
+  CreateCarBodyNumberForeignKeyDTO,
+} from './dto/create.car-body-number.dto';
 
 @EntityRepository(CarBodyNumber)
 export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
   // Createの操作
-  async createCarBodyNumber(createCarBodyNumberDTO: CreateCarBodyNumberDTO) {
-    console.log(createCarBodyNumberDTO);
+  async createCarBodyNumber(
+    createCarBodyNumberDTO: CreateCarBodyNumberDTO,
+    createCarBodyNumberForeignKey: CreateCarBodyNumberForeignKeyDTO,
+    listingCarId: number,
+  ) {
     const carBodyNumber = this.create({
       ...createCarBodyNumberDTO,
+      ...createCarBodyNumberForeignKey,
+      listingCarId,
     });
     await this.save(carBodyNumber);
     return carBodyNumber;
@@ -18,7 +26,24 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
 
   // findOne
   async findOneCarBodyNumber(attrs: Partial<CarBodyNumber>) {
-    const carBodyNumber = await this.findOne(attrs);
+    const carBodyNumber = await this.findOne({
+      where: attrs,
+      relations: [
+        'listingCar',
+        'maker',
+        'carModel',
+        'shift',
+        'gear',
+        'fuel',
+        'airBack',
+        'handle',
+        'airConditoner',
+        'shape',
+        'importedCar',
+        'exteriorColor',
+        'interiorColor',
+      ],
+    });
     if (!carBodyNumber) {
       throw new NotFoundException('CarBodyNumber Not Found');
     }
@@ -33,7 +58,21 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
     }
     const carBodyNumbers = await this.find({
       where: parseAttrs,
-      relations: ['member'],
+      relations: [
+        'listingCar',
+        'maker',
+        'carModel',
+        'shift',
+        'gear',
+        'fuel',
+        'airBack',
+        'handle',
+        'airConditoner',
+        'shape',
+        'importedCar',
+        'exteriorColor',
+        'interiorColor',
+      ],
     });
     if (!carBodyNumbers) {
       throw new NotFoundException('CarBodyNumber Not Found');
