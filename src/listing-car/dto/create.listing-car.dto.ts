@@ -22,110 +22,128 @@ import { CreateSuggestedListingDTO } from 'src/suggested-listing/dto/create.sugg
 import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
 
 export class CreateListingCarDTO {
-  // 評価点
   @ApiProperty({
     enum: EvaluationPoint,
+    description: '評価点',
   })
   @IsEnum(EvaluationPoint)
   evaluationPoint: EvaluationPoint;
 
-  //セールスポイント
   @ApiProperty({
     type: [CreateSalesPointDTO],
+    description: 'セールスポイント',
   })
   @Type(() => CreateSalesPointDTO)
   @ValidateNested()
   salesPoint?: SalesPoint[];
 
-  //タバコ ＊変更
   @ApiProperty({
     enum: Cigarette,
+    description: 'タバコ',
   })
   @IsEnum(Cigarette)
   cigarette: Cigarette;
 
-  //メーター交換歴 ＊変更
   @ApiProperty({
     enum: MeterExchangeHistory,
+    description: 'メーター交換歴',
   })
   @IsEnum(MeterExchangeHistory)
   meterExchangeHistory: MeterExchangeHistory;
 
-  //傷評価 ＊変更
   @ApiProperty({
     enum: ScratchEvaluation,
+    description: 'キズ評価',
   })
   @IsEnum(ScratchEvaluation)
   scratchEvaluation: ScratchEvaluation;
 
-  //車体画像
   @ApiProperty({
     type: [CreateCarBodyImageDTO],
+    description: '車体画像',
   })
   @Type(() => CreateCarBodyImageDTO)
   @ValidateNested()
   CarBodyImage?: CarBodyImage[];
 
-  //車歴 ＊変更
   @ApiProperty({
     enum: CarHistory,
+    description: '車歴',
   })
   @IsEnum(CarHistory)
   CarHistory: CarHistory;
 
-  //車検
-  @ApiProperty()
+  @ApiProperty({
+    description: '車検',
+    default: '自家用車',
+  })
   @IsString()
   carInspection: string;
 
-  //仕入れ額
-  @ApiProperty()
+  @ApiProperty({
+    description: '仕入れ額',
+    default: '10000',
+  })
   @IsNumber()
   suggestedAmount: number;
 
-  //走行距離
-  @ApiProperty()
+  @ApiProperty({
+    description: '走行距離',
+    default: '10000',
+  })
   @IsNumber()
   mileage: number;
 
-  //外装
-  @ApiProperty()
+  @ApiProperty({
+    description: '外装:謎',
+    default: '0',
+  })
   @IsNumber()
   exterior: number;
 
   //内装
-  @ApiProperty()
+  @ApiProperty({
+    description: '内装:謎',
+    default: '0',
+  })
   @IsNumber()
   interior: number;
 
   //色替
-  @ApiProperty()
+  @ApiProperty({
+    description: '色替:謎',
+    default: '0',
+  })
   @IsNumber()
   IschangeColor: number;
 
   //希望出品１
-  @ApiProperty()
+  @ApiProperty({
+    description: '希望出品1:謎',
+    default: '0',
+  })
   @IsNumber()
   SuggestedListingOne: number;
 
   @ApiProperty({
     type: CreateSuggestedListingDTO,
+    description: '希望出品2',
   })
   @Type(() => CreateSuggestedListingDTO)
   @ValidateNested()
   SuggestedListing?: SuggestedListing;
 
-  // 付加情報
   @ApiProperty({
     type: CreateAdditionDTO,
+    description: '付加情報',
   })
   @Type(() => CreateAdditionDTO)
   @ValidateNested()
   Addition?: Addition;
 
-  // 車体情報
   @ApiProperty({
     type: CreateCarBodyEvaluationDTO,
+    description: '車体情報',
   })
   @Type(() => CreateCarBodyEvaluationDTO)
   @ValidateNested()
@@ -134,6 +152,7 @@ export class CreateListingCarDTO {
   //
   @ApiProperty({
     type: CreateInspectionDTO,
+    description: '検査',
   })
   @Type(() => CreateInspectionDTO)
   @ValidateNested()
@@ -142,6 +161,7 @@ export class CreateListingCarDTO {
   //
   @ApiProperty({
     type: CreateTestingRecordDTO,
+    description: '検査記録',
   })
   @Type(() => CreateTestingRecordDTO)
   @ValidateNested()
