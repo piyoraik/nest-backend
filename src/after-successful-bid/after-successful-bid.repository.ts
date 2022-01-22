@@ -21,7 +21,10 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
 
   // findOne
   async findOneAfterSuccessfulBid(attrs: Partial<AfterSuccessfulBid>) {
-    const afterSuccessfulBid = await this.findOne(attrs);
+    const afterSuccessfulBid = await this.findOne({
+      where: attrs,
+      relations: ['auctionListing'],
+    });
     if (!afterSuccessfulBid) {
       throw new NotFoundException('AfterSuccessfulBid Not Found');
     }
@@ -36,7 +39,7 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
     }
     const afterSuccessfulBids = await this.find({
       where: parseAttrs,
-      relations: ['deliveryMethod'],
+      relations: ['auctionListing'],
     });
     if (!afterSuccessfulBids) {
       throw new NotFoundException('AfterSuccessfulBid Not Found');
