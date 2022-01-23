@@ -1,31 +1,103 @@
-import { IsBoolean } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsBoolean, IsOptional } from 'class-validator';
 
 export class UpdateAdditionDTO {
-  // キズ
+  //PS
+  @ApiProperty({
+    description: 'PS',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isPS: boolean;
 
-  //コゲ
+  //PW
+  @ApiProperty({
+    description: 'PW',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isPW: boolean;
 
-  //コゲ穴
+  //AW
+  @ApiProperty({
+    description: 'AW',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isAW: boolean;
 
-  //汚れ
+  //SR
+  @ApiProperty({
+    description: 'SR',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isSR: boolean;
 
-  //破れ
+  //背面
+  @ApiProperty({
+    description: '背面',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isBACK: boolean;
 
-  //A
+  //カワ
+  @ApiProperty({
+    description: 'カワ',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isPEEL: boolean;
 
-  //X要ス
+  //AB
+  @ApiProperty({
+    description: 'AB',
+    default: true,
+  })
+  @IsOptional()
   @IsBoolean()
   isAB: boolean;
+
+  //TV
+  @ApiProperty({
+    description: 'TV',
+    default: true,
+  })
+  @IsOptional()
+  @IsBoolean()
+  isTV: boolean;
+
+  //ナビ
+  @ApiProperty({
+    description: 'ナビ',
+    default: true,
+  })
+  @IsOptional()
+  @IsBoolean()
+  isNAVI: boolean;
+
+  //Rスポ
+  @ApiProperty({
+    description: 'Rスポ',
+    default: true,
+  })
+  @IsOptional()
+  @IsBoolean()
+  isRSP: boolean;
+
+  //カセット
+  @ApiProperty({
+    description: 'カセット',
+    default: true,
+  })
+  @IsOptional()
+  @IsBoolean()
+  isCAS: boolean;
 }
