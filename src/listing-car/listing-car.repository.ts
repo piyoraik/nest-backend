@@ -16,7 +16,14 @@ export class ListingCarRepository extends Repository<ListingCar> {
   async findOneListingCar(attrs: Partial<ListingCar>) {
     const listingCar = await this.findOne({
       where: attrs,
-      relations: ['salesPoint', 'CarBodyImage'],
+      relations: [
+        'CarBodyImage',
+        'salesPoint',
+        'addition',
+        'testingRecord',
+        'exhibitorEntry',
+        'paperClass',
+      ],
     });
     if (!listingCar) {
       throw new NotFoundException('ListingCar Not Found');
@@ -31,7 +38,14 @@ export class ListingCarRepository extends Repository<ListingCar> {
     }
     const listingCars = await this.find({
       where: parseAttrs,
-      relations: ['salesPoint', 'CarBodyImage'],
+      relations: [
+        'CarBodyImage',
+        'salesPoint',
+        'addition',
+        'testingRecord',
+        'exhibitorEntry',
+        'paperClass',
+      ],
     });
     if (!listingCars) {
       throw new NotFoundException('ListingCar Not Found');

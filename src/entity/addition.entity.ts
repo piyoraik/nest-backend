@@ -49,7 +49,7 @@ export class Addition {
   @Column() //カセット
   isCAS: boolean;
 
-  @OneToOne(() => ListingCar)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.addition)
   @JoinColumn()
   listingCar: ListingCar;
 

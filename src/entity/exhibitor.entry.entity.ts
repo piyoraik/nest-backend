@@ -33,7 +33,7 @@ export class ExhibitorEntry {
   @Column()
   recyclePrice: number;
 
-  @OneToOne(() => ListingCar)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.exhibitorEntry)
   @JoinColumn()
   listingCar: ListingCar;
 
