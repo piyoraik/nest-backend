@@ -23,12 +23,13 @@ export class AuctionSituationRepository extends Repository<AuctionSituation> {
   }
 
   async findAll() {
-    return this.find();
+    return this.find({ relations: ['member', 'auctionListing'] });
   }
 
   async findOneAuctionSituation(attrs: Partial<AuctionSituation>) {
     const auctionSituation = await this.findOne({
       where: attrs,
+      relations: ['member', 'auctionListing'],
     });
     if (!auctionSituation) {
       throw new NotFoundException('AuctionSituation Not Found');
@@ -43,6 +44,7 @@ export class AuctionSituationRepository extends Repository<AuctionSituation> {
     }
     const auctionSituations = await this.find({
       where: parseAttrs,
+      relations: ['member', 'auctionListing'],
     });
     if (!auctionSituations) {
       throw new NotFoundException('AuctionSituation Not Found');
