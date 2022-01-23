@@ -18,7 +18,12 @@ export class AuctionListingService {
 
   async findAll() {
     return this.auctionListingRepository.find({
-      relations: ['member', 'auction', 'auctionSituation'],
+      relations: [
+        'member',
+        'auction',
+        'auctionSituation',
+        'auctionSituation.member',
+      ],
     });
   }
 
