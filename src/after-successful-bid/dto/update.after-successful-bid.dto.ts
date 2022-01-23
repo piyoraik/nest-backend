@@ -5,44 +5,65 @@ import { CarOption } from 'src/enum/option.enum';
 import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class UpdateAfterSuccessfulBidDTO {
-  //オプション ＊変更
-  @ApiProperty()
+  //オプション
+  @ApiProperty({
+    enum: CarOption,
+    description: 'オプション',
+  })
   @IsOptional()
   @IsEnum(CarOption)
   option: CarOption;
 
   //配送
-  @ApiProperty()
+  @ApiProperty({
+    enum: DeliveryMethod,
+    description: '配送',
+  })
   @IsOptional()
   @IsEnum(DeliveryMethod)
   deliveryMethod: DeliveryMethod;
 
   //フェリー
-  @ApiProperty()
+  @ApiProperty({
+    description: 'フェリーを使うかどうか',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   isFerry: boolean;
 
-  //支払い方法 ＊変更
-  @ApiProperty()
+  //支払い方法
+  @ApiProperty({
+    enum: PaymentMethod,
+    description: '支払い方法',
+  })
   @IsOptional()
   @IsEnum(PaymentMethod)
   paymentMethod: PaymentMethod;
 
   //入金
-  @ApiProperty()
+  @ApiProperty({
+    description: '入金',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   isPayment: boolean;
 
   //納品
-  @ApiProperty()
+  @ApiProperty({
+    description: '納品',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   isDelivery: boolean;
 
   //キャンセル
-  @ApiProperty()
+  @ApiProperty({
+    description: 'キャンセル',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   isCancelled: boolean;

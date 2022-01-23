@@ -2,7 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateHandleDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ハンドル',
+    default: '左ハンドル',
+  })
   @IsString()
   name: string;
 }

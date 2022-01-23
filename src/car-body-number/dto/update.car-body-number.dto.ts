@@ -2,104 +2,164 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdateCarBodyNumberDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ドア数',
+    default: 4,
+  })
   @IsOptional()
   @IsNumber()
   doorNumber: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'グレード',
+    default: 'RS-FOURZMR',
+  })
   @IsOptional()
   @IsString()
   grade: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '型式',
+    default: 'E-WGNC34',
+  })
   @IsOptional()
   @IsString()
   format: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '排気量',
+    default: '2500cc',
+  })
   @IsOptional()
   @IsNumber()
   engineSize: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '年式',
+    default: 10,
+  })
   @IsOptional()
   @IsNumber()
   modelYear: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'カラーNo.',
+    default: 199,
+  })
   @IsOptional()
   @IsNumber()
   colorNo: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '車体番号',
+    default: 106566,
+  })
   @IsOptional()
   @IsNumber()
   carBodyNumber: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '乗員数',
+    default: 106566,
+  })
   @IsOptional()
   @IsNumber()
   crewNumber: number;
 }
 
 export class UpdateCarBodyNumberForeignKeyDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'メーカーID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   makerId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '車種名ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   carModelId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '形状ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   shapeId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '燃料ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   fuelId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '外装色ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   exteriorColorId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '内装色ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   interiorColorId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'シフトID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   shiftId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ギアID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   gearId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'エアコンID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   airConditonerId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '輸入車ID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   importedCarId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ハンドルID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   handleId: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'エアバックID',
+    default: 1,
+  })
   @IsOptional()
   @IsString()
   airBackId: number;

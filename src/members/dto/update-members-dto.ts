@@ -20,6 +20,7 @@ export class UpdateMembersDTO {
   @ApiProperty({
     required: false,
     description: '会社名',
+    default: '株式会社HOGE',
   })
   @IsOptional()
   @IsString()
@@ -39,6 +40,7 @@ export class UpdateMembersDTO {
     description: 'パスワード',
     minLength: 8,
     maxLength: 32,
+    default: 'asdfasdf123',
   })
   @IsOptional()
   @MinLength(8)
@@ -48,12 +50,17 @@ export class UpdateMembersDTO {
   @ApiProperty({
     required: false,
     description: '電話番号',
+    default: '090-1234-1234',
   })
   @IsOptional()
   @IsString()
   phoneNumber: string;
 
-  @ApiProperty({ required: false, description: 'アイコン' })
+  @ApiProperty({
+    required: false,
+    description: 'アイコン',
+    default: 'hoge.png',
+  })
   @IsOptional()
   iconImage: string;
 

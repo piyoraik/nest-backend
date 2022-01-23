@@ -2,7 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateAirBackDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'エアバック',
+    default: 'シングル',
+  })
   @IsString()
   name: string;
 }

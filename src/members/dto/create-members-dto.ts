@@ -19,6 +19,7 @@ export class CreateMembersDTO {
 
   @ApiProperty({
     description: '会社名',
+    default: '株式会社HOGE',
   })
   @IsOptional()
   @IsString()
@@ -36,6 +37,7 @@ export class CreateMembersDTO {
     description: 'パスワード',
     minLength: 8,
     maxLength: 32,
+    default: 'asdfasdf123',
   })
   @IsString()
   @MinLength(8)
@@ -44,16 +46,22 @@ export class CreateMembersDTO {
 
   @ApiProperty({
     description: '電話番号',
+    default: '090-1234-1234',
   })
   @IsString()
   phoneNumber: string;
 
-  @ApiProperty({ required: false, description: 'アイコン' })
+  @ApiProperty({
+    required: false,
+    description: 'アイコン',
+    default: 'hoge.png',
+  })
   @IsOptional()
   iconImage: string;
 
   @ApiProperty({
     description: '住所',
+    default: '大阪府大阪市北区梅田３丁目３−１',
   })
   @IsString()
   address: string;

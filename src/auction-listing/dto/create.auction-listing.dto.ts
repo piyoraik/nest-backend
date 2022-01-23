@@ -3,7 +3,10 @@ import { IsNumber } from 'class-validator';
 
 export class CreateAuctionListingDTO {
   //落札価格
-  @ApiProperty()
+  @ApiProperty({
+    description: '落札価格',
+    default: 1200000,
+  })
   @IsNumber()
   hammerPrice: number;
 }

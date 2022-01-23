@@ -2,7 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 export class UpdateMakerDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'メーカー',
+    default: 'トヨタ',
+  })
   @IsOptional()
   @IsString()
   name: string;

@@ -3,57 +3,90 @@ import { IsBoolean } from 'class-validator';
 
 export class CreateAdditionDTO {
   //PS
-  @ApiProperty()
+  @ApiProperty({
+    description: 'PS',
+    default: true,
+  })
   @IsBoolean()
   isPS: boolean;
 
   //PW
-  @ApiProperty()
+  @ApiProperty({
+    description: 'PW',
+    default: true,
+  })
   @IsBoolean()
   isPW: boolean;
 
   //AW
-  @ApiProperty()
+  @ApiProperty({
+    description: 'AW',
+    default: true,
+  })
   @IsBoolean()
   isAW: boolean;
 
   //SR
-  @ApiProperty()
+  @ApiProperty({
+    description: 'SR',
+    default: true,
+  })
   @IsBoolean()
   isSR: boolean;
 
   //背面
-  @ApiProperty()
+  @ApiProperty({
+    description: '背面',
+    default: true,
+  })
   @IsBoolean()
   isBACK: boolean;
 
   //カワ
-  @ApiProperty()
+  @ApiProperty({
+    description: 'カワ',
+    default: true,
+  })
   @IsBoolean()
   isPEEL: boolean;
 
   //AB
-  @ApiProperty()
+  @ApiProperty({
+    description: 'AB',
+    default: true,
+  })
   @IsBoolean()
   isAB: boolean;
 
   //TV
-  @ApiProperty()
+  @ApiProperty({
+    description: 'TV',
+    default: true,
+  })
   @IsBoolean()
   isTV: boolean;
 
   //ナビ
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ナビ',
+    default: true,
+  })
   @IsBoolean()
   isNAVI: boolean;
 
   //Rスポ
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Rスポ',
+    default: true,
+  })
   @IsBoolean()
   isRSP: boolean;
 
   //カセット
-  @ApiProperty()
+  @ApiProperty({
+    description: 'カセット',
+    default: true,
+  })
   @IsBoolean()
   isCAS: boolean;
 }
