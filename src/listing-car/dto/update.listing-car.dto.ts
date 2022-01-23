@@ -13,7 +13,9 @@ import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimag
 import { Addition } from 'src/entity/addition.entity';
 import { CarBodyEvaluation } from 'src/entity/car.body.evaluation.entity';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
+import { ExhibitorEntry } from 'src/entity/exhibitor.entry.entity';
 import { Inspection } from 'src/entity/inspection.entity';
+import { PaperClass } from 'src/entity/paper.class.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
 import { SuggestedListing } from 'src/entity/suggested.listing.entity';
 import { TestingRecord } from 'src/entity/testing.record.entity';
@@ -22,7 +24,9 @@ import { Cigarette } from 'src/enum/cigarette.enum';
 import { EvaluationPoint } from 'src/enum/evaluationPoint.enum';
 import { MeterExchangeHistory } from 'src/enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from 'src/enum/scratchEvaluation.enum';
+import { CreateExhibitorEntryDTO } from 'src/exhibitor-entry/dto/create.exhibitor-entry.dto';
 import { CreateInspectionDTO } from 'src/inspection/dto/create-inspection.dto';
+import { CreatePaperClassDTO } from 'src/paper-class/dto/create.paperclass.dto';
 import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
 import { CreateSuggestedListingDTO } from 'src/suggested-listing/dto/create.suggested-listing.dto';
 import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
@@ -191,4 +195,20 @@ export class UpdateListingCarDTO {
   @Type(() => CreateTestingRecordDTO)
   @ValidateNested()
   TestingRecord?: TestingRecord;
+
+  @ApiProperty({
+    type: CreatePaperClassDTO,
+  })
+  @IsOptional()
+  @Type(() => CreatePaperClassDTO)
+  @ValidateNested()
+  PaperClass?: PaperClass;
+
+  @ApiProperty({
+    type: CreateExhibitorEntryDTO,
+  })
+  @IsOptional()
+  @Type(() => CreateExhibitorEntryDTO)
+  @ValidateNested()
+  ExhibitorEntry?: ExhibitorEntry;
 }

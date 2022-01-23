@@ -6,6 +6,8 @@ import { MembersService } from 'src/members/members.service';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
 import { CarBodyNumberService } from 'src/car-body-number/car-body-number.service';
 import { AuctionService } from 'src/auction/auction.service';
+import { UpdateListingCarDTO } from 'src/listing-car/dto/update.listing-car.dto';
+import { UpdateAuctionListingDTO } from './dto/update.auction-listing.dto';
 
 @Injectable()
 export class AuctionListingService {
@@ -63,7 +65,7 @@ export class AuctionListingService {
   }
 
   // update
-  async update(id: number, attrs: Partial<AuctionListing>) {
+  async update(id: number, attrs: UpdateAuctionListingDTO) {
     return await this.auctionListingRepository.updateAuctionListing(id, attrs);
   }
 
