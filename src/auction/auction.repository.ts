@@ -22,12 +22,11 @@ export class AuctionRepository extends Repository<Auction> {
   }
 
   async findWhereLikeAuction(attrs: Partial<Auction>) {
-    const parseAttrs: Partial<Auction> = {};
     for (const key in attrs) {
-      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+      attrs[key] = ILike('%' + attrs[key] + '%');
     }
     const auctions = await this.find({
-      where: parseAttrs,
+      where: attrs,
     });
     if (!auctions) {
       throw new NotFoundException('Auction Not Found');

@@ -25,12 +25,11 @@ export class AirConditionerRepository extends Repository<AirConditioner> {
 
   // findWhere
   async findWhereLikeAirConditioner(attrs: Partial<AirConditioner>) {
-    const parseAttrs: Partial<AirConditioner> = {};
     for (const key in attrs) {
-      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+      attrs[key] = ILike('%' + attrs[key] + '%');
     }
     const airConditioners = await this.find({
-      where: parseAttrs,
+      where: attrs,
       relations: ['member'],
     });
     if (!airConditioners) {
