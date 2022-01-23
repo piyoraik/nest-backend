@@ -23,6 +23,7 @@ export class AuctionListingService {
         'auction',
         'auctionSituation',
         'auctionSituation.member',
+        'carBodyNumber',
       ],
     });
   }

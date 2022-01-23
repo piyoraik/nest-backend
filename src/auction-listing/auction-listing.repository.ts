@@ -34,6 +34,7 @@ export class AuctionListingRepository extends Repository<AuctionListing> {
         'auction',
         'auctionSituation',
         'auctionSituation.member',
+        'carBodyNumber',
       ],
     });
     if (!auctionListing) {
@@ -54,6 +55,7 @@ export class AuctionListingRepository extends Repository<AuctionListing> {
         'auction',
         'auctionSituation',
         'auctionSituation.member',
+        'carBodyNumber',
       ],
     });
     if (!auctionListings) {
