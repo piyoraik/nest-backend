@@ -22,13 +22,11 @@ export class CarBodyNumberController {
   @Post(':listingCarId')
   create(
     @Body() createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    @Param('listingCarId') listingCarId: string,
     @Query(ConvertIntPipe) foreignKey: CreateCarBodyNumberForeignKeyDTO,
   ) {
     return this.carBodyNumberService.create(
       createCarBodyNumberDTO,
       foreignKey,
-      +listingCarId,
     );
   }
 
