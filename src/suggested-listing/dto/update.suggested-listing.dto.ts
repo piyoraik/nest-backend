@@ -2,67 +2,106 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 export class CreateSuggestedListingDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: '乗用車',
+    default: '出品希望',
+  })
   @IsOptional()
   @IsString()
   car: string; //乗用車
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ミニバン、キャンプワゴン',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   minivanCampWagon: string; //ミニバン、キャンプワゴン
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'バン、トラ',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   vanTruck: string; //バン、トラ
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '軽４',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   ligthCar: string; //軽４
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ドレスUP',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   dressUp: string; //ドレスUP
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '輸入車',
+    default: '出品希望',
+  })
   @IsOptional()
   @IsString()
   importedCar: string; //輸入車
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リフレッシュ',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   refresh: string; //リフレッシュ
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '0円売り切り',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   sellout: string; //0円売り切り
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '乗用車ファーストNG',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   firstNg: string; //乗用車ファーストNG
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リバース',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   reverse: string; //リバース
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '大型',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   largeSize: string; //大型
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リサイクル',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   recycling: string; //リサイクル
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オレンジ',
+    default: '-',
+  })
   @IsOptional()
   @IsString()
   orange: string; //オレンジ

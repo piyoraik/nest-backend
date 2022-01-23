@@ -6,7 +6,7 @@ import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 export class CreatePurchaseDTO {
   @ApiProperty({
     description: 'オプションの有無',
-    default: 'あり',
+    default: true,
   })
   @IsOptional()
   @IsBoolean()
@@ -14,7 +14,7 @@ export class CreatePurchaseDTO {
 
   @ApiProperty({
     description: '印鑑証明書',
-    default: 'あり',
+    default: true,
   })
   @IsOptional()
   @IsBoolean()
