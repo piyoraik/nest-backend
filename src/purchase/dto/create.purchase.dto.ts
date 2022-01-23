@@ -4,39 +4,66 @@ import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreatePurchaseDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オプションの有無',
+    default: true,
+  })
   @IsBoolean()
   option: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '印鑑証明書',
+    default: true,
+  })
   @IsBoolean()
   sealCertificate: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '印鑑',
+    default: true,
+  })
   @IsBoolean()
   seal: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '住民票',
+    default: true,
+  })
   @IsBoolean()
   residentsCard: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '自動車検査書',
+    default: true,
+  })
   @IsBoolean()
   vehicleInspection: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '自賠責保険証',
+    default: true,
+  })
   @IsBoolean()
   LiabilityInsurance: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '委任状',
+    default: true,
+  })
   @IsBoolean()
   commission: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '委任状(返)',
+    default: true,
+  })
   @IsBoolean()
   commissionReturn: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '車庫証明書',
+    default: true,
+  })
   @IsBoolean()
   garageCertificate: boolean;
 
@@ -52,15 +79,24 @@ export class CreatePurchaseDTO {
   @IsEnum(PaymentMethod)
   paymentMethod: PaymentMethod;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '入金',
+    default: true,
+  })
   @IsBoolean()
   payment: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '納品',
+    default: true,
+  })
   @IsBoolean()
   delivery: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'キャンセル',
+    default: false,
+  })
   @IsBoolean()
   cancel: boolean;
 }

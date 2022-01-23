@@ -2,23 +2,38 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
 
 export class CreateExhibitorEntryDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: '修復歴',
+    default: '-',
+  })
   @IsBoolean()
   repairHistory: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ジャッキ',
+    default: 'あり',
+  })
   @IsBoolean()
   jack: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '工具',
+    default: 'あり',
+  })
   @IsBoolean()
   tool: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'テキスト',
+    default: '-',
+  })
   @IsString()
   text: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リサイクル料金',
+    default: '300000',
+  })
   @IsNumber()
   recyclePrice: number;
 }

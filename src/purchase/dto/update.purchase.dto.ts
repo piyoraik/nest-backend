@@ -4,47 +4,74 @@ import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreatePurchaseDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オプションの有無',
+    default: 'あり',
+  })
   @IsOptional()
   @IsBoolean()
   option: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '印鑑証明書',
+    default: 'あり',
+  })
   @IsOptional()
   @IsBoolean()
   sealCertificate: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '印鑑',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   seal: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '住民票',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   residentsCard: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '自動車検査書',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   vehicleInspection: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '自賠責保険証',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   LiabilityInsurance: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '委任状',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   commission: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '委任状(返)',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   commissionReturn: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '車庫証明書',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   garageCertificate: boolean;
@@ -63,17 +90,26 @@ export class CreatePurchaseDTO {
   @IsEnum(PaymentMethod)
   paymentMethod: PaymentMethod;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '入金',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   payment: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '納品',
+    default: true,
+  })
   @IsOptional()
   @IsBoolean()
   delivery: boolean;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'キャンセル',
+    default: false,
+  })
   @IsOptional()
   @IsBoolean()
   cancel: boolean;

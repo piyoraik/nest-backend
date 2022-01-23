@@ -111,8 +111,8 @@ export class UpdateListingCarDTO {
   mileage: number;
 
   @ApiProperty({
-    description: '外装:謎',
-    default: '0',
+    description: '外装:評価',
+    default: 'A',
   })
   @IsOptional()
   @IsNumber()
@@ -120,8 +120,8 @@ export class UpdateListingCarDTO {
 
   //内装
   @ApiProperty({
-    description: '内装:謎',
-    default: '0',
+    description: '内装:評価',
+    default: 'B',
   })
   @IsOptional()
   @IsNumber()
@@ -129,7 +129,7 @@ export class UpdateListingCarDTO {
 
   //色替
   @ApiProperty({
-    description: '色替:謎',
+    description: '色替:色を変えたことがあるか',
     default: '0',
   })
   @IsOptional()
@@ -138,7 +138,7 @@ export class UpdateListingCarDTO {
 
   //希望出品１
   @ApiProperty({
-    description: '希望出品1:謎',
+    description: '希望出品1:ユーザー0、グリーン1',
     default: '0',
   })
   @IsOptional()

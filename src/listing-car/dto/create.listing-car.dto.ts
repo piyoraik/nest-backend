@@ -99,23 +99,23 @@ export class CreateListingCarDTO {
   mileage: number;
 
   @ApiProperty({
-    description: '外装:謎',
-    default: '0',
+    description: '外装:評価',
+    default: 'A',
   })
   @IsNumber()
   exterior: number;
 
   //内装
   @ApiProperty({
-    description: '内装:謎',
-    default: '0',
+    description: '内装:評価',
+    default: 'B',
   })
   @IsNumber()
   interior: number;
 
   //色替
   @ApiProperty({
-    description: '色替:謎',
+    description: '色替:色を変えたことがあるか',
     default: '0',
   })
   @IsNumber()
@@ -123,7 +123,7 @@ export class CreateListingCarDTO {
 
   //希望出品１
   @ApiProperty({
-    description: '希望出品1:謎',
+    description: '希望出品1:ユーザー0、グリーン1',
     default: '0',
   })
   @IsNumber()
@@ -153,7 +153,6 @@ export class CreateListingCarDTO {
   @ValidateNested()
   CarBodyEvaluation?: CarBodyEvaluation;
 
-  //
   @ApiProperty({
     type: CreateInspectionDTO,
     description: '検査',
@@ -162,7 +161,6 @@ export class CreateListingCarDTO {
   @ValidateNested()
   Inspection?: Inspection;
 
-  //
   @ApiProperty({
     type: CreateTestingRecordDTO,
     description: '検査記録',
@@ -173,6 +171,7 @@ export class CreateListingCarDTO {
 
   @ApiProperty({
     type: CreatePaperClassDTO,
+    description: '紙類',
   })
   @Type(() => CreatePaperClassDTO)
   @ValidateNested()
@@ -180,6 +179,7 @@ export class CreateListingCarDTO {
 
   @ApiProperty({
     type: CreateExhibitorEntryDTO,
+    description: '出品者記入',
   })
   @Type(() => CreateExhibitorEntryDTO)
   @ValidateNested()
