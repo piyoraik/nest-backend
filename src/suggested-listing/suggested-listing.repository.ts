@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { SuggestedListing } from 'src/entity/suggested.listing.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateSuggestedListingDTO } from './dto/create.suggested-listing.dto';
 
 @EntityRepository(SuggestedListing)
@@ -27,7 +27,13 @@ export class SuggestedListingRepository extends Repository<SuggestedListing> {
   }
 
   async findWhereSuggestedListing(attrs: Partial<SuggestedListing>) {
-    const suggestedListings = await this.find(attrs);
+    const parseAttrs: Partial<SuggestedListing> = {};
+    for (const key in attrs) {
+      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+    }
+    const suggestedListings = await this.find({
+      where: parseAttrs,
+    });
     if (!suggestedListings) {
       throw new NotFoundException('SuggestedListing Not Found');
     }

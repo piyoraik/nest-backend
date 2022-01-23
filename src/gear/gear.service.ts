@@ -9,7 +9,8 @@ export class GearService {
   constructor(private gearRepository: GearRepository) {}
   // create
   async create(createGearDTO: CreateGearDTO) {
-    return await this.gearRepository.createGear(createGearDTO);
+    const res = await this.gearRepository.createGear(createGearDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

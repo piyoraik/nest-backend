@@ -9,7 +9,8 @@ export class HandleService {
   constructor(private handleRepository: HandleRepository) {}
   // create
   async create(createHandleDTO: CreateHandleDTO) {
-    return await this.handleRepository.createHandle(createHandleDTO);
+    const res = await this.handleRepository.createHandle(createHandleDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

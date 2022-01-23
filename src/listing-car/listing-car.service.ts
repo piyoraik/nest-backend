@@ -3,8 +3,11 @@ import { AdditionService } from 'src/addition/addition.service';
 import { CarBodyEvaluationService } from 'src/car-body-evaluation/car-body-evaluation.service';
 import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
 import { ListingCar } from 'src/entity/listing.car.entity';
+import { ExhibitorEntryService } from 'src/exhibitor-entry/exhibitor-entry.service';
 import { InspectionService } from 'src/inspection/inspection.service';
+import { PaperClassService } from 'src/paper-class/paper-class.service';
 import { SalesPointService } from 'src/sales-point/sales-point.service';
+import { SuggestedListingService } from 'src/suggested-listing/suggested-listing.service';
 import { TestingRecordService } from 'src/testing-record/testing-record.service';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { ListingCarRepository } from './listing-car.repository';
@@ -19,6 +22,9 @@ export class ListingCarService {
     private readonly carBodyEvaluationService: CarBodyEvaluationService,
     private readonly inspectionService: InspectionService,
     private readonly testingRecordService: TestingRecordService,
+    private readonly suggestedListingService: SuggestedListingService,
+    private readonly paperClassService: PaperClassService,
+    private readonly exhibitorEntryService: ExhibitorEntryService,
   ) {}
 
   async create(createListingCarDTO: CreateListingCarDTO) {
@@ -29,6 +35,9 @@ export class ListingCarService {
       CarBodyEvaluation,
       Inspection,
       TestingRecord,
+      SuggestedListing,
+      PaperClass,
+      ExhibitorEntry,
       ...listingCarObject
     } = createListingCarDTO;
     const listingCar = (await this.listingCarRepository.createListingCar(
@@ -40,12 +49,22 @@ export class ListingCarService {
     await this.carBodyEvaluationService.create(CarBodyEvaluation, listingCar);
     await this.inspectionService.create(Inspection, listingCar);
     await this.testingRecordService.create(TestingRecord, listingCar);
-    return createListingCarDTO;
+    await this.suggestedListingService.create(SuggestedListing, listingCar);
+    await this.paperClassService.create(PaperClass, listingCar);
+    await this.exhibitorEntryService.create(ExhibitorEntry, listingCar);
+    return await this.findOneId(listingCar.id);
   }
 
   async findAll() {
     return await this.listingCarRepository.find({
-      relations: ['CarBodyImage', 'salesPoint'],
+      relations: [
+        'CarBodyImage',
+        'salesPoint',
+        'addition',
+        'testingRecord',
+        'exhibitorEntry',
+        'paperClass',
+      ],
     });
   }
 

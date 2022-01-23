@@ -6,12 +6,16 @@ import { PaymentMethod } from 'src/enum/paymentMethod.enum';
 
 export class CreateAfterSuccessfulBidDTO {
   //オプション ＊変更
-  @ApiProperty()
+  @ApiProperty({
+    enum: CarOption,
+  })
   @IsEnum(CarOption)
   option: CarOption;
 
   //配送
-  @ApiProperty()
+  @ApiProperty({
+    enum: DeliveryMethod,
+  })
   @IsEnum(DeliveryMethod)
   deliveryMethod: DeliveryMethod;
 
@@ -21,7 +25,9 @@ export class CreateAfterSuccessfulBidDTO {
   isFerry: boolean;
 
   //支払い方法 ＊変更
-  @ApiProperty()
+  @ApiProperty({
+    enum: PaymentMethod,
+  })
   @IsEnum(PaymentMethod)
   paymentMethod: PaymentMethod;
 

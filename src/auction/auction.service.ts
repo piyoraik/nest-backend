@@ -20,7 +20,11 @@ export class AuctionService {
     const member = await this.memberService.findOne({
       email: attrsMember.email,
     });
-    return this.auctionRepository.createAuction(createAuctionDTO, member);
+    const res = await this.auctionRepository.createAuction(
+      createAuctionDTO,
+      member,
+    );
+    return await this.findOneId(res.id);
   }
 
   async findOneId(id: number) {

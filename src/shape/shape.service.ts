@@ -10,7 +10,8 @@ export class ShapeService {
 
   // create
   async create(createShapeDTO: CreateShapeDTO) {
-    return await this.shapeRepository.createShape(createShapeDTO);
+    const res = await this.shapeRepository.createShape(createShapeDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

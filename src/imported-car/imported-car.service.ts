@@ -10,9 +10,10 @@ export class ImportedCarService {
 
   // create
   async create(createImportedCarDTO: CreateImportedCarDTO) {
-    return await this.importedCarRepository.createImportedCar(
+    const res = await this.importedCarRepository.createImportedCar(
       createImportedCarDTO,
     );
+    return await this.findOneID(res.id);
   }
 
   // findAll

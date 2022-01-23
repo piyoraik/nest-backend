@@ -38,7 +38,7 @@ export class Inspection {
   @Column() //X要ス
   isAB: boolean;
 
-  @OneToOne(() => ListingCar)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.inspection)
   @JoinColumn()
   listingCar: ListingCar;
 

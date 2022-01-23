@@ -20,11 +20,11 @@ export class Members {
   id: number;
 
   //名前
-  @Column({ unique: true })
+  @Column()
   name: string;
 
   //企業名
-  @Column({ unique: true })
+  @Column()
   companyName: string;
 
   //メールアドレス
@@ -32,19 +32,19 @@ export class Members {
   email: string;
 
   //パスワード
-  @Column({ unique: true })
+  @Column()
   password: string;
 
   //電話番号
-  @Column({ unique: true })
+  @Column()
   phoneNumber: string;
 
   //アイコン画像
-  @Column({ unique: true })
+  @Column()
   iconImage: string;
 
   //住所
-  @Column({ unique: true })
+  @Column()
   address: string;
 
   //悪質フラグ

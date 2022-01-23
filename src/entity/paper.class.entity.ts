@@ -23,7 +23,7 @@ export class PaperClass {
   @Column()
   manual: boolean; //取扱説明書
 
-  @OneToOne(() => ListingCar)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.paperClass)
   @JoinColumn()
   listingCar: ListingCar;
 
