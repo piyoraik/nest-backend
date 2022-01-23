@@ -28,11 +28,11 @@ export class AuctionListingController {
     return this.auctionListingService.findAll();
   }
 
-  @Post(':auctionListingId')
+  @Post(':auctionId')
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   create(
-    @Param('auctionListingId') auctionId: string,
+    @Param('auctionId') auctionId: string,
     @GetMember() payloadMember: PayLoad,
     @Body() body: CreateAuctionListingDTO,
     @Query('carBodyNumberID') carBodyNumberID: string,

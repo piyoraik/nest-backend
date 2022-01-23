@@ -5,7 +5,7 @@ export class CreateInspectionDTO {
   //キズ
   @ApiProperty({
     description: 'キズ',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isPS: boolean;
@@ -13,7 +13,7 @@ export class CreateInspectionDTO {
   //コゲ
   @ApiProperty({
     description: 'コゲ',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isPW: boolean;
@@ -21,7 +21,7 @@ export class CreateInspectionDTO {
   //コゲ穴
   @ApiProperty({
     description: 'コゲ穴',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isAW: boolean;
@@ -29,7 +29,7 @@ export class CreateInspectionDTO {
   //汚れ
   @ApiProperty({
     description: '汚れ',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isSR: boolean;
@@ -37,7 +37,7 @@ export class CreateInspectionDTO {
   //破れ
   @ApiProperty({
     description: '破れ',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isBACK: boolean;
@@ -45,7 +45,7 @@ export class CreateInspectionDTO {
   //A
   @ApiProperty({
     description: 'A',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isPEEL: boolean;
@@ -53,7 +53,7 @@ export class CreateInspectionDTO {
   //X要ス
   @ApiProperty({
     description: 'X要ス',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   isAB: boolean;

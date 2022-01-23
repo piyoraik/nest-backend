@@ -76,11 +76,11 @@ export class ListingCar {
 
   //外装
   @Column()
-  exterior: number;
+  exterior: ScratchEvaluation;
 
   //内装
   @Column()
-  interior: number;
+  interior: ScratchEvaluation;
 
   //色替
   @Column()

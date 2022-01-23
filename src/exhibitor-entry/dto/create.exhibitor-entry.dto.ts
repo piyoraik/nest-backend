@@ -4,21 +4,21 @@ import { IsBoolean, IsNumber, IsString } from 'class-validator';
 export class CreateExhibitorEntryDTO {
   @ApiProperty({
     description: '修復歴',
-    default: '-',
+    default: false,
   })
   @IsBoolean()
   repairHistory: boolean;
 
   @ApiProperty({
     description: 'ジャッキ',
-    default: 'あり',
+    default: false,
   })
   @IsBoolean()
   jack: boolean;
 
   @ApiProperty({
     description: '工具',
-    default: 'あり',
+    default: false,
   })
   @IsBoolean()
   tool: boolean;
