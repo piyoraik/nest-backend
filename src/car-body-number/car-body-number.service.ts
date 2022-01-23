@@ -19,12 +19,10 @@ export class CarBodyNumberService {
   async create(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
     createCarBodyNumberForeignKey: CreateCarBodyNumberForeignKeyDTO,
-    listingCarId: number,
   ) {
     const res = await this.carBodyNumberRepository.createCarBodyNumber(
       createCarBodyNumberDTO,
       createCarBodyNumberForeignKey,
-      listingCarId,
     );
     return await this.findOneID(res.id);
   }

@@ -1,13 +1,18 @@
 import { NotFoundException } from '@nestjs/common';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 
 @EntityRepository(ListingCar)
 export class ListingCarRepository extends Repository<ListingCar> {
-  async createListingCar(createListingCarDTO: CreateListingCarDTO) {
+  async createListingCar(
+    createListingCarDTO: CreateListingCarDTO,
+    carBodyNumber: CarBodyNumber,
+  ) {
     const listingCar = {
       ...createListingCarDTO,
+      carBodyNumber,
     };
     await this.save(listingCar);
     return listingCar;

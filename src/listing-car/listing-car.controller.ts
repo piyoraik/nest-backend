@@ -24,9 +24,12 @@ export class ListingCarController {
     return this.listingCarService.findAll();
   }
 
-  @Post()
-  create(@Body() body: CreateListingCarDTO) {
-    return this.listingCarService.create(body);
+  @Post(':carBodyNumberId')
+  create(
+    @Query('carBodyNumberId') id: string,
+    @Body() body: CreateListingCarDTO,
+  ) {
+    return this.listingCarService.create(body, +id);
   }
 
   @ApiQuery({ type: PartialType(CreateListingCarDTO), required: false })

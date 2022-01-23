@@ -31,8 +31,8 @@ export class UpdateCarBodyNumberDTO {
     default: '2500cc',
   })
   @IsOptional()
-  @IsNumber()
-  engineSize: number;
+  @IsString()
+  engineSize: string;
 
   @ApiProperty({
     description: '年式',

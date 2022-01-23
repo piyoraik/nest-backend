@@ -7,6 +7,7 @@ import {
   DeleteDateColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
 } from 'typeorm';
 
 import { ListingCar } from './listing.car.entity';
@@ -29,10 +30,8 @@ export class CarBodyNumber {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => ListingCar, (listingCar) => listingCar.carBodyNumber)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.carBodyNumber)
   listingCar: ListingCar;
-  @Column()
-  listingCarId: number;
 
   @ManyToOne(() => Maker, (maker) => maker.carBodyNumber)
   maker: Maker;
@@ -113,7 +112,7 @@ export class CarBodyNumber {
   format: string;
 
   @Column()
-  engineSize: number;
+  engineSize: string;
 
   @Column()
   modelYear: number;

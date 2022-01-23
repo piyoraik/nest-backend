@@ -27,8 +27,8 @@ export class CreateCarBodyNumberDTO {
     description: '排気量',
     default: '2500cc',
   })
-  @IsNumber()
-  engineSize: number;
+  @IsString()
+  engineSize: string;
 
   @ApiProperty({
     description: '年式',
