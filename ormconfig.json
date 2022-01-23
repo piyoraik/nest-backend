@@ -7,10 +7,14 @@
   "database": "case-study",
   "entities": ["./dist/entity/*.entity.js"],
   "migrations": ["./dist/migration/**/*.ts"],
+  "seeds": ["./dist/seeder/seeds/**/*.js"],
+  "factories": ["./dis/seeder/factories/**/*.js"],
   "synchronize": false,
   "logging": false,
   "cli": {
     "entitiesDir": "src/entities",
-    "migrationsDir": "src/migration"
+    "migrationsDir": "src/migration",
+    "seedersDir": "src/seeds",
+    "factoriesDir": "src/seeder/factories"
   }
 }
