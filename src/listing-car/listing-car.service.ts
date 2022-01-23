@@ -52,7 +52,7 @@ export class ListingCarService {
     await this.suggestedListingService.create(SuggestedListing, listingCar);
     await this.paperClassService.create(PaperClass, listingCar);
     await this.exhibitorEntryService.create(ExhibitorEntry, listingCar);
-    return createListingCarDTO;
+    return await this.findOneId(listingCar.id);
   }
 
   async findAll() {

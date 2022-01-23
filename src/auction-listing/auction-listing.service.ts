@@ -31,12 +31,13 @@ export class AuctionListingService {
       carBodyNumberID,
     );
     const auction = await this.auctionService.findOneId(auctionId);
-    return this.auctionListingRepository.createAuctionListing(
+    const res = await this.auctionListingRepository.createAuctionListing(
       createAuctionListingDTO,
       member,
       auction,
       carBodyNumber,
     );
+    return this.findOneID(res.id);
   }
 
   async findOneID(id: number) {

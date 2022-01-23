@@ -18,7 +18,7 @@ import { AuctionSituationService } from './auction-situation.service';
 import { CreateAuctionSituationDTO } from './dto/create.auction-situation.dto';
 import { UpdateAuctionSituationDTO } from './dto/update.auction-situation.dto';
 
-@ApiTags('オークション状況')
+@ApiTags('オークション状況(入札)')
 @Controller('auction-situation')
 export class AuctionSituationController {
   constructor(

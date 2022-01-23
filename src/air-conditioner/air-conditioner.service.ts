@@ -10,9 +10,10 @@ export class AirConditionerService {
 
   // create
   async create(createAirConditionerDTO: CreateAirConditionerDTO) {
-    return await this.airConditionerRepository.createAirConditioner(
+    const res = await this.airConditionerRepository.createAirConditioner(
       createAirConditionerDTO,
     );
+    return await this.findOneID(res.id);
   }
 
   // findAll

@@ -21,11 +21,12 @@ export class CarBodyNumberService {
     createCarBodyNumberForeignKey: CreateCarBodyNumberForeignKeyDTO,
     listingCarId: number,
   ) {
-    return await this.carBodyNumberRepository.createCarBodyNumber(
+    const res = await this.carBodyNumberRepository.createCarBodyNumber(
       createCarBodyNumberDTO,
       createCarBodyNumberForeignKey,
       listingCarId,
     );
+    return await this.findOneID(res.id);
   }
 
   // findAll

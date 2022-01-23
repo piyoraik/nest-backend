@@ -10,7 +10,8 @@ export class ColorService {
 
   // create
   async create(createColorDTO: CreateColorDTO) {
-    return await this.colorRepository.createColor(createColorDTO);
+    const res = await this.colorRepository.createColor(createColorDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll
