@@ -33,7 +33,7 @@ export class TestingRecord {
   @Column()
   recycling: number; //リサイクル料金
 
-  @OneToOne(() => ListingCar)
+  @OneToOne(() => ListingCar, (listingCar) => listingCar.testingRecord)
   @JoinColumn()
   listingCar: ListingCar;
 

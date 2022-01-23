@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   OneToMany,
+  OneToOne,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
@@ -15,6 +16,11 @@ import { ScratchEvaluation } from '../enum/scratchEvaluation.enum';
 import { CarBodyImage } from './car.body.image.entity';
 import { CarHistory } from '../enum/car.history.enum';
 import { CarBodyNumber } from './car.body.number.entity';
+import { Addition } from './addition.entity';
+import { TestingRecord } from './testing.record.entity';
+import { ExhibitorEntry } from './exhibitor.entry.entity';
+import { Inspection } from './inspection.entity';
+import { PaperClass } from './paper.class.entity';
 
 @Entity()
 export class ListingCar {
@@ -90,4 +96,20 @@ export class ListingCar {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  // OnetoOne
+  @OneToOne(() => Addition, (addition) => addition.listingCar)
+  addition: Addition;
+
+  @OneToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
+  testingRecord: TestingRecord;
+
+  @OneToOne(() => ExhibitorEntry, (exhibitorEntry) => exhibitorEntry.listingCar)
+  exhibitorEntry: ExhibitorEntry;
+
+  @OneToOne(() => Inspection, (inspection) => inspection.listingCar)
+  inspection: Inspection;
+
+  @OneToOne(() => PaperClass, (paperClass) => paperClass.listingCar)
+  paperClass: PaperClass;
 }

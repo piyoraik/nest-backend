@@ -10,9 +10,11 @@ export class PurchaseManagementService {
   ) {}
   // create
   async create(createPurchaseManagementDTO: CreatePurchaseManagementDTO) {
-    return this.purchaseManagementRepository.createPurchaseManagement(
-      createPurchaseManagementDTO,
-    );
+    const res =
+      await this.purchaseManagementRepository.createPurchaseManagement(
+        createPurchaseManagementDTO,
+      );
+    return await this.findOneID(res.id);
   }
 
   // findAl

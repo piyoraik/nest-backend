@@ -20,10 +20,12 @@ export class AfterSuccessfulBidService {
     const auctionListing = await this.auctionListingService.findOneID(
       auctionListingId,
     );
-    return await this.afterSuccessfulBidRepository.createAfterSuccessfulBid(
-      createAfterSuccessfulBidDTO,
-      auctionListing,
-    );
+    const res =
+      await this.afterSuccessfulBidRepository.createAfterSuccessfulBid(
+        createAfterSuccessfulBidDTO,
+        auctionListing,
+      );
+    return await this.findOneID(res.id);
   }
 
   // findAll

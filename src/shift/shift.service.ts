@@ -10,7 +10,8 @@ export class ShiftService {
 
   // create
   async create(createShiftDTO: CreateShiftDTO) {
-    return await this.shiftRepository.createShift(createShiftDTO);
+    const res = await this.shiftRepository.createShift(createShiftDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

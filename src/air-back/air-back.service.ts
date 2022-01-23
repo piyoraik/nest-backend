@@ -11,7 +11,8 @@ export class AirBackService {
 
   // create
   async create(createAirBackDTO: CreateAirBackDTO) {
-    return await this.airBackRepository.createAirBack(createAirBackDTO);
+    const res = await this.airBackRepository.createAirBack(createAirBackDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll
