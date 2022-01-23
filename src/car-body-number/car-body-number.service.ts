@@ -26,9 +26,7 @@ export class CarBodyNumberService {
       createCarBodyNumberForeignKey,
       listingCarId,
     );
-    return await this.carBodyNumberRepository.findOneCarBodyNumber({
-      id: res.id,
-    });
+    return await this.findOneID(res.id);
   }
 
   // findAll
