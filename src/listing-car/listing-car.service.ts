@@ -74,6 +74,7 @@ export class ListingCarService {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
       ],
     });
   }
