@@ -1,5 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
+import { Members } from 'src/entity/members.entity';
 import { Price } from 'src/entity/price.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreatePriceDTO } from './dto/create.price.dto';
@@ -9,9 +10,11 @@ export class PriceRepository extends Repository<Price> {
   async createPrice(
     createPriceDTO: CreatePriceDTO,
     auctionListing: AuctionListing,
+    member: Members,
   ) {
     const price = this.create({
       auctionListing,
+      member,
       ...createPriceDTO,
     });
     await this.save(price);

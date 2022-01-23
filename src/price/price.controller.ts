@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreatePriceDTO } from './dto/create.price.dto';
 import { PriceService } from './price.service';
@@ -14,7 +14,11 @@ export class PriceController {
   }
 
   @Post(':auctionListingId')
-  create(@Param('auctionListingId') id: string, @Body() body: CreatePriceDTO) {
-    return this.priceService.create(body, +id);
+  create(
+    @Param('auctionListingId') id: string,
+    @Query('memberId') memberId: string,
+    @Body() body: CreatePriceDTO,
+  ) {
+    return this.priceService.create(body, +id, +memberId);
   }
 }

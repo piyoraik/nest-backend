@@ -6,19 +6,23 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
+import { Members } from './members.entity';
 
 @Entity()
 export class Price {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(
-    () => AuctionListing,
-    (auctionListing) => auctionListing.auctionSituation,
-  )
+  @OneToOne(() => AuctionListing, (auctionListing) => auctionListing.price)
+  @JoinColumn()
   auctionListing: AuctionListing;
+
+  @ManyToOne(() => Members, (member) => member.prices)
+  member: Members;
 
   @Column()
   successfulBidPrice: number;

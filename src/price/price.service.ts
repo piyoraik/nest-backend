@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AuctionListingService } from 'src/auction-listing/auction-listing.service';
 import { Price } from 'src/entity/price.entity';
+import { MembersService } from 'src/members/members.service';
 import { CreatePriceDTO } from './dto/create.price.dto';
 import { PriceRepository } from './price.repository';
 
@@ -9,15 +10,23 @@ export class PriceService {
   constructor(
     private readonly priceRepository: PriceRepository,
     private readonly auctionListingService: AuctionListingService,
+    private readonly memberService: MembersService,
   ) {}
 
-  async create(createPriceDTO: CreatePriceDTO, auctionListingId: number) {
+  async create(
+    createPriceDTO: CreatePriceDTO,
+    auctionListingId: number,
+    memberId: number,
+  ) {
     const auctionListing = await this.auctionListingService.findOneID(
       auctionListingId,
     );
+    const member = await this.memberService.findOneId(memberId);
+
     return await this.priceRepository.createPrice(
       createPriceDTO,
       auctionListing,
+      member
     );
   }
 

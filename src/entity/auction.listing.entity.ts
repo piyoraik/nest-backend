@@ -35,8 +35,8 @@ export class AuctionListing {
   @OneToMany(() => Purchase, (purchase) => purchase.auctionListing)
   purchase: Purchase[];
 
-  @OneToMany(() => Price, (price) => price.auctionListing)
-  price: Price[];
+  @OneToOne(() => Price, (price) => price.auctionListing)
+  price: Price;
 
   //オークションID
   @ManyToOne(() => Auction, (auction) => auction.auctionListing)
