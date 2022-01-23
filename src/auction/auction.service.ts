@@ -28,7 +28,7 @@ export class AuctionService {
   }
 
   async findOneId(id: number) {
-    return await this.auctionRepository.findOne({ id });
+    return await this.auctionRepository.findOneAuction({ id });
   }
 
   async findOne(attrs: Partial<Auction>) {
