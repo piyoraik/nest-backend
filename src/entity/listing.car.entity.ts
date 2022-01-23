@@ -7,6 +7,7 @@ import {
   DeleteDateColumn,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { EvaluationPoint } from '../enum/evaluationPoint.enum';
 import { SalesPoint } from './sales.point.entity';
@@ -29,8 +30,9 @@ export class ListingCar {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.listingCar)
-  carBodyNumber: CarBodyNumber[];
+  @OneToOne(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.listingCar)
+  @JoinColumn()
+  carBodyNumber: CarBodyNumber;
 
   //評価点
   @Column()
