@@ -17,6 +17,10 @@ export class MembersService {
     return await this.memberRepository.createMembers(createMembersDTO);
   }
 
+  async findOneId(id: number) {
+    return await this.memberRepository.findOne({ id });
+  }
+
   async findOne(attrs: Partial<Members>) {
     return await this.memberRepository.findOneMembers(attrs);
   }

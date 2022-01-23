@@ -1,12 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import {
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { CreateAdditionDTO } from 'src/addition/dto/create-addition.dto';
 import { CreateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/create-carbodyevaluation.dto';
 import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimage.dto';
@@ -115,25 +109,25 @@ export class UpdateListingCarDTO {
   mileage: number;
 
   @ApiProperty({
-    description: '外装:謎',
-    default: '0',
+    description: '外装:評価',
+    enum: ScratchEvaluation,
   })
   @IsOptional()
-  @IsNumber()
-  exterior: number;
+  @IsEnum(ScratchEvaluation)
+  exterior: ScratchEvaluation;
 
   //内装
   @ApiProperty({
-    description: '内装:謎',
-    default: '0',
+    description: '内装:評価',
+    enum: ScratchEvaluation,
   })
   @IsOptional()
-  @IsNumber()
-  interior: number;
+  @IsEnum(ScratchEvaluation)
+  interior: ScratchEvaluation;
 
   //色替
   @ApiProperty({
-    description: '色替:謎',
+    description: '色替:色を変えたことがあるか',
     default: '0',
   })
   @IsOptional()
@@ -142,7 +136,7 @@ export class UpdateListingCarDTO {
 
   //希望出品１
   @ApiProperty({
-    description: '希望出品1:謎',
+    description: '希望出品1:ユーザー0、グリーン1',
     default: '0',
   })
   @IsOptional()
@@ -176,7 +170,6 @@ export class UpdateListingCarDTO {
   @ValidateNested()
   CarBodyEvaluation?: CarBodyEvaluation;
 
-  //
   @ApiProperty({
     type: CreateInspectionDTO,
     description: '検査',
@@ -186,7 +179,6 @@ export class UpdateListingCarDTO {
   @ValidateNested()
   Inspection?: Inspection;
 
-  //
   @ApiProperty({
     type: CreateTestingRecordDTO,
     description: '検査記録',
@@ -198,6 +190,7 @@ export class UpdateListingCarDTO {
 
   @ApiProperty({
     type: CreatePaperClassDTO,
+    description: '紙類',
   })
   @IsOptional()
   @Type(() => CreatePaperClassDTO)
@@ -206,6 +199,7 @@ export class UpdateListingCarDTO {
 
   @ApiProperty({
     type: CreateExhibitorEntryDTO,
+    description: '出品者記入',
   })
   @IsOptional()
   @Type(() => CreateExhibitorEntryDTO)

@@ -10,6 +10,7 @@ import {
 import { Auction } from './auction.entity';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionSituation } from './auction.situation.entity';
+import { Price } from './price.entity';
 import { Purchase } from './purchase.entity';
 
 @Entity()
@@ -66,6 +67,9 @@ export class Members {
 
   @OneToMany(() => Purchase, (purchase) => purchase.member)
   purchase: Purchase[];
+
+  @OneToMany(() => Price, (price) => price.member)
+  prices: Price[];
 
   @CreateDateColumn()
   createdAt: Date;
