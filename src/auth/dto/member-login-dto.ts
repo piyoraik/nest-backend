@@ -18,6 +18,7 @@ export class LoginDto {
 
   @ApiProperty({
     description: 'パスワード',
+    default: 'asdfasdf123',
     minLength: 8,
     maxLength: 32,
   })
