@@ -27,16 +27,16 @@ export class CarBodyNumberController {
     return this.carBodyNumberService.create(createCarBodyNumberDTO, foreignKey);
   }
 
+  @Get(':carBodyNumberId')
+  findOneID(@Param('carBodyNumberId') id: string) {
+    return this.carBodyNumberService.findOneID(+id);
+  }
+
   @ApiQuery({ type: PartialType(UpdateCarBodyNumberDTO), required: false })
   @Get('search')
   search(
     @Body() attrs: Partial<UpdateCarBodyNumberDTO | UpdateCarBodyEvaluationDTO>,
   ) {
     return this.carBodyNumberService.findWhere(attrs);
-  }
-
-  @Get()
-  findOneID(@Param() id: string) {
-    return this.carBodyNumberService.findOneID(+id);
   }
 }
