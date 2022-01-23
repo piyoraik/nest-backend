@@ -26,12 +26,14 @@ export class PriceService {
     return await this.priceRepository.createPrice(
       createPriceDTO,
       auctionListing,
-      member
+      member,
     );
   }
 
   async findAll() {
-    return await this.priceRepository.find();
+    return await this.priceRepository.find({
+      relations: ['auctionListing', 'auctionListing.auction', 'member'],
+    });
   }
 
   async findOneId(id: number) {

@@ -24,7 +24,7 @@ export class PriceRepository extends Repository<Price> {
   async findOnePrice(attrs: Partial<Price>) {
     const price = await this.findOne({
       where: attrs,
-      relations: ['auctionListing'],
+      relations: ['auctionListing', 'auctionListing.auction', 'member'],
     });
     if (!price) {
       throw new NotFoundException('Price Not Found');
@@ -35,7 +35,7 @@ export class PriceRepository extends Repository<Price> {
   async findWherePrice(attrs: Partial<Price>) {
     const price = await this.find({
       where: attrs,
-      relations: ['auctionListing'],
+      relations: ['auctionListing', 'auctionListing.auction', 'member'],
     });
     if (!price) {
       throw new NotFoundException('Price Not Found');

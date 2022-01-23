@@ -8,6 +8,11 @@ import { PriceService } from './price.service';
 export class PriceController {
   constructor(private readonly priceService: PriceService) {}
 
+  @Get()
+  findAll() {
+    return this.priceService.findAll();
+  }
+
   @Get(':auctionListingId')
   get(@Param('auctionListingId') id: string) {
     return this.priceService.findOneId(+id);
