@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsBoolean,
   IsEmail,
   IsOptional,
   IsString,
@@ -71,4 +72,22 @@ export class UpdateMembersDTO {
   @IsOptional()
   @IsString()
   address: string;
+
+  @ApiProperty({
+    description: '悪質フラグ',
+    type: Boolean,
+    default: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  malicuousFlag: boolean;
+
+  @ApiProperty({
+    description: '与信チェック',
+    type: Boolean,
+    default: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  creditCheck: boolean;
 }
