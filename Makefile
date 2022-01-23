@@ -21,6 +21,7 @@ down:
 ## TypeORM Operation
 migration.sync:
 	@yarn typeorm schema:sync
+	@yarn seed:run
 
 migration.drop:
 	@yarn typeorm schema:drop
