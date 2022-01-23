@@ -1,7 +1,7 @@
 import { Factory, Seeder } from 'typeorm-seeding';
 import CarModel from '../factories/carModel.factories';
 
-export default class CreateMakers implements Seeder {
+export default class CreateCarModel implements Seeder {
   carModels = [
     'ワゴンR',
     'ムーヴ',
