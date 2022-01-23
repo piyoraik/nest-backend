@@ -67,9 +67,6 @@ export class Members {
   @OneToMany(() => Purchase, (purchase) => purchase.member)
   purchase: Purchase[];
 
-  @OneToMany(() => Auction, (auction) => auction.member)
-  auctions: Auction[];
-
   @CreateDateColumn()
   createdAt: Date;
 

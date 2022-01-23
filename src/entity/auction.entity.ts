@@ -3,14 +3,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  ManyToOne,
   CreateDateColumn,
   DeleteDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 import { AuctionColor } from '../enum/auctionColor.enum';
-import { Members } from './members.entity';
 
 @Entity()
 export class Auction {
@@ -42,12 +40,6 @@ export class Auction {
   //オークションID
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auction)
   auctionListing: AuctionListing[];
-
-  @ManyToOne(() => Members, (member) => member.auctions)
-  member: Members;
-
-  @Column()
-  memberId: number;
 
   @CreateDateColumn()
   createdAt: Date;
