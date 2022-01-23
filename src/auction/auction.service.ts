@@ -16,14 +16,8 @@ export class AuctionService {
     return this.auctionRepository.find({ relations: ['member'] });
   }
 
-  async create(createAuctionDTO: CreateAuctionDto, attrsMember: PayLoad) {
-    const member = await this.memberService.findOne({
-      email: attrsMember.email,
-    });
-    const res = await this.auctionRepository.createAuction(
-      createAuctionDTO,
-      member,
-    );
+  async create(createAuctionDTO: CreateAuctionDto) {
+    const res = await this.auctionRepository.createAuction(createAuctionDTO);
     return await this.findOneId(res.id);
   }
 

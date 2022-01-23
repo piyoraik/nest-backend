@@ -14,12 +14,10 @@ export class CarBodyNumberRepository extends Repository<CarBodyNumber> {
   async createCarBodyNumber(
     createCarBodyNumberDTO: CreateCarBodyNumberDTO,
     createCarBodyNumberForeignKey: CreateCarBodyNumberForeignKeyDTO,
-    listingCarId: number,
   ) {
     const carBodyNumber = this.create({
       ...createCarBodyNumberDTO,
       ...createCarBodyNumberForeignKey,
-      listingCarId,
     });
     await this.save(carBodyNumber);
     return carBodyNumber;

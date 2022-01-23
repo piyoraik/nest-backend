@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AdditionService } from 'src/addition/addition.service';
 import { CarBodyEvaluationService } from 'src/car-body-evaluation/car-body-evaluation.service';
 import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
+import { CarBodyNumberService } from 'src/car-body-number/car-body-number.service';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { ExhibitorEntryService } from 'src/exhibitor-entry/exhibitor-entry.service';
 import { InspectionService } from 'src/inspection/inspection.service';
@@ -25,9 +26,13 @@ export class ListingCarService {
     private readonly suggestedListingService: SuggestedListingService,
     private readonly paperClassService: PaperClassService,
     private readonly exhibitorEntryService: ExhibitorEntryService,
+    private readonly carBodyNumberService: CarBodyNumberService,
   ) {}
 
-  async create(createListingCarDTO: CreateListingCarDTO) {
+  async create(
+    createListingCarDTO: CreateListingCarDTO,
+    carBodyNumberID: number,
+  ) {
     const {
       CarBodyImage,
       salesPoint,
@@ -40,8 +45,13 @@ export class ListingCarService {
       ExhibitorEntry,
       ...listingCarObject
     } = createListingCarDTO;
+    const carBodyNumber = await this.carBodyNumberService.findOneID(
+      carBodyNumberID,
+    );
+
     const listingCar = (await this.listingCarRepository.createListingCar(
       listingCarObject,
+      carBodyNumber,
     )) as ListingCar;
     await this.salesPointService.create(salesPoint, listingCar);
     await this.carBodyImageService.create(CarBodyImage, listingCar);
@@ -64,6 +74,7 @@ export class ListingCarService {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
       ],
     });
   }

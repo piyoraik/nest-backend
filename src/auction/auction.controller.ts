@@ -7,12 +7,8 @@ import {
   Patch,
   Post,
   Query,
-  UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth, ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
-import { GetMember } from 'src/auth/decorator/member.decorator';
-import { PayLoad } from 'src/auth/interfaces/payload-interfaces';
+import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { Auction } from 'src/entity/auction.entity';
 import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
@@ -29,10 +25,8 @@ export class AuctionController {
   }
 
   @Post()
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  create(@Body() body: CreateAuctionDto, @GetMember() payloadMember: PayLoad) {
-    return this.auctionService.create(body, payloadMember);
+  create(@Body() body: CreateAuctionDto) {
+    return this.auctionService.create(body);
   }
 
   @ApiQuery({ type: PartialType(CreateAuctionDto), required: false })

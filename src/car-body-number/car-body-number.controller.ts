@@ -19,17 +19,17 @@ export class CarBodyNumberController {
     return this.carBodyNumberService.findAll();
   }
 
-  @Post(':listingCarId')
+  @Post()
   create(
     @Body() createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    @Param('listingCarId') listingCarId: string,
     @Query(ConvertIntPipe) foreignKey: CreateCarBodyNumberForeignKeyDTO,
   ) {
-    return this.carBodyNumberService.create(
-      createCarBodyNumberDTO,
-      foreignKey,
-      +listingCarId,
-    );
+    return this.carBodyNumberService.create(createCarBodyNumberDTO, foreignKey);
+  }
+
+  @Get(':carBodyNumberId')
+  findOneID(@Param('carBodyNumberId') id: string) {
+    return this.carBodyNumberService.findOneID(+id);
   }
 
   @ApiQuery({ type: PartialType(UpdateCarBodyNumberDTO), required: false })
@@ -38,10 +38,5 @@ export class CarBodyNumberController {
     @Body() attrs: Partial<UpdateCarBodyNumberDTO | UpdateCarBodyEvaluationDTO>,
   ) {
     return this.carBodyNumberService.findWhere(attrs);
-  }
-
-  @Get(':listingCarId')
-  findOneID(@Param('listingCarId') id: string) {
-    return this.carBodyNumberService.findOneID(+id);
   }
 }

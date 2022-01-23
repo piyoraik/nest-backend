@@ -33,12 +33,11 @@ export class AfterSuccessfulBidRepository extends Repository<AfterSuccessfulBid>
 
   // findWhere
   async findWhereLikeAfterSuccessfulBid(attrs: Partial<AfterSuccessfulBid>) {
-    const parseAttrs: Partial<AfterSuccessfulBid> = {};
     for (const key in attrs) {
-      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+      attrs[key] = ILike('%' + attrs[key] + '%');
     }
     const afterSuccessfulBids = await this.find({
-      where: parseAttrs,
+      where: attrs,
       relations: ['auctionListing'],
     });
     if (!afterSuccessfulBids) {

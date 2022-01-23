@@ -68,9 +68,6 @@ export class Members {
   @OneToMany(() => Purchase, (purchase) => purchase.member)
   purchase: Purchase[];
 
-  @OneToMany(() => Auction, (auction) => auction.member)
-  auctions: Auction[];
-
   @OneToMany(() => Price, (price) => price.member)
   prices: Price[];
 
