@@ -25,13 +25,12 @@ export class AuctionSituationService {
     const auctionListing = await this.auctionListingService.findOneID(
       auctionListingID,
     );
-    const auctionSituation =
-      await this.auctionSituationRepository.createAuctionSituation(
-        createAuctionSituation,
-        member,
-        auctionListing,
-      );
-    return auctionSituation;
+    const res = await this.auctionSituationRepository.createAuctionSituation(
+      createAuctionSituation,
+      member,
+      auctionListing,
+    );
+    return await this.findOneId(res.id);
   }
 
   async findAll() {

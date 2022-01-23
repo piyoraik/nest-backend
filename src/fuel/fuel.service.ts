@@ -10,7 +10,8 @@ export class FuelService {
 
   // create
   async create(createFuelDTO: CreateFuelDTO) {
-    return await this.fuelRepository.createFuel(createFuelDTO);
+    const res = await this.fuelRepository.createFuel(createFuelDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

@@ -10,7 +10,8 @@ export class CarModelService {
 
   // create
   async create(createCarModelDTO: CreateCarModelDTO) {
-    return await this.carModelRepository.createCarModel(createCarModelDTO);
+    const res = await this.carModelRepository.createCarModel(createCarModelDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll

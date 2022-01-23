@@ -10,7 +10,8 @@ export class MakerService {
 
   // create
   async create(createMakerDTO: CreateMakerDTO) {
-    return await this.makerRepository.createMaker(createMakerDTO);
+    const res = await this.makerRepository.createMaker(createMakerDTO);
+    return await this.findOneID(res.id);
   }
 
   // findAll
