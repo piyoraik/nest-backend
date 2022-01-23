@@ -1,5 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { AuctionListing } from 'src/entity/auction.listing.entity';
+import { Members } from 'src/entity/members.entity';
 import { Price } from 'src/entity/price.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreatePriceDTO } from './dto/create.price.dto';
@@ -9,9 +10,11 @@ export class PriceRepository extends Repository<Price> {
   async createPrice(
     createPriceDTO: CreatePriceDTO,
     auctionListing: AuctionListing,
+    member: Members,
   ) {
     const price = this.create({
       auctionListing,
+      member,
       ...createPriceDTO,
     });
     await this.save(price);
@@ -21,7 +24,7 @@ export class PriceRepository extends Repository<Price> {
   async findOnePrice(attrs: Partial<Price>) {
     const price = await this.findOne({
       where: attrs,
-      relations: ['auctionListing'],
+      relations: ['auctionListing', 'auctionListing.auction', 'member'],
     });
     if (!price) {
       throw new NotFoundException('Price Not Found');
@@ -32,7 +35,7 @@ export class PriceRepository extends Repository<Price> {
   async findWherePrice(attrs: Partial<Price>) {
     const price = await this.find({
       where: attrs,
-      relations: ['auctionListing'],
+      relations: ['auctionListing', 'auctionListing.auction', 'member'],
     });
     if (!price) {
       throw new NotFoundException('Price Not Found');

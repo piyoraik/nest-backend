@@ -1,8 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsOptional } from 'class-validator';
 
 export class UpdateAuctionSituationDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: '入札価格',
+    default: 1500000,
+  })
+  @IsOptional()
   @IsNumber()
   bidPrice: number;
 }
