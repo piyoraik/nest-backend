@@ -20,19 +20,23 @@ down:
 
 ## TypeORM Operation
 migration.sync:
-	@npx typeorm schema:sync
+	@yarn typeorm schema:sync
+	@yarn seed:run
 
 migration.drop:
-	@npx typeorm schema:drop
+	@yarn typeorm schema:drop
 
 migration:
-	@npx typeorm migration:run
+	@yarn typeorm migration:run
 
 migration.gen:
-	@npx typeorm migration:generate -n $(name)
+	@yarn typeorm migration:generate -n $(name)
 
 migration.create:
-	@npx typeorm migration:create -n $(name)
+	@yarn typeorm migration:create -n $(name)
 
 migration.rollback:
-	@npx typeorm migration:revert
+	@yarn typeorm migration:revert
+
+seed:
+	@yarn seed:run
