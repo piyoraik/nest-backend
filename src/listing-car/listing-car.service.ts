@@ -51,7 +51,7 @@ export class ListingCarService {
 
     const listingCar = (await this.listingCarRepository.createListingCar(
       listingCarObject,
-      carBodyNumber
+      carBodyNumber,
     )) as ListingCar;
     await this.salesPointService.create(salesPoint, listingCar);
     await this.carBodyImageService.create(CarBodyImage, listingCar);
