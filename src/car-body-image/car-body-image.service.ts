@@ -4,6 +4,7 @@ import { ListingCar } from 'src/entity/listing.car.entity';
 import { ListingCarService } from 'src/listing-car/listing-car.service';
 import { CarBodyImageRepository } from './car-body-image.repository';
 import { CreateCarBodyImageDTO } from './dto/create.carbodyimage.dto';
+import { UpdateCarBodyImageDTO } from './dto/update.carbodyimage.dto';
 
 @Injectable()
 export class CarBodyImageService {
@@ -36,6 +37,15 @@ export class CarBodyImageService {
 
   async find(attrs: Partial<CarBodyImage>) {
     return await this.carBodyImageRepository.findWhereCarBodyImage(attrs);
+  }
+
+  async update(id: number, attrs: UpdateCarBodyImageDTO[]) {
+    const res = await Promise.all(
+      attrs.map(async (image) => {
+        return this.carBodyImageRepository.updateCarBodyImage(id, image);
+      }),
+    );
+    return res;
   }
 
   async delete(id: number) {
