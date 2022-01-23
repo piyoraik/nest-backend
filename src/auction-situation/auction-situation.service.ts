@@ -25,7 +25,6 @@ export class AuctionSituationService {
     const auctionListing = await this.auctionListingService.findOneID(
       auctionListingID,
     );
-    console.log(auctionListing);
     const res = await this.auctionSituationRepository.createAuctionSituation(
       createAuctionSituation,
       member,
