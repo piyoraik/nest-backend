@@ -100,7 +100,7 @@ export class CreateListingCarDTO {
 
   @ApiProperty({
     description: '外装:評価',
-    default: 'A',
+    default: 6,
   })
   @IsNumber()
   exterior: number;
@@ -108,7 +108,7 @@ export class CreateListingCarDTO {
   //内装
   @ApiProperty({
     description: '内装:評価',
-    default: 'B',
+    default: '5',
   })
   @IsNumber()
   interior: number;
