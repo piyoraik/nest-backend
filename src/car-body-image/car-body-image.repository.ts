@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateCarBodyImageDTO } from './dto/create.carbodyimage.dto';
 
@@ -8,10 +8,10 @@ import { CreateCarBodyImageDTO } from './dto/create.carbodyimage.dto';
 export class CarBodyImageRepository extends Repository<CarBodyImage> {
   async createCarBodyImage(
     createCarBodyImage: CreateCarBodyImageDTO,
-    listingCar: ListingCar,
+    carBodyNumber: CarBodyNumber,
   ) {
     const carBodyImage = this.create({
-      listingCar,
+      carBodyNumber,
       ...createCarBodyImage,
     });
     await this.save(carBodyImage);

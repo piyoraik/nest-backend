@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { ListingCar } from './listing.car.entity';
+import { CarBodyNumber } from './car.body.number.entity';
 
 @Entity()
 export class CarBodyImage {
@@ -11,6 +11,6 @@ export class CarBodyImage {
   @Column({ comment: '車体画像' })
   img: string;
 
-  @ManyToOne(() => ListingCar, (listingCar) => listingCar.CarBodyImage)
-  listingCar: ListingCar;
+  @ManyToOne(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.CarBodyImage)
+  carBodyNumber: CarBodyNumber;
 }

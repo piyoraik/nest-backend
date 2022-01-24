@@ -87,7 +87,7 @@ export class CreateCarBodyNumberDTO {
   crewNumber: number;
 
   @ApiProperty({
-    enum: EvaluationPoint,
+    default: 4,
     description: '評価点',
   })
   @IsEnum(EvaluationPoint)

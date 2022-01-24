@@ -154,7 +154,7 @@ export class CarBodyNumber {
   scratchEvaluation: ScratchEvaluation;
 
   //車体画像
-  @OneToMany(() => CarBodyImage, (carBodyImage) => carBodyImage.listingCar)
+  @OneToMany(() => CarBodyImage, (carBodyImage) => carBodyImage.carBodyNumber)
   CarBodyImage: CarBodyImage[];
 
   //車歴

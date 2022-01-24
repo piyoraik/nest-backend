@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
-import { ListingCar } from 'src/entity/listing.car.entity';
-import { ListingCarService } from 'src/listing-car/listing-car.service';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { CarBodyImageRepository } from './car-body-image.repository';
 import { CreateCarBodyImageDTO } from './dto/create.carbodyimage.dto';
 import { UpdateCarBodyImageDTO } from './dto/update.carbodyimage.dto';
@@ -18,13 +17,13 @@ export class CarBodyImageService {
 
   async create(
     createCarBodyImageDTO: CreateCarBodyImageDTO[],
-    listingCar: ListingCar,
+    carBodyNumber: CarBodyNumber,
   ) {
     const res = await Promise.all(
       createCarBodyImageDTO.map(async (image) => {
         return this.carBodyImageRepository.createCarBodyImage(
           image,
-          listingCar,
+          carBodyNumber,
         );
       }),
     );
