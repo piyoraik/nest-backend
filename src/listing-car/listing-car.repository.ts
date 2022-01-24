@@ -1,13 +1,19 @@
 import { NotFoundException } from '@nestjs/common';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
+import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 
 @EntityRepository(ListingCar)
 export class ListingCarRepository extends Repository<ListingCar> {
-  async createListingCar(createListingCarDTO: CreateListingCarDTO) {
+  async createListingCar(
+    createListingCarDTO: CreateListingCarDTO,
+    carBodyNumber: CarBodyNumber,
+  ) {
     const listingCar = {
       ...createListingCarDTO,
+      carBodyNumber,
     };
     await this.save(listingCar);
     return listingCar;
@@ -23,6 +29,7 @@ export class ListingCarRepository extends Repository<ListingCar> {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
       ],
     });
     if (!listingCar) {
@@ -45,6 +52,7 @@ export class ListingCarRepository extends Repository<ListingCar> {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
       ],
     });
     if (!listingCars) {
@@ -53,9 +61,11 @@ export class ListingCarRepository extends Repository<ListingCar> {
     return listingCars;
   }
 
-  async updateListingCar(id: number, attrs: Partial<ListingCar>) {
-    const listingCar = await this.findOneListingCar({ id });
-    Object.assign(listingCar, attrs);
+  async updateListingCar(id: number, afterAttrs: UpdateListingCarDTO) {
+    const listingCar = await this.findOneListingCar({
+      id,
+    });
+    Object.assign(listingCar, afterAttrs);
     await this.save(listingCar);
     return listingCar;
   }

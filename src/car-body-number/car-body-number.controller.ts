@@ -1,6 +1,16 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { ApiQuery, ApiTags, PartialType } from '@nestjs/swagger';
 import { UpdateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/update-carbodyevaluation.dto';
+import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { CarBodyNumberService } from './car-body-number.service';
 import {
   CreateCarBodyNumberDTO,
@@ -19,17 +29,17 @@ export class CarBodyNumberController {
     return this.carBodyNumberService.findAll();
   }
 
-  @Post(':listingCarId')
+  @Post()
   create(
     @Body() createCarBodyNumberDTO: CreateCarBodyNumberDTO,
-    @Param('listingCarId') listingCarId: string,
     @Query(ConvertIntPipe) foreignKey: CreateCarBodyNumberForeignKeyDTO,
   ) {
-    return this.carBodyNumberService.create(
-      createCarBodyNumberDTO,
-      foreignKey,
-      +listingCarId,
-    );
+    return this.carBodyNumberService.create(createCarBodyNumberDTO, foreignKey);
+  }
+
+  @Get(':carBodyNumberId')
+  findOneID(@Param('carBodyNumberId') id: string) {
+    return this.carBodyNumberService.findOneID(+id);
   }
 
   @ApiQuery({ type: PartialType(UpdateCarBodyNumberDTO), required: false })
@@ -40,8 +50,13 @@ export class CarBodyNumberController {
     return this.carBodyNumberService.findWhere(attrs);
   }
 
-  @Get(':listingCarId')
-  findOneID(@Param('listingCarId') id: string) {
-    return this.carBodyNumberService.findOneID(+id);
+  @Patch(':carBodyNumberId')
+  update(@Param('carBodyNumberId') id: string, attrs: Partial<CarBodyNumber>) {
+    return this.carBodyNumberService.update(+id, attrs);
+  }
+
+  @Delete(':carBodyNumberId')
+  delete(@Param('carBodyNumberId') id: string) {
+    return this.carBodyNumberService.softDelete(+id);
   }
 }

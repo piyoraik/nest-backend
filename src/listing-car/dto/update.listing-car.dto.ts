@@ -1,19 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import {
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { CreateAdditionDTO } from 'src/addition/dto/create-addition.dto';
 import { CreateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/create-carbodyevaluation.dto';
 import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimage.dto';
 import { Addition } from 'src/entity/addition.entity';
 import { CarBodyEvaluation } from 'src/entity/car.body.evaluation.entity';
 import { CarBodyImage } from 'src/entity/car.body.image.entity';
+import { ExhibitorEntry } from 'src/entity/exhibitor.entry.entity';
 import { Inspection } from 'src/entity/inspection.entity';
+import { PaperClass } from 'src/entity/paper.class.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
 import { SuggestedListing } from 'src/entity/suggested.listing.entity';
 import { TestingRecord } from 'src/entity/testing.record.entity';
@@ -22,7 +18,9 @@ import { Cigarette } from 'src/enum/cigarette.enum';
 import { EvaluationPoint } from 'src/enum/evaluationPoint.enum';
 import { MeterExchangeHistory } from 'src/enum/meterExchangeHistory.enum';
 import { ScratchEvaluation } from 'src/enum/scratchEvaluation.enum';
+import { CreateExhibitorEntryDTO } from 'src/exhibitor-entry/dto/create.exhibitor-entry.dto';
 import { CreateInspectionDTO } from 'src/inspection/dto/create-inspection.dto';
+import { CreatePaperClassDTO } from 'src/paper-class/dto/create.paperclass.dto';
 import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
 import { CreateSuggestedListingDTO } from 'src/suggested-listing/dto/create.suggested-listing.dto';
 import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
@@ -112,20 +110,20 @@ export class UpdateListingCarDTO {
 
   @ApiProperty({
     description: '外装:評価',
-    default: 'A',
+    enum: ScratchEvaluation,
   })
   @IsOptional()
-  @IsNumber()
-  exterior: number;
+  @IsEnum(ScratchEvaluation)
+  exterior: ScratchEvaluation;
 
   //内装
   @ApiProperty({
     description: '内装:評価',
-    default: 'B',
+    enum: ScratchEvaluation,
   })
   @IsOptional()
-  @IsNumber()
-  interior: number;
+  @IsEnum(ScratchEvaluation)
+  interior: ScratchEvaluation;
 
   //色替
   @ApiProperty({
@@ -172,7 +170,6 @@ export class UpdateListingCarDTO {
   @ValidateNested()
   CarBodyEvaluation?: CarBodyEvaluation;
 
-  //
   @ApiProperty({
     type: CreateInspectionDTO,
     description: '検査',
@@ -182,7 +179,6 @@ export class UpdateListingCarDTO {
   @ValidateNested()
   Inspection?: Inspection;
 
-  //
   @ApiProperty({
     type: CreateTestingRecordDTO,
     description: '検査記録',
@@ -191,4 +187,22 @@ export class UpdateListingCarDTO {
   @Type(() => CreateTestingRecordDTO)
   @ValidateNested()
   TestingRecord?: TestingRecord;
+
+  @ApiProperty({
+    type: CreatePaperClassDTO,
+    description: '紙類',
+  })
+  @IsOptional()
+  @Type(() => CreatePaperClassDTO)
+  @ValidateNested()
+  PaperClass?: PaperClass;
+
+  @ApiProperty({
+    type: CreateExhibitorEntryDTO,
+    description: '出品者記入',
+  })
+  @IsOptional()
+  @Type(() => CreateExhibitorEntryDTO)
+  @ValidateNested()
+  ExhibitorEntry?: ExhibitorEntry;
 }

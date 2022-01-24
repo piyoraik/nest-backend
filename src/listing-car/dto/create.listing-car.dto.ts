@@ -100,18 +100,18 @@ export class CreateListingCarDTO {
 
   @ApiProperty({
     description: '外装:評価',
-    default: 6,
+    enum: ScratchEvaluation,
   })
-  @IsNumber()
-  exterior: number;
+  @IsEnum(ScratchEvaluation)
+  exterior: ScratchEvaluation;
 
   //内装
   @ApiProperty({
     description: '内装:評価',
-    default: '5',
+    enum: ScratchEvaluation,
   })
-  @IsNumber()
-  interior: number;
+  @IsEnum(ScratchEvaluation)
+  interior: ScratchEvaluation;
 
   //色替
   @ApiProperty({

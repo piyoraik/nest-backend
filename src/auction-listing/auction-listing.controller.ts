@@ -45,22 +45,27 @@ export class AuctionListingController {
     );
   }
 
+  @Get(':auctionListingId')
+  findOneId(@Query('auctionListingId') id: string) {
+    return this.auctionListingService.findOneID(+id);
+  }
+
   @ApiQuery({ type: PartialType(CreateAuctionListingDTO), required: false })
   @Get('search')
   search(@Param() attrs: Partial<AuctionListing>) {
     return this.auctionListingService.findWhere(attrs);
   }
 
-  @Patch('auctionId')
+  @Patch(':auctionListingId')
   update(
-    @Param('auctionId') id: string,
+    @Param('auctionListingId') id: string,
     @Body() body: UpdateAuctionListingDTO,
   ) {
     return this.auctionListingService.update(+id, body);
   }
 
-  @Delete('auctionId')
-  delete(@Param('auctionId') id: string) {
+  @Delete(':auctionListingId')
+  delete(@Param('auctionListingId') id: string) {
     return this.auctionListingService.softDelete(+id);
   }
 }

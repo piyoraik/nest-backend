@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
 } from 'typeorm';
 import { AuctionListing } from './auction.listing.entity';
 
@@ -21,7 +22,7 @@ export class AfterSuccessfulBid {
   id: number;
 
   //オークション出品車
-  @ManyToOne(
+  @OneToOne(
     () => AuctionListing,
     (auctionListing) => auctionListing.afterSuccessfulBid,
   )

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AdditionService } from 'src/addition/addition.service';
 import { CarBodyEvaluationService } from 'src/car-body-evaluation/car-body-evaluation.service';
 import { CarBodyImageService } from 'src/car-body-image/car-body-image.service';
+import { CarBodyNumberService } from 'src/car-body-number/car-body-number.service';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { ExhibitorEntryService } from 'src/exhibitor-entry/exhibitor-entry.service';
 import { InspectionService } from 'src/inspection/inspection.service';
@@ -10,6 +11,7 @@ import { SalesPointService } from 'src/sales-point/sales-point.service';
 import { SuggestedListingService } from 'src/suggested-listing/suggested-listing.service';
 import { TestingRecordService } from 'src/testing-record/testing-record.service';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
+import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarRepository } from './listing-car.repository';
 
 @Injectable()
@@ -25,9 +27,13 @@ export class ListingCarService {
     private readonly suggestedListingService: SuggestedListingService,
     private readonly paperClassService: PaperClassService,
     private readonly exhibitorEntryService: ExhibitorEntryService,
+    private readonly carBodyNumberService: CarBodyNumberService,
   ) {}
 
-  async create(createListingCarDTO: CreateListingCarDTO) {
+  async create(
+    createListingCarDTO: CreateListingCarDTO,
+    carBodyNumberID: number,
+  ) {
     const {
       CarBodyImage,
       salesPoint,
@@ -40,8 +46,13 @@ export class ListingCarService {
       ExhibitorEntry,
       ...listingCarObject
     } = createListingCarDTO;
+    const carBodyNumber = await this.carBodyNumberService.findOneID(
+      carBodyNumberID,
+    );
+
     const listingCar = (await this.listingCarRepository.createListingCar(
       listingCarObject,
+      carBodyNumber,
     )) as ListingCar;
     await this.salesPointService.create(salesPoint, listingCar);
     await this.carBodyImageService.create(CarBodyImage, listingCar);
@@ -64,6 +75,7 @@ export class ListingCarService {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
       ],
     });
   }
@@ -80,8 +92,33 @@ export class ListingCarService {
     return await this.listingCarRepository.findWhereListingCar(attrs);
   }
 
-  async update(id: number, attrs: Partial<ListingCar>) {
-    return await this.listingCarRepository.updateListingCar(id, attrs);
+  async update(id: number, attrs: UpdateListingCarDTO) {
+    const {
+      CarBodyImage,
+      salesPoint,
+      Addition,
+      CarBodyEvaluation,
+      Inspection,
+      TestingRecord,
+      SuggestedListing,
+      PaperClass,
+      ExhibitorEntry,
+      ...attrsListingCar
+    } = attrs;
+    const listingCar = await this.listingCarRepository.updateListingCar(
+      id,
+      attrsListingCar,
+    );
+    // await this.carBodyImageService.update(id, CarBodyImage);
+    // await this.salesPointService.update(id, salesPoint);
+    // await this.additionService.update(id, Addition);
+    // await this.carBodyEvaluationService.update(id, CarBodyEvaluation);
+    // await this.inspectionService.update(id, Inspection);
+    // await this.testingRecordService.update(id, TestingRecord);
+    // await this.suggestedListingService.update(id, SuggestedListing);
+    // await this.paperClassService.update(id, PaperClass);
+    // await this.exhibitorEntryService.update(id, ExhibitorEntry);
+    return listingCar;
   }
 
   async delete(id: number) {

@@ -13,22 +13,16 @@ export class AuctionService {
   ) {}
 
   fetchAll() {
-    return this.auctionRepository.find({ relations: ['member'] });
+    return this.auctionRepository.find();
   }
 
-  async create(createAuctionDTO: CreateAuctionDto, attrsMember: PayLoad) {
-    const member = await this.memberService.findOne({
-      email: attrsMember.email,
-    });
-    const res = await this.auctionRepository.createAuction(
-      createAuctionDTO,
-      member,
-    );
+  async create(createAuctionDTO: CreateAuctionDto) {
+    const res = await this.auctionRepository.createAuction(createAuctionDTO);
     return await this.findOneId(res.id);
   }
 
   async findOneId(id: number) {
-    return await this.auctionRepository.findOne({ id });
+    return await this.auctionRepository.findOneAuction({ id });
   }
 
   async findOne(attrs: Partial<Auction>) {

@@ -7,6 +7,8 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { AfterSuccessfulBid } from './after.successful.bid.entity';
 import { Auction } from './auction.entity';
@@ -33,8 +35,8 @@ export class AuctionListing {
   @OneToMany(() => Purchase, (purchase) => purchase.auctionListing)
   purchase: Purchase[];
 
-  @OneToMany(() => Price, (price) => price.auctionListing)
-  price: Price[];
+  @OneToOne(() => Price, (price) => price.auctionListing)
+  price: Price;
 
   //オークションID
   @ManyToOne(() => Auction, (auction) => auction.auctionListing)
@@ -62,11 +64,12 @@ export class AuctionListing {
   )
   carBodyNumber: CarBodyNumber;
 
-  @OneToMany(
+  @OneToOne(
     () => AfterSuccessfulBid,
     (afterSuccessfulBid) => afterSuccessfulBid.auctionListing,
   )
-  afterSuccessfulBid: AfterSuccessfulBid[];
+  @JoinColumn()
+  afterSuccessfulBid: AfterSuccessfulBid;
 
   @CreateDateColumn()
   createdAt: Date;
