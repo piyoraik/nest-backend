@@ -4,56 +4,92 @@ import { IsString } from 'class-validator';
 export class CreateSuggestedListingDTO {
   @ApiProperty({
     description: '乗用車',
-    default: '乗用車',
+    default: '出品希望',
   })
   @IsString()
   car: string; //乗用車
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ミニバン、キャンプワゴン',
+    default: '-',
+  })
   @IsString()
   minivanCampWagon: string; //ミニバン、キャンプワゴン
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'バン、トラ',
+    default: '-',
+  })
   @IsString()
   vanTruck: string; //バン、トラ
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '軽４',
+    default: '-',
+  })
   @IsString()
   ligthCar: string; //軽４
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ドレスUP',
+    default: '-',
+  })
   @IsString()
   dressUp: string; //ドレスUP
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '輸入車',
+    default: '出品希望',
+  })
   @IsString()
   importedCar: string; //輸入車
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リフレッシュ',
+    default: '-',
+  })
   @IsString()
   refresh: string; //リフレッシュ
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '0円売り切り',
+    default: '-',
+  })
   @IsString()
   sellout: string; //0円売り切り
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '乗用車ファーストNG',
+    default: '-',
+  })
   @IsString()
   firstNg: string; //乗用車ファーストNG
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リバース',
+    default: '-',
+  })
   @IsString()
   reverse: string; //リバース
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '大型',
+    default: '-',
+  })
   @IsString()
   largeSize: string; //大型
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リサイクル',
+    default: '-',
+  })
   @IsString()
   recycling: string; //リサイクル
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'オレンジ',
+    default: '-',
+  })
   @IsString()
   orange: string; //オレンジ
 }

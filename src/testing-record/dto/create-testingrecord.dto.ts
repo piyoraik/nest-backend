@@ -2,23 +2,38 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
 
 export class CreateTestingRecordDTO {
-  @ApiProperty()
+  @ApiProperty({
+    description: '修復歴',
+    default: '-',
+  })
   @IsString()
   repaired: string; //修復歴
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'ジャッキ',
+    default: 'あり',
+  })
   @IsString()
   jack: string; //ジャッキ
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '工具',
+    default: 'あり',
+  })
   @IsString()
   tool: string; //工具
 
-  @ApiProperty()
+  @ApiProperty({
+    description: '出品者記入テキスト',
+    default: '-',
+  })
   @IsString()
   text: string; //出品者記入テキスト
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'リサイクル料金',
+    default: 120000,
+  })
   @IsNumber()
   recycling: number; //リサイクル料金
 }
