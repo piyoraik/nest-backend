@@ -105,13 +105,20 @@ export class ListingCarService {
       ExhibitorEntry,
       ...attrsListingCar
     } = attrs;
-    console.log(CarBodyImage);
     const listingCar = await this.listingCarRepository.updateListingCar(
       id,
       attrsListingCar,
     );
-    await this.carBodyImageService.update(id, CarBodyImage);
+    // await this.carBodyImageService.update(id, CarBodyImage);
     // await this.salesPointService.update(id, salesPoint);
+    // await this.additionService.update(id, Addition);
+    // await this.carBodyEvaluationService.update(id, CarBodyEvaluation);
+    // await this.inspectionService.update(id, Inspection);
+    // await this.testingRecordService.update(id, TestingRecord);
+    // await this.suggestedListingService.update(id, SuggestedListing);
+    // await this.paperClassService.update(id, PaperClass);
+    // await this.exhibitorEntryService.update(id, ExhibitorEntry);
+    return listingCar;
   }
 
   async delete(id: number) {
