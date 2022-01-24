@@ -20,6 +20,8 @@ export class AuctionSituation {
     (auctionListing) => auctionListing.auctionSituation,
   )
   auctionListing: AuctionListing;
+  @Column()
+  auctionListingId: number;
 
   @ManyToOne(() => Members, (member) => member.auctionSituation)
   member: Members;
