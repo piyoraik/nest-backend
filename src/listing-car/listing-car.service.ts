@@ -75,6 +75,18 @@ export class ListingCarService {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
+        'carBodyNumber',
+        'carBodyNumber.maker',
+        'carBodyNumber.carModel',
+        'carBodyNumber.shape',
+        'carBodyNumber.fuel',
+        'carBodyNumber.exteriorColor',
+        'carBodyNumber.interiorColor',
+        'carBodyNumber.shift',
+        'carBodyNumber.gear',
+        'carBodyNumber.airConditoner',
+        'carBodyNumber.importedCar',
+        'carBodyNumber.handle',
       ],
     });
   }

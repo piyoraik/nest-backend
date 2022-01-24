@@ -28,7 +28,7 @@ export class UpdateCarBodyNumberDTO {
 
   @ApiProperty({
     description: '排気量',
-    default: '2500cc',
+    default: 2500,
   })
   @IsOptional()
   @IsString()
