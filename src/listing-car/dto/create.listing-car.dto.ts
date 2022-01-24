@@ -1,6 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEnum, IsNumber, IsString, ValidateNested } from 'class-validator';
+import {
+  IsBoolean,
+  IsEnum,
+  IsNumber,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { CreateAdditionDTO } from 'src/addition/dto/create-addition.dto';
 import { CreateCarBodyEvaluationDTO } from 'src/car-body-evaluation/dto/create-carbodyevaluation.dto';
 import { CreateCarBodyImageDTO } from 'src/car-body-image/dto/create.carbodyimage.dto';
@@ -116,18 +122,18 @@ export class CreateListingCarDTO {
   //色替
   @ApiProperty({
     description: '色替:色を変えたことがあるか',
-    default: '0',
+    default: false,
   })
-  @IsNumber()
-  IschangeColor: number;
+  @IsBoolean()
+  IschangeColor: boolean;
 
   //希望出品１
   @ApiProperty({
-    description: '希望出品1:ユーザー0、グリーン1',
-    default: '0',
+    description: '希望出品1:ユーザー、グリーン',
+    default: 'ユーザー',
   })
-  @IsNumber()
-  SuggestedListingOne: number;
+  @IsString()
+  SuggestedListingOne: string;
 
   @ApiProperty({
     type: CreateSuggestedListingDTO,

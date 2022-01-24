@@ -84,11 +84,11 @@ export class ListingCar {
 
   //色替
   @Column()
-  IschangeColor: number;
+  IschangeColor: boolean;
 
   //希望出品１
   @Column()
-  SuggestedListingOne: number;
+  SuggestedListingOne: string;
 
   @CreateDateColumn()
   createdAt: Date;
