@@ -25,7 +25,7 @@ export class CreateCarBodyNumberDTO {
 
   @ApiProperty({
     description: '排気量',
-    default: '2500cc',
+    default: 2500,
   })
   @IsString()
   engineSize: string;

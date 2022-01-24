@@ -18,7 +18,7 @@ export class CreateExhibitorEntryDTO {
 
   @ApiProperty({
     description: '工具',
-    default: false,
+    default: true,
   })
   @IsBoolean()
   tool: boolean;

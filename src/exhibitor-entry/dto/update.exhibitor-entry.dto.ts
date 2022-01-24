@@ -4,7 +4,7 @@ import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 export class UpdateExhibitorEntryDTO {
   @ApiProperty({
     description: '修復歴',
-    default: '-',
+    default: true,
   })
   @IsOptional()
   @IsBoolean()
@@ -12,7 +12,7 @@ export class UpdateExhibitorEntryDTO {
 
   @ApiProperty({
     description: 'ジャッキ',
-    default: 'あり',
+    default: true,
   })
   @IsOptional()
   @IsBoolean()
@@ -20,7 +20,7 @@ export class UpdateExhibitorEntryDTO {
 
   @ApiProperty({
     description: '工具',
-    default: 'あり',
+    default: true,
   })
   @IsOptional()
   @IsBoolean()
