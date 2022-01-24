@@ -53,7 +53,7 @@ export class CreateCarBodyNumberDTO {
 
   @ApiProperty({
     description: '乗員数',
-    default: 106566,
+    default: 4,
   })
   @IsNumber()
   crewNumber: number;

@@ -60,7 +60,7 @@ export class UpdateCarBodyNumberDTO {
 
   @ApiProperty({
     description: '乗員数',
-    default: 106566,
+    default: 4,
   })
   @IsOptional()
   @IsNumber()

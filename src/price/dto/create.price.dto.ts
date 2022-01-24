@@ -25,7 +25,7 @@ export class CreatePriceDTO {
 
   @ApiProperty({
     description: '消費税',
-    default: '500000',
+    default: '50000',
   })
   @IsNumber()
   consumptionTax: number;

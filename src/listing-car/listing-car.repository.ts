@@ -1,7 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
+import e from 'express';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
-import { EntityRepository, ILike, Repository } from 'typeorm';
+import { EntityRepository, ILike, LessThanOrEqual, Repository } from 'typeorm';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 
@@ -53,6 +54,9 @@ export class ListingCarRepository extends Repository<ListingCar> {
     const parseAttrs: Partial<ListingCar> = {};
     for (const key in attrs) {
       parseAttrs[key] = ILike('%' + attrs[key] + '%');
+      if (!isNaN(attrs[key])) {
+        parseAttrs[key] = LessThanOrEqual(attrs[key]);
+      }
     }
     const listingCars = await this.find({
       where: parseAttrs,
