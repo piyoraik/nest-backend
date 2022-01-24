@@ -30,6 +30,9 @@ export class AuctionSituationRepository extends Repository<AuctionSituation> {
     const auctionSituation = await this.findOne({
       where: attrs,
       relations: ['member', 'auctionListing'],
+      order: {
+        bidPrice: 'DESC',
+      },
     });
     if (!auctionSituation) {
       throw new NotFoundException('AuctionSituation Not Found');

@@ -51,8 +51,10 @@ export class AuctionSituationController {
   }
 
   @Get(':auctionListingID')
-  findOneId(@Param('auctionListingID') id: string) {
-    return this.auctionSituationService.findOneId(+id);
+  findOneId(@Param('auctionListingID') auctionListingId: string) {
+    return this.auctionSituationService.findOne({
+      auctionListingId: +auctionListingId,
+    });
   }
 
   @Patch(':auctionListingID')
