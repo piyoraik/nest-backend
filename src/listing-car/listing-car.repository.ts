@@ -28,7 +28,6 @@ export class ListingCarRepository extends Repository<ListingCar> {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
-        'carBodyNumber',
       ],
     });
     if (!listingCar) {
@@ -51,7 +50,6 @@ export class ListingCarRepository extends Repository<ListingCar> {
         'testingRecord',
         'exhibitorEntry',
         'paperClass',
-        'carBodyNumber',
       ],
     });
     if (!listingCars) {
