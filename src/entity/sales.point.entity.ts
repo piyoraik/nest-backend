@@ -5,15 +5,15 @@ import { ListingCar } from './listing.car.entity';
 export class SalesPoint {
   //セールスポイント
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: 'セールスポイントID' })
   id: number;
 
-  @Column()
+  @Column({ comment: 'セールスポイント' })
   point: string; //セールスポイント
 
   @ManyToOne(() => ListingCar, (listingCar) => listingCar.salesPoint)
   listingCar: ListingCar;
 
-  @Column()
+  @Column({ comment: '出品車' })
   listingCarId: number;
 }

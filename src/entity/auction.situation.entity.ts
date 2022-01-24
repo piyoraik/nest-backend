@@ -12,7 +12,7 @@ import { Members } from './members.entity';
 
 @Entity()
 export class AuctionSituation {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '入札ID' })
   id: number;
 
   @ManyToOne(
@@ -24,18 +24,18 @@ export class AuctionSituation {
   @ManyToOne(() => Members, (member) => member.auctionSituation)
   member: Members;
 
-  @Column()
+  @Column({ comment: '入札価格' })
   bidPrice: number;
 
-  @Column()
+  @Column({ comment: '入札時間' })
   bidTime: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

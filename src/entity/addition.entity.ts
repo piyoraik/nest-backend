@@ -13,52 +13,52 @@ import { ListingCar } from './listing.car.entity';
 @Entity()
 export class Addition {
   //付加
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '付加ID' })
   id: number;
 
-  @Column() //PS
+  @Column({ comment: 'PS' }) //PS
   isPS: boolean;
 
-  @Column() //PW
+  @Column({ comment: 'PW' }) //PW
   isPW: boolean;
 
-  @Column() //AW
+  @Column({ comment: 'AW' }) //AW
   isAW: boolean;
 
-  @Column() //SR
+  @Column({ comment: 'SR' }) //SR
   isSR: boolean;
 
-  @Column() //背面
+  @Column({ comment: '背面' }) //背面
   isBACK: boolean;
 
-  @Column() //カワ
+  @Column({ comment: 'カワ' }) //カワ
   isPEEL: boolean;
 
-  @Column() //AB
+  @Column({ comment: 'AB' }) //AB
   isAB: boolean;
 
-  @Column() //TV
+  @Column({ comment: 'TV' }) //TV
   isTV: boolean;
 
-  @Column() //ナビ
+  @Column({ comment: 'ナビ' }) //ナビ
   isNAVI: boolean;
 
-  @Column() //Rスポ
+  @Column({ comment: 'Rスポ' }) //Rスポ
   isRSP: boolean;
 
-  @Column() //カセット
+  @Column({ comment: 'カセット' }) //カセット
   isCAS: boolean;
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.addition)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

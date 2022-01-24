@@ -27,7 +27,7 @@ import { PaperClass } from './paper.class.entity';
 export class ListingCar {
   //出品車
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '出品車ID' })
   id: number;
 
   @OneToOne(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.listingCar)
@@ -35,7 +35,7 @@ export class ListingCar {
   carBodyNumber: CarBodyNumber;
 
   //評価点
-  @Column()
+  @Column({ comment: '評価点' })
   evaluationPoint: EvaluationPoint;
 
   //セールスポイント
@@ -43,15 +43,15 @@ export class ListingCar {
   salesPoint: SalesPoint[];
 
   //タバコ ＊変更
-  @Column()
+  @Column({ comment: 'タバコ' })
   cigarette: Cigarette;
 
   //メーター交換歴 ＊変更
-  @Column()
+  @Column({ comment: 'メーター交換歴' })
   meterExchangeHistory: MeterExchangeHistory;
 
   //傷評価 ＊変更
-  @Column()
+  @Column({ comment: '傷評価' })
   scratchEvaluation: ScratchEvaluation;
 
   //車体画像
@@ -59,44 +59,44 @@ export class ListingCar {
   CarBodyImage: CarBodyImage[];
 
   //車歴 ＊変更
-  @Column()
+  @Column({ comment: '車歴' })
   CarHistory: CarHistory;
 
   //車検
-  @Column()
+  @Column({ comment: '車検' })
   carInspection: string;
 
   //仕入れ額
-  @Column()
+  @Column({ comment: '仕入れ額' })
   suggestedAmount: number;
 
   //走行距離
-  @Column()
+  @Column({ comment: '走行距離' })
   mileage: number;
 
   //外装
-  @Column()
+  @Column({ comment: '外装' })
   exterior: ScratchEvaluation;
 
   //内装
-  @Column()
+  @Column({ comment: '内装' })
   interior: ScratchEvaluation;
 
   //色替
-  @Column()
+  @Column({ comment: '色替' })
   IschangeColor: boolean;
 
   //希望出品１
-  @Column()
+  @Column({ comment: '希望出品１' })
   SuggestedListingOne: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 
   // OnetoOne

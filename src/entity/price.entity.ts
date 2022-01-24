@@ -14,7 +14,7 @@ import { Members } from './members.entity';
 
 @Entity()
 export class Price {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '落札後ID' })
   id: number;
 
   @OneToOne(() => AuctionListing, (auctionListing) => auctionListing.price)
@@ -24,27 +24,27 @@ export class Price {
   @ManyToOne(() => Members, (member) => member.prices)
   member: Members;
 
-  @Column()
+  @Column({ comment: '落札価格' })
   successfulBidPrice: number;
 
-  @Column()
+  @Column({ comment: '落札手数料' })
   successfulBidCommission: number;
 
-  @Column()
+  @Column({ comment: '利用手数料' })
   useCommission: number;
 
-  @Column()
+  @Column({ comment: '消費税' })
   consumptionTax: number;
 
-  @Column()
+  @Column({ comment: '配送手数料' })
   deliveryCommission: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

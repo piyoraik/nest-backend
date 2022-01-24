@@ -14,18 +14,18 @@ export class Admin {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column()
+  @Column({ comment: '管理者ID' })
   adminId: number;
 
-  @Column()
+  @Column({ comment: 'パスワード' })
   password: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

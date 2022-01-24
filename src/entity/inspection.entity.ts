@@ -14,40 +14,40 @@ import { ListingCar } from './listing.car.entity';
 export class Inspection {
   //検査
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '検査ID' })
   id: number;
 
-  @Column() //キズ
+  @Column({ comment: 'キズ' }) //キズ
   isPS: boolean;
 
-  @Column() //コゲ
+  @Column({ comment: 'コゲ' }) //コゲ
   isPW: boolean;
 
-  @Column() //コゲ穴
+  @Column({ comment: 'コゲ穴' }) //コゲ穴
   isAW: boolean;
 
-  @Column() //汚れ
+  @Column({ comment: '汚れ' }) //汚れ
   isSR: boolean;
 
-  @Column() //破れ
+  @Column({ comment: '破れ' }) //破れ
   isBACK: boolean;
 
-  @Column() //A
+  @Column({ comment: 'A' }) //A
   isPEEL: boolean;
 
-  @Column() //X要ス
+  @Column({ comment: 'X要ス' }) //X要ス
   isAB: boolean;
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.inspection)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

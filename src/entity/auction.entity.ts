@@ -14,39 +14,39 @@ import { AuctionColor } from '../enum/auctionColor.enum';
 export class Auction {
   //オークション
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: 'オークションID' })
   id: number;
 
   //オークション名
-  @Column()
+  @Column({ comment: 'オークション名' })
   auctionName: string;
 
-  //色 ＊変更
-  @Column()
+  //色
+  @Column({ comment: '色' })
   auctionColor: AuctionColor;
 
   //サブタイトル
-  @Column()
+  @Column({ comment: 'サブタイトル' })
   subTitle: string;
 
   //開始時間
-  @Column()
+  @Column({ comment: '開始時間' })
   startTime: Date;
 
   //セレクション画像
-  @Column()
+  @Column({ comment: 'セレクション画像' })
   selectionImg: string;
 
   //オークションID
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.auction)
   auctionListing: AuctionListing[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

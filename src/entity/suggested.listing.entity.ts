@@ -16,58 +16,58 @@ export class SuggestedListing {
 
   //ここも一旦stringにしています。
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '希望出品' })
   id: number;
 
-  @Column()
+  @Column({ comment: '乗用車' })
   car: string; //乗用車
 
-  @Column()
+  @Column({ comment: 'ミニバン、キャンプワゴン' })
   minivanCampWagon: string; //ミニバン、キャンプワゴン
 
-  @Column()
+  @Column({ comment: 'バン、トラ' })
   vanTruck: string; //バン、トラ
 
-  @Column()
+  @Column({ comment: '軽４' })
   ligthCar: string; //軽４
 
-  @Column()
+  @Column({ comment: 'ドレスUP' })
   dressUp: string; //ドレスUP
 
-  @Column()
+  @Column({ comment: '輸入車' })
   importedCar: string; //輸入車
 
-  @Column()
+  @Column({ comment: 'リフレッシュ' })
   refresh: string; //リフレッシュ
 
-  @Column()
+  @Column({ comment: '0円売り切り' })
   sellout: string; //0円売り切り
 
-  @Column()
+  @Column({ comment: '乗用車ファーストNG' })
   firstNg: string; //乗用車ファーストNG
 
-  @Column()
+  @Column({ comment: 'リバース' })
   reverse: string; //リバース
 
-  @Column()
+  @Column({ comment: '大型' })
   largeSize: string; //大型
 
-  @Column()
+  @Column({ comment: 'リサイクル' })
   recycling: string; //リサイクル
 
-  @Column()
+  @Column({ comment: 'オレンジ' })
   orange: string; //オレンジ
 
   @OneToOne(() => ListingCar)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

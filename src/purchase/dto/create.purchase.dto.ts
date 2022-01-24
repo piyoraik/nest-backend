@@ -68,12 +68,14 @@ export class CreatePurchaseDTO {
   garageCertificate: boolean;
 
   @ApiProperty({
+    description: '配送方法',
     enum: DeliveryMethod,
   })
   @IsEnum(DeliveryMethod)
   deliveryMethod: DeliveryMethod;
 
   @ApiProperty({
+    description: '支払い方法',
     enum: PaymentMethod,
   })
   @IsEnum(PaymentMethod)

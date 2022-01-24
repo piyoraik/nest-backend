@@ -18,7 +18,7 @@ import { DeliveryMethod } from 'src/enum/deliveryMethod.enum';
 export class AfterSuccessfulBid {
   //落札後
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '落札後ID' })
   id: number;
 
   //オークション出品車
@@ -28,40 +28,40 @@ export class AfterSuccessfulBid {
   )
   auctionListing: AuctionListing;
 
-  //オプション ＊変更
-  @Column()
+  //オプション
+  @Column({ comment: 'オプション' })
   option: CarOption;
 
   //配送
-  @Column()
+  @Column({ comment: '配送' })
   deliveryMethod: DeliveryMethod;
 
   //フェリー
-  @Column()
+  @Column({ comment: 'フェリー' })
   isFerry: boolean;
 
-  //支払い方法 ＊変更
-  @Column()
+  //支払い方法
+  @Column({ comment: '支払い方法' })
   paymentMethod: PaymentMethod;
 
   //入金
-  @Column()
+  @Column({ comment: '入金' })
   isPayment: boolean;
 
   //納品
-  @Column()
+  @Column({ comment: '納品' })
   isDelivery: boolean;
 
   //キャンセル
-  @Column()
+  @Column({ comment: 'キャンセル' })
   isCancelled: boolean;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

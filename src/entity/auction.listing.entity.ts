@@ -23,7 +23,7 @@ import { Price } from './price.entity';
 export class AuctionListing {
   //オークション出品車
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: 'オークション出品車ID' })
   id: number;
 
   @OneToMany(
@@ -50,7 +50,7 @@ export class AuctionListing {
   purchaseManagement: PurchaseManagement[];
 
   //落札価格
-  @Column()
+  @Column({ comment: '落札価格' })
   hammerPrice: number;
 
   //会員ID
@@ -71,12 +71,12 @@ export class AuctionListing {
   @JoinColumn()
   afterSuccessfulBid: AfterSuccessfulBid;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }
