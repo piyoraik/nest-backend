@@ -1,5 +1,4 @@
 import { NotFoundException } from '@nestjs/common';
-import e from 'express';
 import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, LessThan, Repository } from 'typeorm';
