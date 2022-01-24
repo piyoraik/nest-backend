@@ -14,25 +14,25 @@ import { ListingCar } from './listing.car.entity';
 export class PaperClass {
   //紙類
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '紙類ID' })
   id: number;
 
-  @Column()
+  @Column({ comment: '新車保証書' })
   securityDocument: boolean; //新車保証書
 
-  @Column()
+  @Column({ comment: '取扱説明書' })
   manual: boolean; //取扱説明書
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.paperClass)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

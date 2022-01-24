@@ -14,97 +14,97 @@ import { ListingCar } from './listing.car.entity';
 export class CarBodyEvaluation {
   //車体評価
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '車体評価ID' })
   id: number;
 
-  @Column()
+  @Column({ comment: '左Fタイヤ' })
   left_f_tire: string; //左Fタイヤ
 
-  @Column()
+  @Column({ comment: '左Rタイヤ' })
   left_r_tire: string; //左Rタイヤ
 
-  @Column()
+  @Column({ comment: '右Fタイヤ' })
   right_f_tire: string; //右Fタイヤ
 
-  @Column()
+  @Column({ comment: '右Rタイヤ' })
   right_r_tire: string; //右Rタイヤ
 
-  @Column()
+  @Column({ comment: 'スペアタイヤ' })
   spare_tire: string; //スペアタイヤ
 
-  @Column()
+  @Column({ comment: 'Fバンパー' })
   f_bumper: string; //Fバンパー
 
-  @Column()
+  @Column({ comment: '左Fフェンダー' })
   left_f_fender: string; //左Fフェンダー
 
-  @Column()
+  @Column({ comment: '左Fドア' })
   left_f_door: string; //左Fドア
 
-  @Column()
+  @Column({ comment: '左ロッカーパネル' })
   left_locker_panel: string; //左ロッカーパネル
 
-  @Column()
+  @Column({ comment: '左Rドア' })
   left_r_door: string; //左Rドア
 
-  @Column()
+  @Column({ comment: '左クォーター' })
   left_quarter: string; //左クォーター
 
-  @Column()
+  @Column({ comment: 'ボンネット' })
   left_r_bumper: string; //左Rバンパー
 
-  @Column()
+  @Column({ comment: 'ボンネット' })
   bonnet: string; //ボンネット
 
-  @Column()
+  @Column({ comment: 'Fアンダースポイラ' })
   f_under_aero_parts: string; //Fアンダースポイラ
 
-  @Column()
+  @Column({ comment: 'Fガラス' })
   f_glass: string; //Fガラス
 
-  @Column()
+  @Column({ comment: 'ルーフ' })
   roof: string; //ルーフ
 
-  @Column()
+  @Column({ comment: 'Rガラス' })
   r_glass: string; //Rガラス
 
-  @Column()
+  @Column({ comment: 'トランク' })
   trunk: string; //トランク
 
-  @Column()
+  @Column({ comment: 'Rアンダースポイラ' })
   r_under_aero_parts: string; //Rアンダースポイラ
 
-  @Column()
+  @Column({ comment: 'Fパネル' })
   f_panel: string; //Fパネル
 
-  @Column()
+  @Column({ comment: '右フェンダー' })
   right_fender: string; //右フェンダー
 
-  @Column()
+  @Column({ comment: '右ドア' })
   right_door: string; //右ドア
 
-  @Column()
+  @Column({ comment: '右ロッカーパネル' })
   right_locker_panel: string; //右ロッカーパネル
 
-  @Column()
+  @Column({ comment: '右Rドア' })
   right_r_door: string; //右Rドア
 
-  @Column()
+  @Column({ comment: '右クォーター' })
   right_quarter: string; //右クォーター
 
-  @Column()
+  @Column({ comment: 'Rパネル' })
   r_panel: string; //Rパネル
 
   @OneToOne(() => ListingCar)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

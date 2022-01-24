@@ -15,35 +15,35 @@ import { ListingCar } from './listing.car.entity';
 
 @Entity()
 export class ExhibitorEntry {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '出品店記入' })
   id: number;
 
-  @Column()
+  @Column({ comment: '修復歴' })
   repairHistory: boolean;
 
-  @Column()
+  @Column({ comment: 'ジャッキ' })
   jack: boolean;
 
-  @Column()
+  @Column({ comment: '工具' })
   tool: boolean;
 
-  @Column()
+  @Column({ comment: 'テキスト' })
   text: string;
 
-  @Column()
+  @Column({ comment: 'リサイクル料金' })
   recyclePrice: number;
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.exhibitorEntry)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 
   @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.maker)

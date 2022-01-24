@@ -15,34 +15,34 @@ export class TestingRecord {
   // 検査記録
   //出品店記入
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '検査記録ID' })
   id: number;
 
-  @Column()
+  @Column({ comment: '修復歴' })
   repaired: string; //修復歴
 
-  @Column()
+  @Column({ comment: 'ジャッキ' })
   jack: string; //ジャッキ
 
-  @Column()
+  @Column({ comment: '工具' })
   tool: string; //工具
 
-  @Column()
+  @Column({ comment: '出品者記入テキスト' })
   text: string; //出品者記入テキスト
 
-  @Column()
+  @Column({ comment: 'リサイクル料金' })
   recycling: number; //リサイクル料金
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.testingRecord)
   @JoinColumn()
   listingCar: ListingCar;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

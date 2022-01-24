@@ -12,19 +12,19 @@ import { CarBodyNumber } from './car.body.number.entity';
 
 @Entity()
 export class Fuel {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: 'ガソリンID' })
   id: number;
 
-  @Column()
+  @Column({ comment: 'ガソリン名' })
   name: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 
   @OneToMany(() => CarBodyNumber, (carBodyNumber) => carBodyNumber.fuel)

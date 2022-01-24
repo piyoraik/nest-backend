@@ -17,43 +17,43 @@ import { Purchase } from './purchase.entity';
 export class Members {
   //会員
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '会員ID' })
   id: number;
 
   //名前
-  @Column()
+  @Column({ comment: '会員名' })
   name: string;
 
   //企業名
-  @Column()
+  @Column({ comment: '企業名' })
   companyName: string;
 
   //メールアドレス
-  @Column({ unique: true })
+  @Column({ unique: true, comment: 'メールアドレス' })
   email: string;
 
   //パスワード
-  @Column()
+  @Column({ comment: 'パスワード' })
   password: string;
 
   //電話番号
-  @Column()
+  @Column({ comment: '電話番号' })
   phoneNumber: string;
 
   //アイコン画像
-  @Column()
+  @Column({ comment: 'アイコン画像' })
   iconImage: string;
 
   //住所
-  @Column()
+  @Column({ comment: '住所' })
   address: string;
 
   //悪質フラグ
-  @Column({ default: false })
+  @Column({ default: false, comment: '悪質フラグ' })
   malicuousFlag: boolean;
 
   //与信チェック
-  @Column({ default: false })
+  @Column({ default: false, comment: '与信チェック' })
   creditCheck: boolean;
 
   @OneToMany(() => AuctionListing, (auctionListing) => auctionListing.member)
@@ -71,12 +71,12 @@ export class Members {
   @OneToMany(() => Price, (price) => price.member)
   prices: Price[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 }

@@ -27,7 +27,7 @@ import { AuctionListing } from './auction.listing.entity';
 
 @Entity()
 export class CarBodyNumber {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '車体ID' })
   id: number;
 
   @OneToOne(() => ListingCar, (listingCar) => listingCar.carBodyNumber)
@@ -35,22 +35,22 @@ export class CarBodyNumber {
 
   @ManyToOne(() => Maker, (maker) => maker.carBodyNumber)
   maker: Maker;
-  @Column()
+  @Column({ comment: 'メーカーID' })
   makerId: number;
 
   @ManyToOne(() => CarModel, (carModel) => carModel.carBodyNumber)
   carModel: CarModel;
-  @Column()
+  @Column({ comment: '車種名ID' })
   carModelId: number;
 
   @ManyToOne(() => Shape, (shape) => shape.carBodyNumber)
   shape: Shape;
-  @Column()
+  @Column({ comment: '形状ID' })
   shapeId: number;
 
   @ManyToOne(() => Fuel, (fuel) => fuel.carBodyNumber)
   fuel: Fuel;
-  @Column()
+  @Column({ comment: '燃料ID' })
   fuelId: number;
 
   @ManyToOne(
@@ -58,7 +58,7 @@ export class CarBodyNumber {
     (exteriorColor) => exteriorColor.carBodyNumberExterior,
   )
   exteriorColor: Color;
-  @Column()
+  @Column({ comment: '外装色ID' })
   exteriorColorId: number;
 
   @ManyToOne(
@@ -66,17 +66,17 @@ export class CarBodyNumber {
     (interiorColor) => interiorColor.carBodyNumberInterior,
   )
   interiorColor: Color;
-  @Column()
+  @Column({ comment: '内装色ID' })
   interiorColorId: number;
 
   @ManyToOne(() => Shift, (shift) => shift.carBodyNumber)
   shift: Shift;
-  @Column()
+  @Column({ comment: 'シフトID' })
   shiftId: number;
 
   @ManyToOne(() => Gear, (gear) => gear.carBodyNumber)
   gear: Gear;
-  @Column()
+  @Column({ comment: 'ギアID' })
   gearId: number;
 
   @ManyToOne(
@@ -84,55 +84,55 @@ export class CarBodyNumber {
     (airConditioner) => airConditioner.carBodyNumber,
   )
   airConditoner: AirConditioner;
-  @Column()
+  @Column({ comment: 'エアコンID' })
   airConditonerId: number;
 
   @ManyToOne(() => ImportedCar, (importedCar) => importedCar.carBodyNumber)
   importedCar: ImportedCar;
-  @Column()
+  @Column({ comment: '輸入車ID' })
   importedCarId: number;
 
   @ManyToOne(() => Handle, (handle) => handle.carBodyNumber)
   handle: Handle;
-  @Column()
+  @Column({ comment: 'ハンドルID' })
   handleId: number;
 
   @ManyToOne(() => AirBack, (airBack) => airBack.carBodyNumber)
   airBack: AirBack;
-  @Column()
+  @Column({ comment: 'エアバックID' })
   airBackId: number;
 
-  @Column()
+  @Column({ comment: 'ドア数' })
   doorNumber: number;
 
-  @Column()
+  @Column({ comment: 'グレード' })
   grade: string;
 
-  @Column()
+  @Column({ comment: '型式' })
   format: string;
 
-  @Column()
+  @Column({ comment: '排気量' })
   engineSize: string;
 
-  @Column()
+  @Column({ comment: '年式' })
   modelYear: number;
 
-  @Column()
+  @Column({ comment: 'カラー.NO' })
   colorNo: number;
 
-  @Column()
+  @Column({ comment: '車体番号' })
   carBodyNumber: number;
 
-  @Column()
+  @Column({ comment: '乗員数' })
   crewNumber: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ comment: '作成日時' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ comment: '更新日時' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ comment: '削除日時' })
   deletedAt: Date;
 
   @OneToMany(

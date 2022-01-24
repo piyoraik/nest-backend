@@ -5,10 +5,10 @@ import { ListingCar } from './listing.car.entity';
 export class CarBodyImage {
   //車体画像
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '車体画像ID' })
   id: number;
 
-  @Column()
+  @Column({ comment: '車体画像' })
   img: string;
 
   @ManyToOne(() => ListingCar, (listingCar) => listingCar.CarBodyImage)
