@@ -9,7 +9,6 @@ import { InspectionService } from 'src/inspection/inspection.service';
 import { PaperClassService } from 'src/paper-class/paper-class.service';
 import { SalesPointService } from 'src/sales-point/sales-point.service';
 import { SuggestedListingService } from 'src/suggested-listing/suggested-listing.service';
-import { TestingRecordService } from 'src/testing-record/testing-record.service';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
 import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarRepository } from './listing-car.repository';
@@ -23,7 +22,6 @@ export class ListingCarService {
     private readonly additionService: AdditionService,
     private readonly carBodyEvaluationService: CarBodyEvaluationService,
     private readonly inspectionService: InspectionService,
-    private readonly testingRecordService: TestingRecordService,
     private readonly suggestedListingService: SuggestedListingService,
     private readonly paperClassService: PaperClassService,
     private readonly exhibitorEntryService: ExhibitorEntryService,
@@ -35,12 +33,9 @@ export class ListingCarService {
     carBodyNumberID: number,
   ) {
     const {
-      CarBodyImage,
       salesPoint,
-      Addition,
       CarBodyEvaluation,
       Inspection,
-      TestingRecord,
       SuggestedListing,
       PaperClass,
       ExhibitorEntry,
@@ -55,11 +50,8 @@ export class ListingCarService {
       carBodyNumber,
     )) as ListingCar;
     await this.salesPointService.create(salesPoint, listingCar);
-    await this.carBodyImageService.create(CarBodyImage, listingCar);
-    await this.additionService.create(Addition, listingCar);
     await this.carBodyEvaluationService.create(CarBodyEvaluation, listingCar);
     await this.inspectionService.create(Inspection, listingCar);
-    await this.testingRecordService.create(TestingRecord, listingCar);
     await this.suggestedListingService.create(SuggestedListing, listingCar);
     await this.paperClassService.create(PaperClass, listingCar);
     await this.exhibitorEntryService.create(ExhibitorEntry, listingCar);
@@ -110,7 +102,6 @@ export class ListingCarService {
       Addition,
       CarBodyEvaluation,
       Inspection,
-      TestingRecord,
       SuggestedListing,
       PaperClass,
       ExhibitorEntry,

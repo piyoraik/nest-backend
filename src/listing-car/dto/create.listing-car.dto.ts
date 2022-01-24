@@ -18,7 +18,6 @@ import { Inspection } from 'src/entity/inspection.entity';
 import { PaperClass } from 'src/entity/paper.class.entity';
 import { SalesPoint } from 'src/entity/sales.point.entity';
 import { SuggestedListing } from 'src/entity/suggested.listing.entity';
-import { TestingRecord } from 'src/entity/testing.record.entity';
 import { CarHistory } from 'src/enum/car.history.enum';
 import { Cigarette } from 'src/enum/cigarette.enum';
 import { EvaluationPoint } from 'src/enum/evaluationPoint.enum';
@@ -29,16 +28,8 @@ import { CreateInspectionDTO } from 'src/inspection/dto/create-inspection.dto';
 import { CreatePaperClassDTO } from 'src/paper-class/dto/create.paperclass.dto';
 import { CreateSalesPointDTO } from 'src/sales-point/dto/create-salespoint.dto';
 import { CreateSuggestedListingDTO } from 'src/suggested-listing/dto/create.suggested-listing.dto';
-import { CreateTestingRecordDTO } from 'src/testing-record/dto/create-testingrecord.dto';
 
 export class CreateListingCarDTO {
-  @ApiProperty({
-    enum: EvaluationPoint,
-    description: '評価点',
-  })
-  @IsEnum(EvaluationPoint)
-  evaluationPoint: EvaluationPoint;
-
   @ApiProperty({
     type: [CreateSalesPointDTO],
     description: 'セールスポイント',
@@ -48,20 +39,6 @@ export class CreateListingCarDTO {
   salesPoint?: SalesPoint[];
 
   @ApiProperty({
-    enum: Cigarette,
-    description: 'タバコ',
-  })
-  @IsEnum(Cigarette)
-  cigarette: Cigarette;
-
-  @ApiProperty({
-    enum: MeterExchangeHistory,
-    description: 'メーター交換歴',
-  })
-  @IsEnum(MeterExchangeHistory)
-  meterExchangeHistory: MeterExchangeHistory;
-
-  @ApiProperty({
     enum: ScratchEvaluation,
     description: 'キズ評価',
   })
@@ -69,63 +46,11 @@ export class CreateListingCarDTO {
   scratchEvaluation: ScratchEvaluation;
 
   @ApiProperty({
-    type: [CreateCarBodyImageDTO],
-    description: '車体画像',
-  })
-  @Type(() => CreateCarBodyImageDTO)
-  @ValidateNested()
-  CarBodyImage?: CarBodyImage[];
-
-  @ApiProperty({
-    enum: CarHistory,
-    description: '車歴',
-  })
-  @IsEnum(CarHistory)
-  CarHistory: CarHistory;
-
-  @ApiProperty({
-    description: '車検',
-    default: '自家用車',
-  })
-  @IsString()
-  carInspection: string;
-
-  @ApiProperty({
     description: '仕入れ額',
     default: '10000',
   })
   @IsNumber()
   suggestedAmount: number;
-
-  @ApiProperty({
-    description: '走行距離',
-    default: '10000',
-  })
-  @IsNumber()
-  mileage: number;
-
-  @ApiProperty({
-    description: '外装:評価',
-    enum: ScratchEvaluation,
-  })
-  @IsEnum(ScratchEvaluation)
-  exterior: ScratchEvaluation;
-
-  //内装
-  @ApiProperty({
-    description: '内装:評価',
-    enum: ScratchEvaluation,
-  })
-  @IsEnum(ScratchEvaluation)
-  interior: ScratchEvaluation;
-
-  //色替
-  @ApiProperty({
-    description: '色替:色を変えたことがあるか',
-    default: false,
-  })
-  @IsBoolean()
-  IschangeColor: boolean;
 
   //希望出品１
   @ApiProperty({
@@ -144,14 +69,6 @@ export class CreateListingCarDTO {
   SuggestedListing?: SuggestedListing;
 
   @ApiProperty({
-    type: CreateAdditionDTO,
-    description: '付加情報',
-  })
-  @Type(() => CreateAdditionDTO)
-  @ValidateNested()
-  Addition?: Addition;
-
-  @ApiProperty({
     type: CreateCarBodyEvaluationDTO,
     description: '車体情報',
   })
@@ -166,14 +83,6 @@ export class CreateListingCarDTO {
   @Type(() => CreateInspectionDTO)
   @ValidateNested()
   Inspection?: Inspection;
-
-  @ApiProperty({
-    type: CreateTestingRecordDTO,
-    description: '検査記録',
-  })
-  @Type(() => CreateTestingRecordDTO)
-  @ValidateNested()
-  TestingRecord?: TestingRecord;
 
   @ApiProperty({
     type: CreatePaperClassDTO,

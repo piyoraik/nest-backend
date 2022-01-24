@@ -18,7 +18,6 @@ import { CarBodyImage } from './car.body.image.entity';
 import { CarHistory } from '../enum/car.history.enum';
 import { CarBodyNumber } from './car.body.number.entity';
 import { Addition } from './addition.entity';
-import { TestingRecord } from './testing.record.entity';
 import { ExhibitorEntry } from './exhibitor.entry.entity';
 import { Inspection } from './inspection.entity';
 import { PaperClass } from './paper.class.entity';
@@ -102,9 +101,6 @@ export class ListingCar {
   // OnetoOne
   @OneToOne(() => Addition, (addition) => addition.listingCar)
   addition: Addition;
-
-  @OneToOne(() => TestingRecord, (testingRecord) => testingRecord.listingCar)
-  testingRecord: TestingRecord;
 
   @OneToOne(() => ExhibitorEntry, (exhibitorEntry) => exhibitorEntry.listingCar)
   exhibitorEntry: ExhibitorEntry;
