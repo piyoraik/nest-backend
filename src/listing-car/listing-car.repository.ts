@@ -3,6 +3,7 @@ import { CarBodyNumber } from 'src/entity/car.body.number.entity';
 import { ListingCar } from 'src/entity/listing.car.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
+import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 
 @EntityRepository(ListingCar)
 export class ListingCarRepository extends Repository<ListingCar> {
@@ -60,9 +61,11 @@ export class ListingCarRepository extends Repository<ListingCar> {
     return listingCars;
   }
 
-  async updateListingCar(id: number, attrs: Partial<ListingCar>) {
-    const listingCar = await this.findOneListingCar({ id });
-    Object.assign(listingCar, attrs);
+  async updateListingCar(id: number, afterAttrs: UpdateListingCarDTO) {
+    const listingCar = await this.findOneListingCar({
+      id,
+    });
+    Object.assign(listingCar, afterAttrs);
     await this.save(listingCar);
     return listingCar;
   }

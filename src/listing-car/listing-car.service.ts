@@ -11,6 +11,7 @@ import { SalesPointService } from 'src/sales-point/sales-point.service';
 import { SuggestedListingService } from 'src/suggested-listing/suggested-listing.service';
 import { TestingRecordService } from 'src/testing-record/testing-record.service';
 import { CreateListingCarDTO } from './dto/create.listing-car.dto';
+import { UpdateListingCarDTO } from './dto/update.listing-car.dto';
 import { ListingCarRepository } from './listing-car.repository';
 
 @Injectable()
@@ -91,8 +92,33 @@ export class ListingCarService {
     return await this.listingCarRepository.findWhereListingCar(attrs);
   }
 
-  async update(id: number, attrs: Partial<ListingCar>) {
-    return await this.listingCarRepository.updateListingCar(id, attrs);
+  async update(id: number, attrs: UpdateListingCarDTO) {
+    const {
+      CarBodyImage,
+      salesPoint,
+      Addition,
+      CarBodyEvaluation,
+      Inspection,
+      TestingRecord,
+      SuggestedListing,
+      PaperClass,
+      ExhibitorEntry,
+      ...attrsListingCar
+    } = attrs;
+    const listingCar = await this.listingCarRepository.updateListingCar(
+      id,
+      attrsListingCar,
+    );
+    // await this.carBodyImageService.update(id, CarBodyImage);
+    // await this.salesPointService.update(id, salesPoint);
+    // await this.additionService.update(id, Addition);
+    // await this.carBodyEvaluationService.update(id, CarBodyEvaluation);
+    // await this.inspectionService.update(id, Inspection);
+    // await this.testingRecordService.update(id, TestingRecord);
+    // await this.suggestedListingService.update(id, SuggestedListing);
+    // await this.paperClassService.update(id, PaperClass);
+    // await this.exhibitorEntryService.update(id, ExhibitorEntry);
+    return listingCar;
   }
 
   async delete(id: number) {
