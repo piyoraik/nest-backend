@@ -19,7 +19,7 @@ export class AuctionListingService {
   ) {}
 
   async findAll() {
-    return this.auctionListingRepository.find({
+    const auctionListings = await this.auctionListingRepository.find({
       relations: [
         'member',
         'auction',
@@ -28,6 +28,12 @@ export class AuctionListingService {
         'carBodyNumber',
       ],
     });
+    auctionListings.map((auctionListing) => {
+      Object.assign(auctionListing, {
+        auctionSituationCount: auctionListing.auctionSituation.length,
+      });
+    });
+    return auctionListings;
   }
 
   async create(
@@ -51,7 +57,12 @@ export class AuctionListingService {
   }
 
   async findOneID(id: number) {
-    return await this.auctionListingRepository.findOneAuctionListing({ id });
+    const auctionListing =
+      await this.auctionListingRepository.findOneAuctionListing({ id });
+    Object.assign(auctionListing, {
+      auctionSituationCount: auctionListing.auctionSituation.length,
+    });
+    return auctionListing;
   }
 
   async findOne(attrs: Partial<AuctionListing>) {
@@ -59,9 +70,14 @@ export class AuctionListingService {
   }
 
   async findWhere(attrs: Partial<AuctionListing>) {
-    return await this.auctionListingRepository.findWhereLikeAuctionListing(
-      attrs,
-    );
+    const auctionListings =
+      await this.auctionListingRepository.findWhereLikeAuctionListing(attrs);
+    auctionListings.map((auctionListing) => {
+      Object.assign(auctionListing, {
+        auctionSituationCount: auctionListing.auctionSituation.length,
+      });
+    });
+    return auctionListings;
   }
 
   // update
