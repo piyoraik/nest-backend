@@ -44,17 +44,17 @@ export class AuctionSituationController {
     );
   }
 
-  @ApiQuery({ type: PartialType(CreateAuctionSituationDTO), required: false })
-  @Get('search')
-  search(@Query() attrs: Partial<AuctionSituation>) {
-    return this.auctionSituationService.findWhere(attrs);
-  }
-
   @Get(':auctionListingID')
   findOneId(@Param('auctionListingID') auctionListingId: string) {
     return this.auctionSituationService.findOne({
       auctionListingId: +auctionListingId,
     });
+  }
+
+  @ApiQuery({ type: PartialType(CreateAuctionSituationDTO), required: false })
+  @Get('search')
+  search(@Query() attrs: Partial<AuctionSituation>) {
+    return this.auctionSituationService.findWhere(attrs);
   }
 
   @Patch(':auctionListingID')
