@@ -10,7 +10,7 @@ $ cd nest-backend
 $ yarn
 $ yarn start:dev
 ```
->※注意※
+>### ※注意※
 >クローンしたあとに`.env.sample`のファイル名を`.env`に修正し  
 >`JWT_SECRET_KEY`の値を設定する
 
