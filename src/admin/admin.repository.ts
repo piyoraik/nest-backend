@@ -2,6 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { Admin } from 'src/entity/admin.entity';
 import { EntityRepository, ILike, Repository } from 'typeorm';
 import { CreateAdminDTO } from './dto/create.admin.dto';
+import { SearchAdminDTO } from './dto/search.admin.dto';
 
 @EntityRepository(Admin)
 export class AdminRepository extends Repository<Admin> {
@@ -24,14 +25,13 @@ export class AdminRepository extends Repository<Admin> {
   }
 
   // findWhere
-  async findWhereLikeAdmin(attrs: Partial<Admin>) {
-    const parseAttrs: Partial<Admin> = {};
+  async findWhereLikeAdmin(attrs: SearchAdminDTO) {
     for (const key in attrs) {
-      parseAttrs[key] = ILike('%' + attrs[key] + '%');
+      attrs[key] = ILike('%' + attrs[key] + '%');
     }
+    console.log(attrs);
     const admins = await this.find({
-      where: parseAttrs,
-      relations: ['member'],
+      where: attrs,
     });
     if (!admins) {
       throw new NotFoundException('Admin Not Found');

@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Admin {
+  id: Float!
+  adminId: Float!
+  password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  admins: [Admin!]!
+  findOneIdAdmin(id: Float!): Admin!
+  adminSearch(searchWord: SearchAdminDTO!): [Admin!]
+}
+
+input SearchAdminDTO {
+  id: Float
+  adminId: Float
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+}
+
+type Mutation {
+  admin(adminAdd: CreateAdminDTO!): Admin!
+  updateAdmin(adminUpdate: UpdateAdminDTO!, id: Float!): Admin!
+  deleteAdmin(id: Float!): Admin!
+}
+
+input CreateAdminDTO {
+  adminId: Int!
+  password: String!
+}
+
+input UpdateAdminDTO {
+  adminId: Float!
+  password: String!
+}
