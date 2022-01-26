@@ -7,8 +7,8 @@
 ```console:console
 $ https://github.com/piyoraik/nest-backend
 $ cd nest-backend
-$ yarn
-$ yarn start:dev
+$ make up
+$ make migration.sync
 ```
 >### ※注意※
 >クローンしたあとに`.env.sample`のファイル名を`.env`に修正し  
@@ -21,7 +21,8 @@ http://localhost:9000
 
 ## 開発環境
 - Docker
-- MySQL
+  - MySQL
+- Node.js
 ### フレームワーク
 - NestJS
 
