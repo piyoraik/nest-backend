@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { Admin } from 'src/entity/admin.entity';
 import { AdminRepository } from './admin.repository';
 import { CreateAdminDTO } from './dto/create.admin.dto';
+import { SearchAdminDTO } from './dto/search.admin.dto';
 import { UpdateAdminDTO } from './dto/update.admin.dto';
 
 @Injectable()
@@ -29,7 +31,7 @@ export class AdminService {
   }
 
   // findWhere
-  async findWhere(attrs: UpdateAdminDTO) {
+  async findWhere(attrs: SearchAdminDTO) {
     return await this.adminRepository.findWhereLikeAdmin(attrs);
   }
 

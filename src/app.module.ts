@@ -34,9 +34,17 @@ import { ExhibitorEntryModule } from './exhibitor-entry/exhibitor-entry.module';
 import { CarBodyNumberModule } from './car-body-number/car-body-number.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import { PurchaseManagementModule } from './purchase-management/purchase-management.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot({
+      // autoSchemaFile: true,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      debug: true,
+      playground: true,
+    }),
     TypeOrmModule.forRoot(),
     AuctionModule,
     MembersModule,
