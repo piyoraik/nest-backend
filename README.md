@@ -16,7 +16,7 @@ $ make migration.sync
 
 ### ドキュメントURL
 ```
-http://localhost:9000
+http://localhost:9000/api
 ```
 
 ## 開発環境
